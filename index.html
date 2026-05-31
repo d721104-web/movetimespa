@@ -926,8 +926,24 @@ async function submitForm(){
   if(!name||!phone){alert("請填寫姓名與聯絡電話");return;}
   var btn=document.querySelector(".btn-sub");
   btn.querySelector("span").textContent="送出中…";btn.disabled=true;
-  var payload={name:name,phone:phone,service:document.getElementById("fs").value,time:document.getElementById("ft").value,gender:document.getElementById("fg2").value,address:document.getElementById("fa").value,note:document.getElementById("fno").value,source:"movetimespa.com"};
-  try{await fetch("https://script.google.com/macros/s/AKfycbwTlN636dzYCE1MvkF7Kj7Uq4HTJJHympG7z3-Y7fxUdApgLzPhdOCbLLVPTp_sFox7Rw/exec",{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});}catch(e){console.log(e);}
+
+  var GAS_URL="https://script.google.com/macros/s/AKfycbwTlN636dzYCE1MvkF7Kj7Uq4HTJJHympG7z3-Y7fxUdApgLzPhdOCbLLVPTp_sFox7Rw/exec";
+
+  var params=new URLSearchParams({
+    userName: name,
+    userPhone: phone,
+    serviceType: document.getElementById("fs").value,
+    reserveDate: document.getElementById("ft").value,
+    reserveTime: "",
+    userAddress: document.getElementById("fa").value,
+    userNotes: document.getElementById("fno").value,
+    source: "movetimespa.com"
+  });
+
+  try{
+    await fetch(GAS_URL+"?"+params.toString(),{method:"GET",mode:"no-cors"});
+  }catch(e){console.log(e);}
+
   document.getElementById("fw").style.display="none";
   document.getElementById("fsuc").style.display="block";
 }

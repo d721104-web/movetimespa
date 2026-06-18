@@ -416,6 +416,96 @@ footer{background:#160D06;color:rgba(237,229,216,0.4);padding:3rem 6%;}
     gap: 2.5rem !important;
   }
 }
+
+/* ===== 圖片版面優化 ===== */
+
+/* 服務卡片圖片：固定比例，人臉不被截 */
+.sc-img {
+  height: 260px;
+  overflow: hidden;
+  position: relative;
+  background: var(--cream-dark);  /* 圖片載入前的佔位色 */
+}
+.sc-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;  /* 往上偏，保留臉部 */
+  transition: transform 0.7s cubic-bezier(0.22,1,0.36,1), filter 0.4s ease;
+}
+.sc-card:hover .sc-img img {
+  transform: scale(1.06);
+  filter: brightness(0.85);
+}
+
+/* pgrid 圖片：統一比例防跳版 */
+.pgrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 280px 280px;
+  gap: 4px;
+  overflow: hidden;
+  background: var(--cream-dark);
+}
+.pg img {
+  object-position: center 25%;
+}
+
+/* 團隊照片容器：加佔位色 */
+.tc-img-wrap {
+  background: var(--cream-dark);
+}
+
+/* hero 背景圖：補佔位色 */
+.hero-bg {
+  background: #1a0d06;
+}
+
+/* 圖片共用：平滑載入淡入 */
+img {
+  color: transparent;        /* 破圖時不顯示 alt 文字樣式 */
+}
+.sc-img img,
+.pg img,
+.tc-img-wrap img,
+.ct-info-img img {
+  opacity: 0;
+  animation: imgFadeIn 0.5s ease forwards;
+}
+@keyframes imgFadeIn {
+  from { opacity: 0; transform: scale(1.02); }
+  to   { opacity: 1; transform: scale(1); }
+}
+/* 但 hover 時 sc-card 的圖不要重複動 */
+.sc-card:hover .sc-img img {
+  animation: none;
+}
+
+/* 聯絡區圖片比例固定 */
+.ct-info-img {
+  height: 220px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--cream-dark);
+}
+.ct-info-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+/* RWD：手機版服務卡片圖高度縮小 */
+@media(max-width:600px) {
+  .sc-img { height: 200px; }
+  .pgrid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+  .pg { height: 180px; }
+  .pg:first-child { grid-row: span 1; height: 180px; }
+}
+
 </style>
 
 <!-- Service Schema - 各按摩項目 -->
@@ -662,7 +752,7 @@ footer{background:#160D06;color:rgba(237,229,216,0.4);padding:3rem 6%;}
 
 <section id="home">
   <div class="hero-bg">
-    <img width="1600" height="900" src="https://images.pexels.com/photos/6628701/pexels-photo-6628701.jpeg?auto=compress&cs=tinysrgb&w=1600&q=80" alt="台南到府按摩師專業手法" loading="eager">
+    <img width="1600" height="900" src="https://images.pexels.com/photos/6628530/pexels-photo-6628530.jpeg?auto=compress&cs=tinysrgb&w=1600&q=80" alt="台南到府按摩師專業手法" loading="eager" fetchpriority="high" decoding="async">
   </div>
   <div class="hero-content">
     <p class="hero-ey">台南到府按摩 · 專業到府服務</p>
@@ -684,8 +774,8 @@ footer{background:#160D06;color:rgba(237,229,216,0.4);padding:3rem 6%;}
     </div>
   </div>
   <div class="hero-panels">
-    <div class="hp hp1"><img src="https://images.pexels.com/photos/19641816/pexels-photo-19641816.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南精油按摩到府服務" style="width:140px;height:200px;"></div>
-    <div class="hp hp2"><img src="https://images.pexels.com/photos/6628649/pexels-photo-6628649.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="幕府時代台南到府按摩服務" style="width:110px;height:160px;"></div>
+    <div class="hp hp1"><img src="https://images.pexels.com/photos/6628640/pexels-photo-6628640.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南精油按摩到府服務" loading="lazy" decoding="async" width="140" height="200" style="width:140px;height:200px;"></div>
+    <div class="hp hp2"><img src="https://images.pexels.com/photos/9146364/pexels-photo-9146364.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="幕府時代台南到府按摩服務" loading="lazy" decoding="async" width="110" height="160" style="width:110px;height:160px;"></div>
   </div>
   <div class="scroll-hint">
     <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
@@ -713,7 +803,7 @@ footer{background:#160D06;color:rgba(237,229,216,0.4);padding:3rem 6%;}
 <section id="services">
   <div class="svc-intro">
     <div class="svc-intro-img rl">
-      <img width="1600" height="900" src="https://images.pexels.com/photos/6628701/pexels-photo-6628701.jpeg?auto=compress&cs=tinysrgb&w=1600&q=80" alt="台南到府按摩師專業手法" loading="lazy">
+      <img width="1600" height="900" src="https://images.pexels.com/photos/6628530/pexels-photo-6628530.jpeg?auto=compress&cs=tinysrgb&w=1600&q=80" alt="台南到府按摩師專業手法" loading="lazy" decoding="async">
       <div class="svc-badge-float">職人精神，用心服務</div>
     </div>
     <div class="svc-intro-txt rr">
@@ -731,35 +821,35 @@ footer{background:#160D06;color:rgba(237,229,216,0.4);padding:3rem 6%;}
   </div>
   <div class="svc-grid mw">
     <div class="sc-card rs" data-d="1">
-      <div class="sc-img"><img width="800" height="533" src="https://images.pexels.com/photos/6628649/pexels-photo-6628649.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="幕府時代台南到府按摩服務" loading="lazy"><div class="sc-ov"></div><div class="sc-badge">最受歡迎</div></div>
+      <div class="sc-img"><img width="800" height="533" src="https://images.pexels.com/photos/9146364/pexels-photo-9146364.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="幕府時代台南到府按摩服務" loading="lazy" decoding="async"><div class="sc-ov"></div><div class="sc-badge">最受歡迎</div></div>
       <div class="sc-body"><h3>全身按摩</h3><p>從頭到腳的全面放鬆，舒緩日常累積的疲憊感，讓身體感受輕盈舒適。</p><div class="sc-foot"><span class="sc-price">NT$2,800</span><span class="sc-dur">90 分鐘</span></div><a href="#contact" class="sc-cta">立即預約 全身按摩</a></div>
     </div>
     <div class="sc-card rs" data-d="2">
-      <div class="sc-img"><img width="800" height="533" src="https://images.pexels.com/photos/19641816/pexels-photo-19641816.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南精油按摩到府服務" loading="lazy"><div class="sc-ov"></div><div class="sc-badge">熱門推薦</div></div>
+      <div class="sc-img"><img width="800" height="533" src="https://images.pexels.com/photos/6628640/pexels-photo-6628640.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南精油按摩到府服務" loading="lazy" decoding="async"><div class="sc-ov"></div><div class="sc-badge">熱門推薦</div></div>
       <div class="sc-body"><h3>精油按摩</h3><p>天然植物精油結合香氛放鬆手法，讓身心感受舒適、輕盈與放鬆，為休息前保留愉悅感受。</p><div class="sc-foot"><span class="sc-price">NT$3,200</span><span class="sc-dur">90 分鐘</span></div><a href="#contact" class="sc-cta">立即預約 精油按摩</a></div>
     </div>
     <div class="sc-card rs" data-d="3">
-      <div class="sc-img"><img width="800" height="533" src="https://images.pexels.com/photos/19666192/pexels-photo-19666192.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南肩頸舒緩到府按摩" loading="lazy"><div class="sc-ov"></div></div>
+      <div class="sc-img"><img width="800" height="533" src="https://images.pexels.com/photos/6628659/pexels-photo-6628659.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南肩頸舒緩到府按摩" loading="lazy" decoding="async"><div class="sc-ov"></div></div>
       <div class="sc-body"><h3>肩頸舒緩</h3><p>適合久坐工作後的肩頸放鬆，透過溫和手法舒緩日常累積的緊繃感，讓頸肩在服務後感覺更自在。</p><div class="sc-foot"><span class="sc-price">NT$1,800</span><span class="sc-dur">60 分鐘</span></div><a href="#contact" class="sc-cta">立即預約 肩頸舒緩</a></div>
     </div>
     <div class="sc-card rs" data-d="1">
-      <div class="sc-img"><img width="800" height="533" src="https://images.pexels.com/photos/9146381/pexels-photo-9146381.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南腳底按摩到府服務" loading="lazy"><div class="sc-ov"></div></div>
+      <div class="sc-img"><img width="800" height="533" src="https://images.pexels.com/photos/6628700/pexels-photo-6628700.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南腳底按摩到府服務" loading="lazy" decoding="async"><div class="sc-ov"></div></div>
       <div class="sc-body"><h3>腳底按摩</h3><p>舒緩久站後的沉重感，讓雙腳與全身感受輕鬆舒適。</p><div class="sc-foot"><span class="sc-price">NT$1,800</span><span class="sc-dur">60 分鐘</span></div><a href="#contact" class="sc-cta">立即預約 腳底按摩</a></div>
     </div>
     <div class="sc-card rs" data-d="2">
-      <div class="sc-img"><img width="800" height="533" src="https://images.pexels.com/photos/6628658/pexels-photo-6628658.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南臉部護理到府服務" loading="lazy"><div class="sc-ov"></div></div>
+      <div class="sc-img"><img width="800" height="533" src="https://images.pexels.com/photos/6663371/pexels-photo-6663371.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南臉部護理到府服務" loading="lazy" decoding="async"><div class="sc-ov"></div></div>
       <div class="sc-body"><h3>臉部香芬保濕護理</h3><p>透過溫和香氛與保濕護理，為肌膚帶來舒適滋潤體驗，服務後感受臉部輕盈與愉悅。</p><div class="sc-foot"><span class="sc-price">NT$1,580</span><span class="sc-dur">60 分鐘</span></div><a href="#contact" class="sc-cta">立即預約 臉部香芬保濕護理</a></div>
     </div>
     <div class="sc-card rs" data-d="3">
-      <div class="sc-img"><img width="800" height="533" src="https://images.pexels.com/photos/6628596/pexels-photo-6628596.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南新手爸媽按摩套餐" loading="lazy"><div class="sc-ov"></div><div class="sc-badge">特別方案</div></div>
+      <div class="sc-img"><img width="800" height="533" src="https://images.pexels.com/photos/7781529/pexels-photo-7781529.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南新手爸媽按摩套餐" loading="lazy" decoding="async"><div class="sc-ov"></div><div class="sc-badge">特別方案</div></div>
       <div class="sc-body"><h3>新手爸媽套餐</h3><p>專為育兒生活中的爸媽設計，在緊湊的育兒日常裡找回身體的舒適感與自我放鬆時光。</p><div class="sc-foot"><span class="sc-price">NT$4,200</span><span class="sc-dur">120 分鐘</span></div><a href="#contact" class="sc-cta">立即預約 新手爸媽套餐</a></div>
     </div>
     <div class="sc-card rs" data-d="1">
-      <div class="sc-img"><img width="800" height="533" src="https://images.pexels.com/photos/6628646/pexels-photo-6628646.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南全職爸媽放鬆按摩" loading="lazy"><div class="sc-ov"></div></div>
+      <div class="sc-img"><img width="800" height="533" src="https://images.pexels.com/photos/4473903/pexels-photo-4473903.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南全職爸媽放鬆按摩" loading="lazy" decoding="async"><div class="sc-ov"></div></div>
       <div class="sc-body"><h3>全職爸媽套餐</h3><p>專屬陪玩服務陪伴小孩，讓爸比媽咪享有難得的獨處放鬆時光。</p><div class="sc-foot"><span class="sc-price">NT$3,200</span><span class="sc-dur">90 分鐘</span></div><a href="#contact" class="sc-cta">立即預約 全職爸媽套餐</a></div>
     </div>
     <div class="sc-card rs" data-d="2">
-      <div class="sc-img"><img width="800" height="533" src="https://images.pexels.com/photos/6628651/pexels-photo-6628651.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南樂齡孝親舒緩按摩" loading="lazy"><div class="sc-ov"></div><div class="sc-badge" style="background:var(--brown);">最多人預約</div></div>
+      <div class="sc-img"><img width="800" height="533" src="https://images.pexels.com/photos/7364122/pexels-photo-7364122.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南樂齡孝親舒緩按摩" loading="lazy" decoding="async"><div class="sc-ov"></div><div class="sc-badge" style="background:var(--brown);">最多人預約</div></div>
       <div class="sc-body"><h3>樂齡孝親舒緩套餐</h3><p>台南最受歡迎的孝親方案！專為50歲以上長輩設計，溫和手法讓身體感受舒適放鬆，子女代訂最窩心的禮物。長輩不需出門，師傅直接到府服務。</p><div class="sc-foot"><span class="sc-price">NT$1,600</span><span class="sc-dur">60 分鐘</span></div><a href="#contact" class="sc-cta">立即預約 樂齡舒緩套餐</a></div>
     </div>
   </div>
@@ -773,7 +863,7 @@ footer{background:#160D06;color:rgba(237,229,216,0.4);padding:3rem 6%;}
     <div class="rl">
       <p style="font-size:0.7rem;letter-spacing:0.35em;color:var(--gold-light);text-transform:uppercase;margin-bottom:1rem;">最受歡迎方案</p>
       <h2 style="font-family:Cormorant Garamond,serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--white);line-height:1.3;margin-bottom:1.5rem;">給爸媽最好的禮物<br><em style="font-style:italic;color:var(--gold-light);">不需要出門</em></h2>
-      <p style="font-size:0.92rem;color:rgba(237,229,216,0.75);line-height:2.1;margin-bottom:1rem;">台南許多長輩在日常生活後，容易累積疲憊感與緊繃感，卻因為行動不便或不習慣出門而無法享受專業按摩。</p>
+      <p style="font-size:0.92rem;color:rgba(237,229,216,0.75);line-height:2.1;margin-bottom:1rem;">台南許多長輩在日常生活後，容易累積疲憊感與緊繃感，卻因為不方便外出或不習慣出門而無法享受專業按摩。</p>
       <p style="font-size:0.92rem;color:rgba(237,229,216,0.75);line-height:2.1;margin-bottom:2rem;">幕府時代的<strong style="color:var(--gold-light);">樂齡孝親舒緩套餐</strong>，讓在外打拼的子女能以最安心的方式，送給爸媽最窩心的禮物。師傅直接到府，長輩一步都不需要走。</p>
       <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem;">
         <div style="background:rgba(184,147,90,0.15);border:1px solid rgba(184,147,90,0.3);padding:12px 20px;border-radius:2px;text-align:center;">
@@ -799,7 +889,7 @@ footer{background:#160D06;color:rgba(237,229,216,0.4);padding:3rem 6%;}
         <div style="background:rgba(255,253,249,0.06);border:1px solid rgba(196,168,130,0.2);padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;">
           <div style="font-size:1.5rem;flex-shrink:0;">🦴</div>
           <div>
-            <div style="font-family:Cormorant Garamond,serif;font-size:1.05rem;color:var(--cream);margin-bottom:0.4rem;">筋骨緊繃・日常痠累</div>
+            <div style="font-family:Cormorant Garamond,serif;font-size:1.05rem;color:var(--cream);margin-bottom:0.4rem;">日常緊繃・容易疲憊</div>
             <div style="font-size:0.8rem;color:rgba(237,229,216,0.6);line-height:1.8;">溫和按摩讓長輩感受筋骨舒展，舒緩日常累積的疲勞感</div>
           </div>
         </div>
@@ -820,7 +910,7 @@ footer{background:#160D06;color:rgba(237,229,216,0.4);padding:3rem 6%;}
         <div style="background:rgba(255,253,249,0.06);border:1px solid rgba(196,168,130,0.2);padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;">
           <div style="font-size:1.5rem;flex-shrink:0;">🏠</div>
           <div>
-            <div style="font-family:Cormorant Garamond,serif;font-size:1.05rem;color:var(--cream);margin-bottom:0.4rem;">行動不便・不喜外出</div>
+            <div style="font-family:Cormorant Garamond,serif;font-size:1.05rem;color:var(--cream);margin-bottom:0.4rem;">不方便外出・偏好在家放鬆</div>
             <div style="font-size:0.8rem;color:rgba(237,229,216,0.6);line-height:1.8;">師傅到府，長輩零壓力，子女也放心，是最貼心的孝親方式</div>
           </div>
         </div>
@@ -830,11 +920,11 @@ footer{background:#160D06;color:rgba(237,229,216,0.4);padding:3rem 6%;}
 </section>
 
 <div class="pgrid">
-  <div class="pg"><img width="1600" height="900" src="https://images.pexels.com/photos/6628701/pexels-photo-6628701.jpeg?auto=compress&cs=tinysrgb&w=1600&q=80" alt="台南到府按摩師專業手法" loading="lazy"><div class="pg-lbl"><span>專業到府</span></div></div>
-  <div class="pg"><img width="800" height="533" src="https://images.pexels.com/photos/6628649/pexels-photo-6628649.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="幕府時代台南到府按摩服務" loading="lazy"><div class="pg-lbl"><span>放鬆時光</span></div></div>
-  <div class="pg"><img width="800" height="533" src="https://images.pexels.com/photos/19641816/pexels-photo-19641816.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南精油按摩到府服務" loading="lazy"><div class="pg-lbl"><span>精油香氛</span></div></div>
-  <div class="pg"><img width="800" height="533" src="https://images.pexels.com/photos/19666192/pexels-photo-19666192.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南肩頸舒緩到府按摩" loading="lazy"><div class="pg-lbl"><span>肩頸舒緩</span></div></div>
-  <div class="pg"><img width="800" height="533" src="https://images.pexels.com/photos/6628658/pexels-photo-6628658.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南臉部護理到府服務" loading="lazy"><div class="pg-lbl"><span>臉部護理</span></div></div>
+  <div class="pg"><img width="1600" height="900" src="https://images.pexels.com/photos/6628530/pexels-photo-6628530.jpeg?auto=compress&cs=tinysrgb&w=1600&q=80" alt="台南到府按摩師專業手法" loading="lazy" decoding="async"><div class="pg-lbl"><span>專業到府</span></div></div>
+  <div class="pg"><img width="800" height="533" src="https://images.pexels.com/photos/9146364/pexels-photo-9146364.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="幕府時代台南到府按摩服務" loading="lazy" decoding="async"><div class="pg-lbl"><span>放鬆時光</span></div></div>
+  <div class="pg"><img width="800" height="533" src="https://images.pexels.com/photos/6628640/pexels-photo-6628640.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南精油按摩到府服務" loading="lazy" decoding="async"><div class="pg-lbl"><span>精油香氛</span></div></div>
+  <div class="pg"><img width="800" height="533" src="https://images.pexels.com/photos/6628659/pexels-photo-6628659.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南肩頸舒緩到府按摩" loading="lazy" decoding="async"><div class="pg-lbl"><span>肩頸舒緩</span></div></div>
+  <div class="pg"><img width="800" height="533" src="https://images.pexels.com/photos/6663371/pexels-photo-6663371.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南臉部護理到府服務" loading="lazy" decoding="async"><div class="pg-lbl"><span>臉部護理</span></div></div>
 </div>
 
 <section id="team">
@@ -856,7 +946,7 @@ footer{background:#160D06;color:rgba(237,229,216,0.4);padding:3rem 6%;}
       <div class="tc-body">
         <div class="tc-name">阿凱師</div>
         <div class="tc-role">首席按摩師 · Senior Massage Specialist · 10年經驗</div>
-        <div class="tc-desc">專精肩頸與腰背放鬆服務。手法精準有力，擅長依照客戶當日感受調整服務重點，讓每位客戶獲得最適合的深層放鬆。</div>
+        <div class="tc-desc">專精肩頸與腰背放鬆服務。手法精準有力，擅長依照客戶當日感受調整服務重點，讓每位客戶獲得最適合的放鬆體驗。</div>
         <div class="tc-tags"><span class="tc-tag">肩頸放鬆</span><span class="tc-tag">腰背舒緩</span><span class="tc-tag">深層按摩</span></div>
       </div>
     </div>
@@ -871,8 +961,8 @@ footer{background:#160D06;color:rgba(237,229,216,0.4);padding:3rem 6%;}
       </div>
       <div class="tc-body">
         <div class="tc-name">綵 玲</div>
-        <div class="tc-role">首席芳療師 · SENIOR AROMATHERAPIST</div>
-        <div class="tc-desc">專精精油香氛放鬆與按摩服務，結合東方放鬆點與西式放鬆手法，擅長壓力舒緩、讓身心慢慢靜下來，手法溫柔細膩。</div>
+        <div class="tc-role">首席芳療師 · Senior Aroma Specialist</div>
+        <div class="tc-desc">專精精油香氛放鬆與按摩服務，以溫和細膩的手法為主，擅長營造放鬆節奏，讓服務過程更加安定舒適。</div>
         <div class="tc-tags"><span class="tc-tag">精油香氛放鬆</span><span class="tc-tag">壓力舒緩</span><span class="tc-tag">溫柔手法</span></div>
       </div>
     </div>
@@ -880,7 +970,7 @@ footer{background:#160D06;color:rgba(237,229,216,0.4);padding:3rem 6%;}
 </section>
 
 <section id="testimonials">
-  <div class="tm-bg-img"><img width="800" height="533" src="https://images.pexels.com/photos/6628649/pexels-photo-6628649.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="幕府時代台南到府按摩服務" loading="lazy"></div>
+  <div class="tm-bg-img"><img width="800" height="533" src="https://images.pexels.com/photos/9146364/pexels-photo-9146364.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="幕府時代台南到府按摩服務" loading="lazy" decoding="async"></div>
   <div class="tm-bg-overlay"></div>
   <div class="sh" style="position:relative;z-index:1;">
     <p class="sey rv">客戶真實評價</p>
@@ -899,7 +989,7 @@ footer{background:#160D06;color:rgba(237,229,216,0.4);padding:3rem 6%;}
     <div class="tm-card rv" data-d="2">
       <div class="tm-quote">"</div>
       <div class="tm-stars">★★★★★</div>
-      <p>第一次嘗試到府按摩，林老師準時且非常專業，服務讓人感到安心放鬆。服務後腰背放鬆許多，往後會定期預約！</p>
+      <p>第一次嘗試到府按摩，林老師準時且非常專業，服務讓人感到安心放鬆。服務後整個人感覺輕鬆許多，往後會定期預約！</p>
       <div class="tm-author">
         <div class="tm-av" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#8B6347,#6B4C35);font-family:Noto Serif TC,serif;font-size:1.1rem;color:#fff;font-weight:400;">王</div>
         <div class="tm-info"><strong>王太太</strong><span>台南市中西區</span></div>
@@ -908,7 +998,7 @@ footer{background:#160D06;color:rgba(237,229,216,0.4);padding:3rem 6%;}
     <div class="tm-card rv" data-d="3">
       <div class="tm-quote">"</div>
       <div class="tm-stars">★★★★★</div>
-      <p>最貼心的服務！懷孕後行動不便，陳老師有孕期放鬆服務經驗，手法溫和，服務前也會先確認我當天的感受與需求，強烈推薦給需要放鬆的準媽媽們！</p>
+      <p>最貼心的服務！孕期比較不方便外出，陳老師有孕期放鬆服務經驗，手法溫和，服務前也會先確認我當天的感受與需求，強烈推薦給需要放鬆的準媽媽們！</p>
       <div class="tm-author">
         <div class="tm-av" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#C4A882,#B8935A);font-family:Noto Serif TC,serif;font-size:1.1rem;color:#fff;font-weight:400;">孫</div>
         <div class="tm-info"><strong>孫小姐</strong><span>台南市永康區</span></div>
@@ -945,7 +1035,7 @@ footer{background:#160D06;color:rgba(237,229,216,0.4);padding:3rem 6%;}
       <div class="faq-item"><div class="faq-q" onclick="tF(this)">到府按摩需要準備什麼？<div class="faq-arr">▾</div></div><div class="faq-a">只需提供一個舒適的空間（約 2×3 公尺），以及自己使用的毛巾與浴巾即可。按摩師會攜帶所有專業器材到府。</div></div>
       <div class="faq-item"><div class="faq-q" onclick="tF(this)">服務範圍包括哪些地區？<div class="faq-arr">▾</div></div><div class="faq-a">服務範圍涵蓋台南市全區，包括中西區、東區、南區、北區、安平區、安南區、永康區等地。若您位於其他地區，歡迎來電詢問。</div></div>
       <div class="faq-item"><div class="faq-q" onclick="tF(this)">付款方式是什麼？<div class="faq-arr">▾</div></div><div class="faq-a">目前採用現場現金付款，服務結束後直接以現金支付即可，簡單方便。如有特殊需求請於預約時告知，我們會盡力配合。</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="tF(this)">按摩時需要脫衣服嗎？<div class="faq-arr">▾</div></div><div class="faq-a">根據服務項目不同而有差異。一般建議穿著舒適的輕薄衣物，按摩師會根據服務需求給予建議，全程尊重您的隱私與舒適度。</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="tF(this)">按摩時需要脫衣服嗎？<div class="faq-arr">▾</div></div><div class="faq-a">根據服務項目不同而有差異。一般建議穿著舒適的輕薄衣物，按摩師會根據服務項目說明注意事項，全程尊重您的隱私與舒適度。</div></div>
     </div>
   </div>
 </section>
@@ -958,7 +1048,7 @@ footer{background:#160D06;color:rgba(237,229,216,0.4);padding:3rem 6%;}
   <div class="ct-wrap">
     <div class="ct-info rl">
       <div class="ct-info-img">
-        <img width="800" height="533" src="https://images.pexels.com/photos/6628601/pexels-photo-6628601.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南到府按摩預約諮詢" loading="lazy">
+        <img width="800" height="533" src="https://images.pexels.com/photos/3865676/pexels-photo-3865676.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南到府按摩預約諮詢" loading="lazy" decoding="async">
       </div>
       <h3>聯絡資訊</h3>
       <div class="ct-row"><div class="c-ico">✉️</div><div><strong>Email</strong><p>movetimetw@gmail.com</p></div></div>
@@ -1083,23 +1173,23 @@ footer{background:#160D06;color:rgba(237,229,216,0.4);padding:3rem 6%;}
     <article class="art-card rv" data-d="1">
       <div class="art-tag">按摩選擇</div>
       <h3>肩頸按摩 vs 全身按摩：哪個更適合你？</h3>
-      <p>台南上班族最常問的問題：時間有限時，選60分鐘肩頸按摩還是90分鐘全身按摩？簡單判斷原則：<strong>緊繃集中選局部，全身想放鬆選全身</strong>。</p>
-      <p>長期使用電腦、手機，肩膀沉重緊繃，選肩頸舒緩（60分鐘 NT$1,800）。工作壓力大、全身緊繃，想在休息前好好放鬆，選全身按摩（90分鐘 NT$2,800）放鬆感受更完整。</p>
+      <p>台南上班族最常問的問題：時間有限時，選60分鐘肩頸按摩還是90分鐘全身按摩？簡單判斷原則：<strong>疲憊集中在肩頸選局部放鬆，整天都想好好舒緩選全身按摩</strong>。</p>
+      <p>疲憊集中在肩頸，可選肩頸舒緩（60分鐘 NT$1,800）；想從頭到腳完整放鬆，可選全身按摩（90分鐘 NT$2,800），放鬆感受更完整。</p>
       <div class="art-meta">肩頸按摩 · 全身按摩 · 台南按摩推薦</div>
     </article>
     <article class="art-card rv" data-d="2">
       <div class="art-tag">精油香氛放鬆</div>
       <h3>精油按摩有什麼特色？台南香氛放鬆到府推薦</h3>
-      <p>精油按摩結合物理按壓與香氛舒壓的雙重體驗。天然植物精油搭配香氛氛圍，讓服務過程更有放鬆感，為休息前保留舒適心情。台南氣候濕熱，精油按摩特別適合舒緩夏季燥熱帶來的身心緊繃。</p>
+      <p>精油按摩結合植物香氛與溫和按摩手法，讓服務過程多一份香氣陪伴。適合喜歡柔和節奏、希望在家中享受舒適氛圍的人。台南氣候濕熱，精油按摩特別適合在夏季放鬆身心。</p>
       <p>幕府時代精油按摩使用天然植物精油，由首席芳療師綵玲主理，融合東方放鬆概念與西式舒緩手法，90分鐘 NT$3,200，到府服務讓你在家享受spa級體驗。</p>
       <div class="art-meta">台南精油按摩 · 香氛放鬆 · 到府香氛</div>
     </article>
     <article class="art-card rv" data-d="3">
       <div class="art-tag">新手爸媽</div>
       <h3>台南新手爸媽專屬按摩｜育兒生活中的放鬆選擇</h3>
-      <p>台南生育率在全台算高，新手爸媽多。照顧新生兒帶來的是全方位的疲憊：長時間抱嬰兒造成的肩頸緊繃、哺乳姿勢導致的背部沉重、睡眠不足帶來的全身倦怠，都需要好好放鬆一下。</p>
+      <p>台南生育率在全台算高，新手爸媽多。照顧孩子的日常，常讓爸媽累積肩頸與背部的疲憊感，加上育兒節奏緊湊，很難找到時間好好喘口氣。</p>
       <p>幕府時代特別設計「新手爸媽套餐」（120分鐘 NT$4,200），可選擇同時服務兩人或一人深度放鬆，另有陪玩服務讓爸媽安心，是台南最貼心的親子家庭按摩方案。</p>
-      <div class="art-meta">台南新手爸媽按摩 · 產後放鬆 · 育兒紓壓</div>
+      <div class="art-meta">台南新手爸媽按摩 · 育兒放鬆 · 育兒紓壓</div>
     </article>
 
     <article class="art-card rv" data-d="1">
@@ -1122,7 +1212,7 @@ footer{background:#160D06;color:rgba(237,229,216,0.4);padding:3rem 6%;}
       <div class="art-tag">銀髮族 / 長輩</div>
       <h3>台南樂齡按摩｜給爸媽最好的禮物</h3>
       <p>台南是台灣老齡化程度較高的城市之一，許多長輩在日常生活後容易累積疲憊感與緊繃感。定期安排放鬆時光，能讓長輩在日常生活中多一份舒適與安心。</p>
-      <p>幕府時代「樂齡舒緩套餐」（60分鐘 NT$1,600）專為50歲以上長輩設計，手法溫和不粗暴，循序漸進舒緩緊繃感。更棒的是到府服務，行動不便的長輩不需要出門，子女也可以安心。</p>
+      <p>幕府時代「樂齡舒緩套餐」（60分鐘 NT$1,600）專為50歲以上長輩設計，手法溫和不粗暴，循序漸進舒緩緊繃感。更棒的是到府服務，長輩不需外出，子女也可以安心。</p>
       <div class="art-meta">台南銀髮按摩 · 台南長輩按摩 · 樂齡舒緩</div>
     </article>
 
@@ -1145,17 +1235,17 @@ footer{background:#160D06;color:rgba(237,229,216,0.4);padding:3rem 6%;}
 
     <article class="art-card rv" data-d="2">
       <div class="art-tag">台南孕婦按摩</div>
-      <h3>台南孕婦按摩推薦｜到府孕期舒緩完整指南</h3>
-      <p>懷孕中後期的腰背緊繃、腿部沉重、肩頸疲憊，是許多準媽媽每天的困擾。台南孕婦按摩需要特別注意：<strong>必須選擇有相關服務經驗的師傅</strong>，採側躺方式進行，服務前先確認當日感受與需求，並使用溫和的天然植物精油。</p>
-      <p>幕府時代提供台南孕婦到府按摩服務（90分鐘 NT$3,200），師傅有孕期按摩服務經驗，手法以溫和放鬆為主，服務前會先確認當天感受與需求再進行。到府服務讓行動不便的準媽媽不需出門，在自家床上就能舒緩孕期的緊繃與疲憊感。</p>
-      <div class="art-meta">台南孕婦按摩 · 孕期放鬆 · 台南到府按摩</div>
+      <h3>台南孕婦按摩推薦｜到府孕期放鬆完整指南</h3>
+      <p>懷孕中後期的腰背緊繃、腿部沉重、肩頸疲憊，是許多準媽媽每天的困擾。建議選擇有孕期放鬆服務經驗的師傅，以溫和手法為主，服務前先確認當日感受與需求。</p>
+      <p>幕府時代提供台南孕婦到府按摩服務（90分鐘 NT$3,200），師傅有孕期放鬆服務經驗，以溫和手法為主，服務前會先了解當日感受與需求。到府服務讓準媽媽不需外出，在熟悉的家中安心放鬆。</p>
+      <div class="art-meta">台南孕婦到府服務 · 孕期放鬆 · 台南到府按摩</div>
     </article>
 
     <article class="art-card rv" data-d="3">
       <div class="art-tag">台南SPA按摩</div>
       <h3>台南SPA按摩推薦｜在家享受五星級精油放鬆</h3>
       <p>「台南 spa 按摩」是近年搜尋量暴增的熱門關鍵字，代表越來越多台南人希望享受高品質的 spa 體驗。傳統 spa 館費用高、需要預約等候，而「到府 spa 按摩」完美解決這個問題。</p>
-      <p>幕府時代的精油 spa 按摩（90分鐘 NT$3,200）使用天然植物精油，由首席芳療師到府服務，從精油選擇到手法都比照高級 spa 館標準。台南人在自家客廳就能享受五星級 spa 體驗，服務結束後直接入睡，是台南 spa 按摩的頂級選擇。</p>
+      <p>幕府時代的精油 spa 按摩（90分鐘 NT$3,200）使用天然植物精油，由首席芳療師到府服務，從精油選擇到手法都比照高級 spa 館標準。在家享受精油香氛放鬆體驗，省去外出交通與等待時間，服務後可直接留在熟悉空間中休息，是台南 spa 按摩的貼心選擇。</p>
       <div class="art-meta">台南SPA按摩 · 台南精油按摩 · 居家SPA</div>
     </article>
 
@@ -1170,7 +1260,7 @@ footer{background:#160D06;color:rgba(237,229,216,0.4);padding:3rem 6%;}
     <article class="art-card rv" data-d="2">
       <div class="art-tag">台南全身按摩</div>
       <h3>台南全身按摩推薦｜90分鐘深層放鬆完整指南</h3>
-      <p>台南全身按摩是最受歡迎的按摩類型，從頭到腳的全面舒緩，適合長時間工作後感覺緊繃、身體沉重、想在休息前好好放鬆的台南人。一次好的全身按摩能從頭到腳完整放鬆，舒緩日常累積的疲憊感，讓身心感受輕盈。</p>
+      <p>台南全身按摩是最受歡迎的按摩類型，適合長時間工作後，想從頭到腳完整放鬆的人。透過溫和且有節奏的按摩手法，舒緩日常累積的疲憊感，讓身心感受輕盈舒適。</p>
       <p>幕府時代全身按摩（90分鐘 NT$2,800）採用東方放鬆概念與西式舒緩手法結合，由資深師傅到府服務。與台南按摩店相比，到府全身按摩省去往返時間，結束後直接在自家休息，是最適合台南上班族的按摩選擇。</p>
       <div class="art-meta">台南全身按摩 · 台南按摩推薦 · 深層按摩</div>
     </article>
@@ -1178,25 +1268,25 @@ footer{background:#160D06;color:rgba(237,229,216,0.4);padding:3rem 6%;}
     <article class="art-card rv" data-d="3">
       <div class="art-tag">台南肩頸・腳底按摩</div>
       <h3>台南肩頸按摩、腳底按摩推薦｜局部舒緩到府服務</h3>
-      <p>台南肩頸按摩和腳底按摩是搜尋量穩定的熱門服務。<strong>台南肩頸按摩</strong>特別適合長時間使用電腦、手機的上班族，60分鐘集中舒緩頸部、肩膀、肩胛骨周圍的緊繃感，讓頭部與眼睛感覺更輕鬆。<strong>台南腳底按摩</strong>則透過腳底放鬆手法讓身體感受輕盈舒適，讓全身感受舒適輕盈。</p>
+      <p>台南肩頸按摩和腳底按摩是搜尋量穩定的熱門服務。<strong>台南肩頸按摩</strong>特別適合長時間使用電腦、手機後，可選肩頸舒緩，放鬆肩頸與肩胛骨周邊的緊繃感。<strong>台南腳底按摩</strong>則適合久站、走路後想放鬆雙腳的人，讓全身感受輕盈舒適。</p>
       <p>幕府時代肩頸舒緩與腳底按摩均為 60分鐘 NT$1,800，到府服務讓你在最舒適的環境接受局部專注放鬆，是台南肩頸按摩和腳底按摩的高 CP 值首選。</p>
       <div class="art-meta">台南肩頸按摩 · 台南腳底按摩 · 局部舒緩</div>
     </article>
 
     <article class="art-card rv" data-d="1">
       <div class="art-tag">台南樂齡按摩</div>
-      <h3>台南樂齡按摩推薦｜送給爸媽最好的孝親禮物</h3>
-      <p>隨著台灣高齡化社會發展，台南樂齡按摩需求快速成長。許多在外打拼的子女想為台南的父母安排按摩放鬆，卻苦於長輩行動不便、不習慣出門，或擔心陌生環境的安全問題。</p>
+      <h3>台南樂齡按摩推薦｜給爸媽一段在家放鬆的安心時光</h3>
+      <p>隨著台灣高齡化社會發展，台南樂齡按摩需求快速成長。許多在外打拼的子女想為台南的父母安排按摩放鬆，卻苦於長輩不方便外出、不習慣出門，或擔心陌生環境的安全問題。</p>
       <p>幕府時代「樂齡孝親舒緩套餐」（60分鐘 NT$1,600）是台南最受歡迎的孝親按摩方案。師傅通過嚴格背景審查，手法溫和專業，直接到府服務，長輩不需出門。這是台南子女為父母安排的最窩心禮物，也是台南樂齡按摩的第一推薦。</p>
       <div class="art-meta">台南樂齡按摩 · 台南孝親按摩 · 銀髮族按摩</div>
     </article>
 
     <article class="art-card rv" data-d="2">
       <div class="art-tag">台南銀髮族按摩</div>
-      <h3>台南銀髮族按摩好處｜定期按摩讓長輩維持舒適生活品質</h3>
-      <p>定期安排放鬆時光，能讓銀髮族身心慢慢靜下來、舒緩日常累積的緊繃感、讓腿腳感受輕盈，也為日常生活增添一份好心情。台南氣候潮濕，長輩筋骨特別容易緊繃，定期按摩舒緩感受明顯。</p>
-      <p>幕府時代建議台南銀髮族每2–4週安排一次樂齡舒緩服務，長期累積放鬆感受最佳。到府服務讓長輩在最熟悉安全的環境接受服務，是台南銀髮族最適合的按摩選擇。</p>
-      <div class="art-meta">台南銀髮族按摩 · 樂齡舒適 · 長輩按摩好處</div>
+      <h3>台南銀髮族到府放鬆｜給長輩一段安心舒適的休息時光</h3>
+      <p>樂齡舒緩服務以溫和、循序漸進的方式進行，適合希望在家中放鬆的長輩。子女可以依照長輩生活習慣，安排合適的服務時間，讓長輩在熟悉環境中感受舒適與安心。台南氣候潮濕，長輩筋骨特別容易緊繃，定期按摩舒緩感受明顯。</p>
+      <p>到府服務讓長輩省去外出交通與等待時間，在最熟悉的環境中放鬆，是台南銀髮族最貼心的選擇。</p>
+      <div class="art-meta">台南銀髮族到府放鬆 · 樂齡舒緩 · 長輩放鬆時光</div>
     </article>
 
     <article class="art-card rv" data-d="3">
@@ -1211,7 +1301,7 @@ footer{background:#160D06;color:rgba(237,229,216,0.4);padding:3rem 6%;}
       <div class="art-tag">台南樂齡按摩費用</div>
       <h3>台南樂齡按摩費用比較｜到府 vs 按摩店哪個划算？</h3>
       <p>台南樂齡按摩費用比較：一般按摩店 60 分鐘約 NT$600–1,200，但長輩還需要交通費、時間成本，加上體力消耗，實際代價更高。幕府時代樂齡到府按摩 60 分鐘 NT$1,600，雖然單價稍高，但包含到府服務，長輩零交通壓力，師傅攜帶所有器材，整體性價比更勝一籌。</p>
-      <p>特別是台南行動不便的長輩，出門一趟的體力消耗往往抵消了按摩的放鬆感受。到府按摩讓服務感受完整保留，是台南樂齡按摩費用最划算的選擇。</p>
+      <p>特別是台南不方便外出的長輩，出門一趟的體力消耗往往抵消了按摩的放鬆感受。到府按摩讓服務感受完整保留，是台南樂齡按摩費用最划算的選擇。</p>
       <div class="art-meta">台南樂齡按摩費用 · 台南長輩按摩價格 · 孝親按摩推薦</div>
     </article>
   </div>

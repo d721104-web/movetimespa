@@ -1,7 +1,0 @@
-{%- if page.url != '/' -%}
-<div class="wrap"><div class="crumb">
-  <a href="{{ '/' | relative_url }}">首頁</a>
-  {%- if page.parent_url %}<span>/</span><a href="{{ page.parent_url | relative_url }}">{{ page.parent_name }}</a>{% endif -%}
-  <span>/</span>{{ page.crumb | default: page.title }}
-</div></div>
-{%- endif -%}

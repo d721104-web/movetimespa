@@ -1,7 +1,0 @@
-{%- assign S = site.data.site -%}
-<div class="linebox">
-  <h3>{{ include.title | default: "用 LINE 預約最快" }}</h3>
-  <p>{{ include.text | default: "告知希望時段、服務項目與地址即可，我們會協助安排。" }}</p>
-  <div class="id">{{ S.contact.line_id }}</div>
-  <a class="btn btn-line" href="{{ S.contact.line_url }}?utm_source=site&utm_medium={{ include.src | default: 'cta' }}">加入 LINE 立即預約</a>
-</div>

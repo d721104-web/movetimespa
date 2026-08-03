@@ -1,0 +1,42 @@
+{%- assign S = site.data.site -%}
+<footer class="site">
+  <div class="wrap">
+    <h4>{{ S.brand.zh }} {{ S.brand.en }}</h4>
+    <p>{{ S.brand.tagline }}・PROFESSIONAL HOME MASSAGE IN TAINAN</p>
+
+    <div class="fcols">
+      <div>
+        <h5>服務項目</h5>
+        {% for s in S.services limit:5 %}<a href="{{ '/service/' | append: s.id | append: '/' | relative_url }}">{{ s.name }}</a>{% endfor %}
+        <a href="{{ '/service/' | relative_url }}">全部服務 →</a>
+      </div>
+      <div>
+        <h5>服務地區</h5>
+        {% for a in site.area limit:6 %}<a href="{{ a.url | relative_url }}">{{ a.title }}</a>{% endfor %}
+      </div>
+      <div>
+        <h5>按摩知識</h5>
+        {% for g in site.guide limit:5 %}<a href="{{ g.url | relative_url }}">{{ g.short_title | default: g.title }}</a>{% endfor %}
+      </div>
+      <div>
+        <h5>關於我們</h5>
+        <a href="{{ '/partner/' | relative_url }}">飯店・企業合作</a>
+        <a href="{{ '/join/' | relative_url }}">按摩師招募</a>
+        <a href="{{ S.contact.facebook }}">Facebook</a>
+        <a href="{{ S.contact.line_url }}?utm_source=site&utm_medium=footer">LINE {{ S.contact.line_id }}</a>
+      </div>
+    </div>
+
+    <p class="legal">
+      {{ S.contact.address }}｜{{ S.hours.display }}（{{ S.hours.note }}）｜{{ S.contact.email }}<br>
+      {{ S.legal.disclaimer }}<br>
+      {{ S.legal.zero_tolerance }}<br>
+      © {{ 'now' | date: "%Y" }} {{ S.brand.zh }} {{ S.brand.en }}. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+<div class="dock">
+  <a class="a" href="{{ page.dock_url | default: '/#booking' | relative_url }}">{{ page.dock_label | default: "線上預約" }}</a>
+  <a class="b" href="{{ S.contact.line_url }}?utm_source=site&utm_medium=dock">LINE 預約</a>
+</div>

@@ -1,0 +1,14 @@
+{%- assign S = site.data.site -%}
+<nav class="top">
+  <div class="wrap">
+    <a class="brand" href="{{ '/' | relative_url }}">{{ S.brand.zh }}<small>{{ S.brand.en | upcase }}</small></a>
+    <div class="nav-links">
+      <a href="{{ '/service/' | relative_url }}">服務項目</a>
+      <a href="{{ '/area/' | relative_url }}">服務地區</a>
+      <a href="{{ '/guide/' | relative_url }}">按摩知識</a>
+      <a href="{{ '/partner/' | relative_url }}">飯店合作</a>
+      <a href="{{ '/join/' | relative_url }}">按摩師招募</a>
+      <a href="{{ S.contact.line_url }}?utm_source=site&utm_medium=nav">LINE 預約</a>
+    </div>
+  </div>
+</nav>

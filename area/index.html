@@ -1,0 +1,22 @@
+---
+layout: page
+title: 台南服務地區
+eyebrow: 服務地區
+description: 幕府時代 Move Time 台南到府按摩服務範圍：東區、北區、中西區、南區、安平區、安南區全域到府。永康、仁德、歸仁等地可另行詢問。
+---
+{%- assign S = site.data.site -%}
+<section class="sec">
+  <div class="wrap">
+    <div class="grid">
+      {% for a in site.area %}
+      <a class="tile" href="{{ a.url | relative_url }}">
+        <h3>{{ a.title }}</h3><p>{{ a.sub }}</p>
+        <div class="meta" style="font-family:var(--sans);font-size:.82rem">{{ a.roads }}</div>
+      </a>
+      {% endfor %}
+    </div>
+    <h2 style="margin-top:52px">其他可安排地區</h2>
+    <p class="lede">{{ S.areas_extended | join: "、" }}等地，可先透過官方 LINE 詢問是否可安排師傅前往。</p>
+    {% include cta-line.html src="area-index" title="不確定你的地址在服務範圍內？" text="直接把地址傳給我們，馬上幫你確認。" %}
+  </div>
+</section>

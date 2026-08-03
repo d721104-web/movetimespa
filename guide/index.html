@@ -1,0 +1,20 @@
+---
+layout: page
+title: 按摩知識
+eyebrow: 按摩知識
+description: 台南到府按摩完整知識庫：怎麼選服務項目、到府與按摩店的差異、如何判斷業者是否安全可靠。預約前先看這些。
+---
+<section class="sec">
+  <div class="wrap">
+    <div class="grid">
+      {% for g in site.guide %}
+      <a class="tile" href="{{ g.url | relative_url }}">
+        <h3>{{ g.short_title | default: g.title }}</h3>
+        <p>{{ g.description | truncate: 90 }}</p>
+        <div class="meta" style="font-family:var(--sans);font-size:.82rem">閱讀 →<small>更新 {{ g.updated }}</small></div>
+      </a>
+      {% endfor %}
+    </div>
+    {% include cta-line.html src="guide-index" %}
+  </div>
+</section>

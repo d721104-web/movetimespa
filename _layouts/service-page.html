@@ -1,0 +1,51 @@
+---
+layout: base
+---
+{%- assign S = site.data.site -%}
+{% include crumb.html %}
+<header class="phead">
+  <div class="wrap">
+    <div class="eyebrow">服務項目</div>
+    <h1>{{ page.title }}<br><em>{{ page.sub }}</em></h1>
+    <p class="lede">{{ page.description }}</p>
+    <div class="facts" style="max-width:640px">
+      <div><strong class="num">{{ page.mins }}</strong><span>分鐘</span></div>
+      <div><strong class="num">NT${{ page.price }}</strong><span>服務費用</span></div>
+      <div><strong class="num">到府</strong><span>台南市全區</span></div>
+      <div><strong class="num">可指定</strong><span>師傅性別</span></div>
+    </div>
+    <div class="hero-cta">
+      <a class="btn" href="{{ S.contact.line_url }}?utm_source=site&utm_medium=service&utm_campaign={{ page.slug }}">LINE 預約{{ page.title }}</a>
+      <a class="btn btn-ghost" href="{{ '/#booking' | relative_url }}">填線上表單</a>
+    </div>
+  </div>
+</header>
+
+<section class="sec"><div class="wrap-narrow prose">{{ content }}</div></section>
+
+<section class="sec sec-alt">
+  <div class="wrap-narrow">
+    <div class="eyebrow">預約前須知</div>
+    <h2>到府服務怎麼進行</h2>
+    <div class="steps" style="grid-template-columns:1fr">
+      <div><b>準備空間</b><h4>{{ S.booking.space }}</h4></div>
+    </div>
+    <p class="lede">{{ S.booking.lead_time }}。{{ S.booking.payment }}。</p>
+    {% include cta-line.html src="service" title="預約 " %}
+  </div>
+</section>
+
+{% include faq.html %}
+
+<section class="sec">
+  <div class="wrap">
+    <div class="eyebrow">其他服務</div>
+    <h2>你可能也在找</h2>
+    <div class="related">
+      {% for s in S.services %}{% unless s.id == page.slug %}
+      <a href="{{ '/service/' | append: s.id | append: '/' | relative_url }}">{{ s.name }}　NT${{ s.price }}</a>
+      {% endunless %}{% endfor %}
+    </div>
+    <p class="disclaim">{{ S.legal.disclaimer }}</p>
+  </div>
+</section>

@@ -1,0 +1,29 @@
+---
+layout: page
+title: 服務項目與價格
+eyebrow: 服務項目
+description: 幕府時代 Move Time 台南到府按摩服務項目與價格一覽：全身按摩、精油按摩、肩頸舒緩、腳底按摩、臉部護理、爸媽套餐與樂齡孝親舒緩。台南市全區到府。
+---
+{%- assign S = site.data.site -%}
+<section class="sec">
+  <div class="wrap">
+    <div class="grid">
+      {% for s in S.services %}
+      <a class="tile" href="{{ '/service/' | append: s.id | append: '/' | relative_url }}">
+        {% if s.badge %}<span class="badge">{{ s.badge }}</span>{% endif %}
+        <h3>{{ s.name }}</h3><p>{{ s.short }}</p>
+        <div class="meta">NT${{ s.price }}<small>{{ s.mins }} 分鐘</small></div>
+      </a>
+      {% endfor %}
+    </div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>服務項目</th><th>時間</th><th>費用</th></tr></thead>
+        <tbody>{% for s in S.services %}<tr><td>{{ s.name }}</td><td>{{ s.mins }} 分鐘</td><td class="num">NT$ {{ s.price }}</td></tr>{% endfor %}</tbody>
+      </table>
+    </div>
+    <p class="disclaim">{{ S.booking.payment }}。{{ S.booking.lead_time }}。{{ S.booking.space }}。</p>
+    {% include cta-line.html src="service-index" %}
+    <p class="disclaim">{{ S.legal.disclaimer }}</p>
+  </div>
+</section>

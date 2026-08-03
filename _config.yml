@@ -1,0 +1,33 @@
+# ══════════════════════════════════════════════════════
+#  幕府時代 Move Time — Jekyll 設定
+#  GitHub Pages 原生支援，push 後自動建置，不用另外跑 CI
+# ══════════════════════════════════════════════════════
+title: 幕府時代 Move Time
+description: 台南到府按摩・精油SPA・樂齡孝親舒緩。專業按摩師到府服務，台南市全區可預約。
+url: https://www.movetimespa.com
+baseurl: ""
+lang: zh-TW
+
+plugins:
+  - jekyll-seo-tag
+
+# 集合：服務、區域、指南
+collections:
+  service:
+    output: true
+    permalink: /service/:path/
+  area:
+    output: true
+    permalink: /area/:path/
+  guide:
+    output: true
+    permalink: /guide/:path/
+
+
+sass:
+  style: compressed
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

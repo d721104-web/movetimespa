@@ -1,36 +1,54 @@
 <!DOCTYPE html>
 <!--
   ============================================================
-  幕府時代 Move Time — 按摩師招募頁 v2
-  建議上線路徑：https://www.movetimespa.com/join/
+  幕府時代 Move Time — 按摩師招募頁 v4
+  上線路徑：https://www.movetimespa.com/join/
   ============================================================
 
-  ★★★ 上線前必改清單（改完才可發布）★★★
+  ★ v4 相對於 v3 的變更重點
+  A. 主視覺換為 assets/hero-join-light.jpg（米白／苔綠版，與 washi 色盤一致）。
+  B. 新增 #contract 區塊：合作契約全文公開，連向 /join/agreement/。
+     這是本頁繼「安全」之後的第二個核心 USP，同業幾乎沒人敢這樣做。
+  C. 新增 #brand 區塊（assets/brand-service.jpg）：讓師傅看到自己要代表的品牌，
+     順帶回答「公司到底怎麼幫我找客人」。
+  D. FAQ 前新增深色形象帶（assets/join-navy.jpg）作為進入應徵區的視覺過渡。
+  E. 加入 scroll reveal 微動畫與青海波分隔紋（皆尊重 prefers-reduced-motion）。
+  F. #poster 區塊（直式招募海報）已建好但 hidden，原因見該區塊註解。
 
-  1. [CONFIG] 區塊（<script> 最上方）已設為 therapistShare = 0.60（60% 起跳）。
-     對照組 shopShare = 0.45 請確認符合台南市場行情後再定稿。
+  ★ v3 相對於 v2 的變更重點
+  1. 資訊架構重排：安全保障提前到第一區塊（原本在試算器之後）。
+     理由：對女性師傅而言「安不安全」的決策權重高於「抽幾成」。
+  2. 試算器：新增 60/65/70% 級距切換（預設 60%）＋每單成本扣除，
+     靜態 HTML 預設值已與 JS 首次運算結果對齊（不會有閃爍錯數字）。
+  3. 分潤級距：移除所有【○○】佔位符，改為「公司公告標準＋契約附件」寫法，
+     已取消 hidden 可直接上線。
+  4. 師傅心得：不放假推薦文，改為誠實說明區塊（反而是信任訊號）。
+  5. 新增完整「招募個人資料蒐集告知事項」（個資法第8條八款）＋同意勾選。
+  6. FAQ 新增三題：契約定位／勞健保、客人不付款、什麼算不當服務。
+  7. 對照表左欄全面改為「部分傳統店家」，降低不實比較爭議。
 
-  1b. #terms 的「分潤級距」三段（60 / 65 / 70%）與其達標條件目前含【】佔位符，
-     務必改成你真正要執行的規則，並寫進合作契約。
-     → 就業服務法第5條第2項第1款：招募廣告與實際條件不符即屬不實廣告，
-        依同法第65條可處 30~150 萬元罰鍰，且法院見解為「一部不符亦構成」。
-        規則若尚未訂好，寧可先把整個 .ladder 區塊加 hidden，也不要寫假級距。
+  ★★★ 上線前仍須人工確認 ★★★
 
-  2. LINE 連結：本頁統一使用 data-line 屬性，搜尋 "lin.ee/tXNyqDX" 全部替換
-     成招募專用連結（建議另開一個 LINE 官方帳號或用不同 QR，才分得出來源）。
+  A. [CONFIG] shopShare = 0.45（對照組）請確認符合台南市場行情。
+     這是廣告比較基準，若被檢舉會需要舉證。建議留存至少 3 筆來源（求職網職缺、
+     實際面談紀錄、業界訪談），不要憑印象填。
 
-  3. QR Code：搜尋 "REPLACE_QR" 換成真實 QR 圖片路徑。
+  B. #terms 分潤級距的「公司公告標準」必須真的存在一份書面文件，
+     且面談時要交給師傅。就業服務法第5條第2項第1款：招募廣告與實際條件不符
+     即屬不實廣告，依同法第65條可處 30~150 萬元罰鍰。
 
-  4. 表單：搜尋 "FORM_ENDPOINT"，填入你的 GAS Web App 網址或 Formspree ID。
+  C. 「不當服務全額服務費照算」→ 契約必須寫清楚：定義、回報流程、判斷權責、
+     客人拒付時公司是否仍付款。否則實務上一定會吵。
 
-  5. 現職師傅推薦（#voices）：目前是空的佔位，
-     務必用真實師傅的話 + 本人同意後才放。不要編。
+  D. 承攬 or 僱傭：勞動部採實質認定，契約名稱寫「合作」不具決定性。
+     若你會排班、規定制服、統一定價、設罰則、考核扣點 → 很可能被認定僱傭
+     （勞保、勞退、職災責任）。本頁用中性用語，未寫死，但 FAQ 已誠實揭露。
 
-  6. JSON-LD 的 hiringOrganization / jobLocation / baseSalary 要對。
+  E. LINE 連結：全頁統一用 data-line 屬性，搜尋 "lin.ee/tXNyqDX" 替換為
+     招募專用連結（建議另開帳號，才分得出來源）。
 
-  7. 決定「承攬 or 僱傭」再定稿文案。若你會排班、規定制服、統一定價、設罰則，
-     勞動部實務上很可能認定為僱傭關係（勞保、勞退、職災責任）。
-     本頁目前用「合作」中性用語，未寫死。
+  F. 表單：搜尋 "FORM_ENDPOINT" 填入 GAS Web App 網址。
+     未填時會 fallback 到 LINE 帶參數訊息，不會靜默失敗。
 
   ============================================================
 -->
@@ -39,8 +57,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>按摩師招募｜幕府時代 Move Time｜台南到府按摩・彈性合作・時間自主</title>
-<meta name="description" content="台南到府按摩品牌幕府時代 Move Time 招募按摩師。合作條件清楚說明、不收保證金、不收教材費，由公司協助接單並保護師傅隱私，重視到府服務安全。歡迎資深師傅與剛結訓的新手洽談。">
+<title>按摩師招募｜幕府時代 Move Time｜台南到府按摩・安全有後盾・時間自主</title>
+<meta name="description" content="台南到府按摩品牌幕府時代 Move Time 招募按摩師。公司負責接單並事前過濾客戶，師傅私人聯絡方式不外流；不收保證金與教材費，分潤 60% 起、條件書面確認。歡迎資深師傅與剛結訓新手洽談。">
 <link rel="canonical" href="https://www.movetimespa.com/join/">
 <meta name="robots" content="index, follow">
 
@@ -48,11 +66,11 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:site_name" content="幕府時代 Move Time">
 <meta property="og:url" content="https://www.movetimespa.com/join/">
-<meta property="og:title" content="按摩師招募｜幕府時代 Move Time｜彈性合作・時間自主・安全有後盾">
-<meta property="og:description" content="不收保證金、不收教材費，合作條件於面談與書面契約中清楚說明。台南到府按摩師招募中。">
+<meta property="og:title" content="按摩師招募｜幕府時代 Move Time｜我們幫你找客人，也幫你過濾客人">
+<meta property="og:description" content="不收保證金、不收教材費，分潤 60% 起。客戶由公司統一接單與事前過濾，師傅手機不外流。台南到府按摩師招募中。">
 <meta name="twitter:card" content="summary_large_image">
-<meta property="og:image" content="https://www.movetimespa.com/join/therapist-recruitment-banner.png">
-<meta name="twitter:image" content="https://www.movetimespa.com/join/therapist-recruitment-banner.png">
+<meta property="og:image" content="https://www.movetimespa.com/join/assets/join-navy.jpg">
+<meta name="twitter:image" content="https://www.movetimespa.com/join/assets/join-navy.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -94,7 +112,7 @@ a{color:inherit}
 .sec{padding:76px 0}
 @media(min-width:900px){.sec{padding:110px 0}}
 
-/* 朱印 眉標 —— 本頁的識別記號 */
+/* 朱印 眉標 */
 .eyebrow{
   display:inline-flex;align-items:center;gap:11px;
   font-family:var(--serif);font-weight:600;font-size:.82rem;
@@ -125,9 +143,9 @@ nav{
 nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
 .brand{font-family:var(--serif);font-weight:600;font-size:1.05rem;letter-spacing:.06em;text-decoration:none}
 .brand small{font-family:var(--sans);font-weight:400;font-size:.7rem;color:var(--sumi-soft);letter-spacing:.14em;margin-left:8px}
-.nav-links{display:none;gap:26px;font-size:.88rem}
+.nav-links{display:none;gap:24px;font-size:.88rem}
 @media(min-width:900px){.nav-links{display:flex}}
-.nav-links a{text-decoration:none;color:var(--sumi-soft);padding-bottom:2px;border-bottom:1px solid transparent}
+.nav-links a{text-decoration:none;color:var(--sumi-soft);padding-bottom:2px;border-bottom:1px solid transparent;white-space:nowrap}
 .nav-links a:hover{color:var(--shu);border-color:var(--shu)}
 
 /* ── 按鈕 ── */
@@ -143,7 +161,8 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .btn-ghost:hover{background:var(--sumi);color:var(--washi);border-color:var(--sumi)}
 .btn-line{background:var(--line);border-color:var(--line);color:#fff}
 .btn-line:hover{background:#05a948;border-color:#05a948}
-.btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{
   outline:2.5px solid var(--shu);outline-offset:3px;
 }
 
@@ -157,14 +176,19 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .hero-copy{display:grid;gap:24px;align-items:center;margin-top:8px}
 @media(min-width:900px){.hero{padding:54px 0 84px}.hero-copy{grid-template-columns:1fr auto;gap:40px}.hero-actions{min-width:300px}}
 @media(max-width:640px){.hero-art::before{display:none}.hero-art img{border-radius:0}.hero-badge{display:none}}
-.hero h1{font-size:2.15rem;font-weight:900;line-height:1.32;letter-spacing:-.005em;margin:6px 0 22px}
+.hero h1{font-size:2.15rem;font-weight:900;line-height:1.32;letter-spacing:-.005em;margin:6px 0 20px}
 @media(min-width:900px){.hero h1{font-size:3.5rem;max-width:16em}}
 .hero h1 em{font-style:normal;color:var(--shu);position:relative;white-space:nowrap}
 .hero h1 em::after{
   content:"";position:absolute;left:0;right:0;bottom:.06em;height:.34em;
   background:rgba(166,58,46,.14);z-index:-1;
 }
-.hero-p{font-size:1.05rem;color:var(--sumi-soft);max-width:34em;margin-bottom:32px}
+.hero-hook{
+  font-family:var(--serif);font-weight:600;font-size:1.18rem;line-height:1.7;
+  border-left:3px solid var(--shu);padding-left:16px;margin-bottom:20px;max-width:26em;
+}
+@media(min-width:900px){.hero-hook{font-size:1.34rem}}
+.hero-p{font-size:1.02rem;color:var(--sumi-soft);max-width:34em;margin-bottom:30px}
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px}
 
 .facts{
@@ -176,90 +200,6 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .facts div{background:var(--washi);padding:20px 18px}
 .facts strong{display:block;font-family:var(--mono);font-size:1.5rem;color:var(--shu);line-height:1.2}
 .facts span{font-size:.8rem;color:var(--sumi-soft);letter-spacing:.04em}
-
-/* ── 試算器（本頁招牌）── */
-.calc{background:var(--sumi);color:var(--washi)}
-.calc h2{color:var(--washi)}
-.calc .eyebrow{color:var(--kincha)}
-.calc .eyebrow::before{border-color:var(--kincha);
-  background:linear-gradient(var(--kincha),var(--kincha)) center/11px 1.5px no-repeat,
-             linear-gradient(var(--kincha),var(--kincha)) center/1.5px 11px no-repeat;}
-.calc .lede{color:rgba(246,243,236,.68)}
-.calc-grid{display:grid;gap:30px;margin-top:44px}
-@media(min-width:900px){.calc-grid{grid-template-columns:1fr 1fr;gap:56px;align-items:start}}
-
-.field{margin-bottom:28px}
-.field label{display:flex;justify-content:space-between;align-items:baseline;
-  font-size:.9rem;color:rgba(246,243,236,.78);margin-bottom:11px;font-weight:500}
-.field label b{font-family:var(--mono);font-size:1.15rem;color:var(--kincha)}
-input[type=range]{
-  -webkit-appearance:none;appearance:none;width:100%;height:3px;
-  background:rgba(246,243,236,.22);border-radius:2px;outline:none;
-}
-input[type=range]::-webkit-slider-thumb{
-  -webkit-appearance:none;width:24px;height:24px;border-radius:50%;
-  background:var(--kincha);cursor:pointer;border:3px solid var(--sumi);
-  box-shadow:0 0 0 1.5px var(--kincha);
-}
-input[type=range]::-moz-range-thumb{
-  width:24px;height:24px;border-radius:50%;background:var(--kincha);
-  cursor:pointer;border:3px solid var(--sumi);box-shadow:0 0 0 1.5px var(--kincha);
-}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{
-  padding:9px 15px;border:1px solid rgba(246,243,236,.26);border-radius:2px;
-  background:transparent;color:rgba(246,243,236,.8);
-  font-family:var(--sans);font-size:.85rem;cursor:pointer;transition:.16s;
-}
-.chip[aria-pressed=true]{background:var(--kincha);border-color:var(--kincha);color:var(--sumi);font-weight:700}
-
-.result{border:1px solid rgba(246,243,236,.2);padding:30px 26px;background:rgba(246,243,236,.045)}
-.result .cap{font-size:.8rem;letter-spacing:.2em;color:var(--kincha);margin-bottom:10px}
-.big{font-family:var(--mono);font-weight:700;font-size:3.1rem;line-height:1;color:var(--washi);letter-spacing:-.02em}
-@media(min-width:900px){.big{font-size:3.9rem}}
-.big s{font-size:1.4rem;font-weight:500;text-decoration:none;opacity:.55;margin-right:6px}
-.rows{margin-top:26px;border-top:1px solid rgba(246,243,236,.14)}
-.rows div{display:flex;justify-content:space-between;padding:13px 0;
-  border-bottom:1px solid rgba(246,243,236,.09);font-size:.9rem;color:rgba(246,243,236,.75)}
-.rows div b{font-family:var(--mono);color:var(--washi)}
-.rows div.hl b{color:var(--kincha)}
-.disclaim{font-size:.76rem;color:rgba(246,243,236,.45);margin-top:18px;line-height:1.7}
-
-/* ── 對照表 ── */
-.tbl{width:100%;border-collapse:collapse;margin-top:38px;font-size:.92rem}
-.tbl th,.tbl td{padding:16px 14px;border-bottom:1px solid rgba(33,30,27,.11);text-align:left;vertical-align:top}
-.tbl thead th{font-family:var(--serif);font-size:.9rem;letter-spacing:.06em;border-bottom:1.5px solid var(--sumi)}
-.tbl thead th:last-child{color:var(--shu)}
-.tbl td:first-child{font-weight:700;width:30%}
-.tbl td:nth-child(2){color:var(--sumi-soft)}
-.tbl td:last-child{color:var(--sumi);font-weight:500;background:rgba(166,58,46,.045)}
-.tbl-wrap{overflow-x:auto}
-
-/* ── 分潤級距 ── */
-.ladder{margin-top:56px;border-top:1.5px solid var(--sumi);padding-top:40px}
-.ladder-h{font-size:1.5rem;margin-bottom:10px}
-@media(min-width:900px){.ladder-h{font-size:1.9rem}}
-.rungs{list-style:none;margin:32px 0 22px;counter-reset:r}
-.rungs li{
-  display:flex;align-items:flex-start;gap:22px;
-  padding:22px 0 22px 4px;border-bottom:1px solid rgba(33,30,27,.13);
-  position:relative;
-}
-.rungs li:first-child{border-top:1px solid rgba(33,30,27,.13)}
-.rungs .pct{
-  flex:none;width:104px;font-size:2.1rem;line-height:1;
-  color:var(--kincha);letter-spacing:-.02em;
-}
-.rungs .pct i{font-style:normal;font-size:.95rem;margin-left:2px}
-.rungs li.top{background:rgba(166,58,46,.045);padding-left:16px;margin-left:-12px}
-.rungs li.top .pct{color:var(--shu)}
-.rungs h4{font-size:1.05rem;margin-bottom:4px}
-.rungs p{font-size:.9rem;color:var(--sumi-soft)}
-.rungs p b{color:var(--shu);font-weight:700}
-@media(max-width:600px){
-  .rungs li{gap:16px}
-  .rungs .pct{width:72px;font-size:1.6rem}
-}
 
 /* ── 安全 ── */
 .safe{background:var(--washi-2)}
@@ -283,6 +223,103 @@ input[type=range]::-moz-range-thumb{
 .seal li::before{content:"×";position:absolute;left:0;color:var(--shu);font-weight:700}
 .seal p{font-size:.83rem;color:var(--sumi-soft);margin-top:14px;padding-top:14px;border-top:1px solid rgba(166,58,46,.25)}
 
+/* ── 對照表 ── */
+.tbl{width:100%;border-collapse:collapse;margin-top:38px;font-size:.92rem}
+.tbl th,.tbl td{padding:16px 14px;border-bottom:1px solid rgba(33,30,27,.11);text-align:left;vertical-align:top}
+.tbl thead th{font-family:var(--serif);font-size:.9rem;letter-spacing:.06em;border-bottom:1.5px solid var(--sumi)}
+.tbl thead th:last-child{color:var(--shu)}
+.tbl td:first-child{font-weight:700;width:26%}
+.tbl td:nth-child(2){color:var(--sumi-soft)}
+.tbl td:last-child{color:var(--sumi);font-weight:500;background:rgba(166,58,46,.045)}
+.tbl-wrap{overflow-x:auto}
+@media(max-width:640px){.tbl{min-width:560px}}
+
+/* ── 分潤級距 ── */
+.ladder{margin-top:56px;border-top:1.5px solid var(--sumi);padding-top:40px}
+.ladder-h{font-size:1.5rem;margin-bottom:10px}
+@media(min-width:900px){.ladder-h{font-size:1.9rem}}
+.rungs{list-style:none;margin:32px 0 22px}
+.rungs li{
+  display:flex;align-items:flex-start;gap:22px;
+  padding:22px 0 22px 4px;border-bottom:1px solid rgba(33,30,27,.13);
+  position:relative;
+}
+.rungs li:first-child{border-top:1px solid rgba(33,30,27,.13)}
+.rungs .pct{
+  flex:none;width:104px;font-size:2.1rem;line-height:1;
+  color:var(--kincha);letter-spacing:-.02em;
+}
+.rungs .pct i{font-style:normal;font-size:.95rem;margin-left:2px}
+.rungs li.top{background:rgba(166,58,46,.045);padding-left:16px;margin-left:-12px}
+.rungs li.top .pct{color:var(--shu)}
+.rungs h4{font-size:1.05rem;margin-bottom:4px}
+.rungs p{font-size:.9rem;color:var(--sumi-soft)}
+.rungs p b{color:var(--shu);font-weight:700}
+@media(max-width:600px){
+  .rungs li{gap:16px}
+  .rungs .pct{width:72px;font-size:1.6rem}
+}
+
+/* ── 試算器 ── */
+.calc{background:var(--sumi);color:var(--washi)}
+.calc h2{color:var(--washi)}
+.calc .eyebrow{color:var(--kincha)}
+.calc .eyebrow::before{border-color:var(--kincha);
+  background:linear-gradient(var(--kincha),var(--kincha)) center/11px 1.5px no-repeat,
+             linear-gradient(var(--kincha),var(--kincha)) center/1.5px 11px no-repeat;}
+.calc .lede{color:rgba(246,243,236,.68)}
+.calc-grid{display:grid;gap:30px;margin-top:44px}
+@media(min-width:900px){.calc-grid{grid-template-columns:1fr 1fr;gap:56px;align-items:start}}
+
+.field{margin-bottom:28px}
+.field label,.field .flabel{display:flex;justify-content:space-between;align-items:baseline;
+  font-size:.9rem;color:rgba(246,243,236,.78);margin-bottom:11px;font-weight:500}
+.field label b,.field .flabel b{font-family:var(--mono);font-size:1.15rem;color:var(--kincha)}
+input[type=range]{
+  -webkit-appearance:none;appearance:none;width:100%;height:3px;
+  background:rgba(246,243,236,.22);border-radius:2px;outline:none;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:24px;height:24px;border-radius:50%;
+  background:var(--kincha);cursor:pointer;border:3px solid var(--sumi);
+  box-shadow:0 0 0 1.5px var(--kincha);
+}
+input[type=range]::-moz-range-thumb{
+  width:24px;height:24px;border-radius:50%;background:var(--kincha);
+  cursor:pointer;border:3px solid var(--sumi);box-shadow:0 0 0 1.5px var(--kincha);
+}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{
+  padding:9px 15px;border:1px solid rgba(246,243,236,.26);border-radius:2px;
+  background:transparent;color:rgba(246,243,236,.8);
+  font-family:var(--sans);font-size:.85rem;cursor:pointer;transition:.16s;
+}
+.chip[aria-pressed=true]{background:var(--kincha);border-color:var(--kincha);color:var(--sumi);font-weight:700}
+.field-note{font-size:.76rem;color:rgba(246,243,236,.5);margin-top:9px;line-height:1.65}
+
+.result{border:1px solid rgba(246,243,236,.2);padding:30px 26px;background:rgba(246,243,236,.045)}
+.result .cap{font-size:.8rem;letter-spacing:.2em;color:var(--kincha);margin-bottom:10px}
+.big{font-family:var(--mono);font-weight:700;font-size:3.1rem;line-height:1;color:var(--washi);letter-spacing:-.02em}
+@media(min-width:900px){.big{font-size:3.9rem}}
+.big s{font-size:1.4rem;font-weight:500;text-decoration:none;opacity:.55;margin-right:6px}
+.sub{font-size:.88rem;color:rgba(246,243,236,.62);margin-top:12px}
+.sub b{font-family:var(--mono);color:var(--kincha)}
+.rows{margin-top:24px;border-top:1px solid rgba(246,243,236,.14)}
+.rows div{display:flex;justify-content:space-between;gap:14px;padding:13px 0;
+  border-bottom:1px solid rgba(246,243,236,.09);font-size:.9rem;color:rgba(246,243,236,.75)}
+.rows div b{font-family:var(--mono);color:var(--washi);white-space:nowrap}
+.rows div.hl b{color:var(--kincha)}
+.disclaim{font-size:.76rem;color:rgba(246,243,236,.45);margin-top:18px;line-height:1.7}
+
+/* ── 誠實聲明區塊 ── */
+.honest{
+  margin-top:44px;border:1px dashed rgba(33,30,27,.35);
+  padding:28px 26px;background:rgba(255,255,255,.5);
+}
+.honest h3{font-size:1.12rem;margin-bottom:10px}
+.honest p{font-size:.92rem;color:var(--sumi-soft)}
+.honest p+p{margin-top:12px}
+
 /* ── 找什麼人 ── */
 .tiers{display:grid;gap:22px;margin-top:40px}
 @media(min-width:860px){.tiers{grid-template-columns:repeat(3,1fr)}}
@@ -297,13 +334,13 @@ input[type=range]::-moz-range-thumb{
 .tier li::before{content:"—";position:absolute;left:0;color:var(--kincha)}
 
 /* ── FAQ ── */
-details{border-bottom:1px solid rgba(33,30,27,.13)}
-summary{padding:20px 34px 20px 0;cursor:pointer;list-style:none;position:relative;
+.faq details{border-bottom:1px solid rgba(33,30,27,.13)}
+.faq summary{padding:20px 34px 20px 0;cursor:pointer;list-style:none;position:relative;
   font-family:var(--serif);font-size:1.02rem;font-weight:600}
-summary::-webkit-details-marker{display:none}
-summary::after{content:"＋";position:absolute;right:2px;top:19px;color:var(--shu);font-size:1.15rem}
-details[open] summary::after{content:"−"}
-details p{padding:0 0 22px;color:var(--sumi-soft);font-size:.93rem;max-width:52em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"＋";position:absolute;right:2px;top:19px;color:var(--shu);font-size:1.15rem}
+.faq details[open] summary::after{content:"−"}
+.faq details p{padding:0 0 22px;color:var(--sumi-soft);font-size:.93rem;max-width:52em}
 
 /* ── 應徵 ── */
 .apply{background:var(--koke);color:#fff}
@@ -334,10 +371,32 @@ details p{padding:0 0 22px;color:var(--sumi-soft);font-size:.93rem;max-width:52e
   font-family:var(--sans);font-size:.95rem;background:#fff;color:var(--sumi);
 }
 .panel textarea{min-height:88px;resize:vertical}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* 個資同意 */
+.agree{display:flex!important;gap:10px;align-items:flex-start;
+  font-size:.82rem;line-height:1.7;color:var(--sumi-soft);margin:4px 0 18px;font-weight:400!important}
+.agree input[type=checkbox]{width:18px;height:18px;flex:none;margin:4px 0 0;accent-color:var(--shu)}
+.agree a{color:var(--shu);text-decoration:underline;cursor:pointer}
+
+/* 個資告知事項 */
+.privacy{margin-top:22px;border:1px solid rgba(33,30,27,.18);background:rgba(255,255,255,.6)}
+.privacy summary{padding:14px 16px;cursor:pointer;list-style:none;position:relative;
+  font-family:var(--serif);font-size:.92rem;font-weight:600}
+.privacy summary::-webkit-details-marker{display:none}
+.privacy summary::after{content:"＋";position:absolute;right:16px;top:13px;color:var(--shu)}
+.privacy[open] summary::after{content:"−"}
+.privacy .body{padding:0 16px 18px;font-size:.8rem;line-height:1.85;color:var(--sumi-soft)}
+.privacy .body h4{font-size:.84rem;margin:14px 0 4px;color:var(--sumi)}
+.privacy .body ol{margin:0 0 0 1.2em}
+.privacy .body li{margin-bottom:4px}
+
 .qr{width:132px;height:132px;background:#fff;padding:8px;border:1px solid rgba(33,30,27,.18);flex:none}
 .contact-row{display:flex;flex-wrap:wrap;gap:22px;align-items:center;margin-top:22px}
 .lineid{font-family:var(--mono);font-size:1.5rem;font-weight:700;letter-spacing:.02em}
 .ok{display:none;padding:20px;border:1.5px solid var(--koke);background:rgba(110,125,94,.08);font-size:.92rem}
+.err{display:none;padding:14px 16px;border:1.5px solid var(--shu);background:rgba(166,58,46,.07);
+  font-size:.86rem;color:var(--shu);margin-bottom:16px}
 
 /* ── Footer ── */
 footer{background:var(--sumi);color:rgba(246,243,236,.62);padding:56px 0 28px;font-size:.87rem}
@@ -360,6 +419,63 @@ footer h4{font-family:var(--serif);color:var(--washi);font-size:1.1rem;margin-bo
 .dock .b{background:var(--line);color:#fff}
 
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+/* ── v4：scroll reveal ── */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .75s cubic-bezier(.22,1,.36,1),transform .75s cubic-bezier(.22,1,.36,1)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important}}
+
+/* ── v4：青海波分隔紋 ── */
+.seigaiha{height:26px;background-repeat:repeat-x;background-position:center;background-size:44px 26px;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 26'%3E%3Cg fill='none' stroke='%23B08D5B' stroke-width='1'%3E%3Cpath d='M-22 26a22 22 0 0 1 44 0M22 26a22 22 0 0 1 44 0'/%3E%3Cpath d='M-22 26a15 15 0 0 1 44 0M22 26a15 15 0 0 1 44 0'/%3E%3Cpath d='M-22 26a8 8 0 0 1 44 0M22 26a8 8 0 0 1 44 0'/%3E%3C/g%3E%3C/svg%3E")}
+
+/* ── v4：合作契約區塊 ── */
+.contract{background:var(--sumi);color:var(--washi);position:relative;overflow:hidden}
+.contract h2{color:var(--washi)}
+.contract .eyebrow{color:var(--kincha)}
+.contract .eyebrow::before{border-color:var(--kincha);
+  background:linear-gradient(var(--kincha),var(--kincha)) center/11px 1.5px no-repeat,
+             linear-gradient(var(--kincha),var(--kincha)) center/1.5px 11px no-repeat}
+.contract .lede{color:rgba(246,243,236,.7)}
+.ct-grid{display:grid;gap:34px;margin-top:44px;align-items:start}
+@media(min-width:900px){.ct-grid{grid-template-columns:1fr 1fr;gap:56px}}
+.ct-list{list-style:none}
+.ct-list li{position:relative;padding-left:30px;margin-bottom:16px;font-size:.95rem;color:rgba(246,243,236,.78)}
+.ct-list li::before{content:"";position:absolute;left:0;top:.62em;width:14px;height:1.5px;background:var(--kincha)}
+.ct-list li b{color:var(--washi);font-weight:700}
+.ct-doc{border:1px solid rgba(176,141,91,.5);background:rgba(246,243,236,.05);padding:30px 28px;position:relative}
+.ct-doc::before{content:"契約書";position:absolute;top:-11px;left:24px;background:var(--sumi);
+  color:var(--kincha);font-family:var(--serif);font-size:.76rem;letter-spacing:.24em;padding:0 10px}
+.ct-doc h3{font-size:1.15rem;color:var(--washi);margin-bottom:14px}
+.ct-doc ol{list-style:none;counter-reset:d;font-size:.86rem;color:rgba(246,243,236,.62);margin-bottom:24px}
+.ct-doc ol li{counter-increment:d;padding:9px 0;border-bottom:1px solid rgba(246,243,236,.1);display:flex;gap:12px}
+.ct-doc ol li::before{content:"第" counter(d,cjk-ideographic) "條";font-family:var(--serif);
+  color:var(--kincha);flex:none;font-size:.8rem;letter-spacing:.06em}
+.ct-doc .more{font-size:.8rem;color:rgba(246,243,236,.45);margin:-14px 0 22px;text-align:right}
+.btn-gold{background:var(--kincha);border-color:var(--kincha);color:var(--sumi)}
+.btn-gold:hover{background:var(--washi);border-color:var(--washi);color:var(--sumi)}
+
+/* ── v4：品牌形象區塊 ── */
+.brandsec{background:var(--washi-2)}
+.br-grid{display:grid;gap:32px;margin-top:40px;align-items:center}
+@media(min-width:900px){.br-grid{grid-template-columns:1.05fr .95fr;gap:50px}}
+.br-art{position:relative}
+.br-art img{width:100%;aspect-ratio:16/9;object-fit:cover;border:1px solid rgba(33,30,27,.14);
+  box-shadow:0 18px 44px rgba(33,30,27,.16)}
+.br-art figcaption{font-size:.78rem;color:var(--sumi-soft);margin-top:10px;letter-spacing:.04em}
+.br-points{list-style:none;margin-top:22px}
+.br-points li{position:relative;padding-left:26px;margin-bottom:14px;font-size:.95rem;color:var(--sumi-soft)}
+.br-points li::before{content:"";position:absolute;left:0;top:.6em;width:12px;height:1.5px;background:var(--shu)}
+.br-points li b{color:var(--sumi)}
+
+/* ── v4：深色形象帶 ── */
+.band{position:relative;background:var(--sumi);overflow:hidden}
+.band img{width:100%;max-height:340px;object-fit:cover;object-position:center;opacity:.92}
+@media(max-width:640px){.band img{max-height:210px}}
+
+/* ── v4：海報區塊 ── */
+.poster-grid{display:grid;gap:30px;margin-top:40px;align-items:start}
+@media(min-width:820px){.poster-grid{grid-template-columns:.8fr 1.2fr;gap:44px}}
+.poster-grid img{border:1px solid rgba(33,30,27,.16);box-shadow:0 16px 40px rgba(33,30,27,.16)}
 </style>
 </head>
 <body>
@@ -368,9 +484,10 @@ footer h4{font-family:var(--serif);color:var(--washi);font-size:1.1rem;margin-bo
   <div class="wrap">
     <a class="brand" href="https://www.movetimespa.com/">幕府時代<small>MOVE TIME</small></a>
     <div class="nav-links">
-      <a href="#calc">收入試算</a>
-      <a href="#terms">合作條件</a>
       <a href="#safety">安全保障</a>
+      <a href="#terms">合作條件</a>
+      <a href="#contract">合作契約</a>
+      <a href="#calc">收入試算</a>
       <a href="#faq">常見問題</a>
       <a href="#apply">立即應徵</a>
     </div>
@@ -382,7 +499,7 @@ footer h4{font-family:var(--serif);color:var(--washi);font-size:1.1rem;margin-bo
   <div class="wrap">
     <div class="hero-grid">
       <figure class="hero-art">
-        <img src="therapist-recruitment-banner.png" alt="幕府時代 Move Time 台南到府按摩師招募，彈性合作、時間自主、品牌協助接單">
+        <img src="assets/hero-join-light.jpg" alt="幕府時代 Move Time 台南到府按摩師招募主視覺：按摩師為客人服務，強調彈性合作、安心接案、公司派單" width="1600" height="900" fetchpriority="high">
         <figcaption class="hero-badge">台南到府按摩師招募中</figcaption>
       </figure>
 
@@ -390,162 +507,39 @@ footer h4{font-family:var(--serif);color:var(--washi);font-size:1.1rem;margin-bo
         <div>
           <div class="eyebrow">按摩師招募・台南</div>
           <h1>你的專業，<em>值得更好的舞台。</em></h1>
+          <p class="hero-hook">我們不只幫你找客人，<br>也幫你過濾客人。</p>
           <p class="hero-p">
-            幕府時代負責品牌曝光、客服接單與客戶初步過濾；你專注在專業服務與良好溝通。
-            可依個人狀況開放接單時段，合作條件於面談與書面契約中清楚確認。
+            品牌曝光、客服接單、客戶事前查核，由幕府時代負責；你專注在專業服務與良好溝通。
+            可接單時段自己開放，合作條件在面談與書面契約中逐條確認，不用等到報到那天才知道。
           </p>
         </div>
         <div class="hero-actions">
           <div class="hero-cta">
             <a class="btn btn-line" href="https://lin.ee/tXNyqDX" data-line>加 LINE 了解招募</a>
-            <a class="btn btn-ghost" href="#calc">先算看看收入</a>
-            <a class="btn btn-ghost" href="#terms">查看合作內容</a>
+            <a class="btn btn-ghost" href="#safety">先看安全機制</a>
+            <a class="btn btn-ghost" href="agreement.html">直接看合作契約</a>
           </div>
         </div>
       </div>
     </div>
 
     <div class="facts">
-      <div><strong class="num">透明</strong><span>合作條件・書面確認</span></div>
-      <div><strong class="num">0 元</strong><span>保證金・教材費</span></div>
-      <div><strong class="num">自訂</strong><span>可接單時段</span></div>
+      <div><strong class="num">公開</strong><span>合作契約全文上網</span></div>
+      <div><strong class="num">60%</strong><span>分潤起跳・可依級距調升</span></div>
+      <div><strong class="num">自訂</strong><span>可接單時段・無最低單數</span></div>
       <div><strong class="num">台南</strong><span>市區到府服務為主</span></div>
     </div>
   </div>
 </header>
 
-<!-- ══ 試算器（已啟用）══ -->
-<section class="sec calc" id="calc">
-  <div class="wrap">
-    <div class="eyebrow">收入試算</div>
-    <h2>把數字攤開來看</h2>
-    <p class="lede">拉一下就知道。這裡沒有「業界最高」四個字，只有你自己按出來的結果。</p>
-
-    <div class="calc-grid">
-      <div>
-        <div class="field">
-          <label for="days">一週可接單天數 <b><span id="v-days">4</span> 天</b></label>
-          <input type="range" id="days" min="1" max="7" value="4" step="1">
-        </div>
-
-        <div class="field">
-          <label for="perday">平均每天接單數 <b><span id="v-perday">2</span> 單</b></label>
-          <input type="range" id="perday" min="1" max="4" value="2" step="1">
-        </div>
-
-        <div class="field">
-          <label>主力服務項目</label>
-          <div class="chips" id="svc" role="group" aria-label="主力服務項目">
-            <button type="button" class="chip" data-p="1800" aria-pressed="false">肩頸／腳底 60 分・1,800</button>
-            <button type="button" class="chip" data-p="2800" aria-pressed="true">全身 90 分・2,800</button>
-            <button type="button" class="chip" data-p="3200" aria-pressed="false">精油 90 分・3,200</button>
-            <button type="button" class="chip" data-p="1600" aria-pressed="false">樂齡 60 分・1,600</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="result">
-        <div class="cap">試算月收（分潤後）</div>
-        <div class="big"><s>NT$</s><span id="r-take">100,800</span></div>
-
-        <div class="rows">
-          <div><span>每月預估接單數</span><b><span id="r-jobs">36</span> 單</b></div>
-          <div><span>服務營收合計</span><b>NT$ <span id="r-gross">100,800</span></b></div>
-          <div class="hl"><span>你的分潤（<span id="r-pct">70</span>%）</span><b>NT$ <span id="r-take2">70,560</span></b></div>
-          <div><span>公司抽成</span><b>NT$ <span id="r-cut">30,240</span></b></div>
-          <div><span>同樣單數在傳統店（抽 55%）</span><b>NT$ <span id="r-shop">45,360</span></b></div>
-          <div class="hl"><span>差額</span><b>+ NT$ <span id="r-diff">25,200</span></b></div>
-        </div>
-
-        <p class="disclaim">
-          ※ 本試算僅為依您輸入條件之數學運算結果，<strong>非收入保證</strong>。
-          實際收入取決於當期接單量、客人預約狀況與服務完成情形，並未扣除交通、耗材等個人成本。
-          對照組之「傳統店抽成 55%」為市場常見區間之舉例，非特定業者實際數據。
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ 合作條件對照 ══ -->
-<section class="sec" id="terms">
-  <div class="wrap">
-    <div class="eyebrow">合作條件</div>
-    <h2>我們把「面談才會講的事」寫在這裡</h2>
-    <p class="lede">很多師傅不敢換，是因為不知道換過去會遇到什麼。以下逐條對照。</p>
-
-    <div class="tbl-wrap">
-      <table class="tbl">
-        <thead>
-          <tr><th>項目</th><th>傳統店家常見做法</th><th>幕府時代</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>分潤比例</td><td>面談才講，常見師傅 40–50%</td><td>師傅 60% 起，寫在網頁上，合作前白紙黑字</td></tr>
-          <tr><td>分潤會不會漲</td><td>做三年跟做三個月一樣，除非自己去吵</td><td>訂有明確調升條件（年資／累積單數／評價／證照），達標即調</td></tr>
-          <tr><td>保證金／教材費</td><td>入職押金、教材費、制服費</td><td>一律不收。任何要你先付錢的合作都該警覺</td></tr>
-          <tr><td>底薪與工時</td><td>綁班表、沒客人也要待在店裡空等</td><td>自己開放可接單時段，沒開放就不派單</td></tr>
-          <tr><td>找客人</td><td>要師傅自己拉客、自己發文</td><td>公司負責官網、Google、社群與飯店通路開發</td></tr>
-          <tr><td>客人過濾</td><td>來者不拒，師傅自己承擔</td><td>客服統一接單，留存客戶資料、建立黑名單</td></tr>
-          <tr><td>你的手機號碼</td><td>直接給客人，下班還被騷擾</td><td>公司統一對外窗口，不外流師傅私人聯絡方式</td></tr>
-          <tr><td>遇到怪客人</td><td>「忍一下啦」</td><td>師傅有權當場終止服務離開，公司無條件支持</td></tr>
-          <tr><td>結算方式</td><td>月結、拖款</td><td>固定週期結算，明細可對帳</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="disclaim" style="color:var(--sumi-soft);margin-top:20px">
-      ※ 左欄為業界常見情形之通例描述，非指涉任何特定業者。實際合作條件以雙方書面合作契約為準。
-    </p>
-
-    <!-- ═══ 分潤級距 ═══
-         ★ 三段的百分比與達標條件請務必改成你真正要執行的規則。
-           一旦寫上去，師傅達標你就必須調，否則構成就服法第5條第2項第1款不實廣告。
-           若你還沒訂好規則，寧可先把整個 .ladder 區塊 hidden，也不要放假的級距。 -->
-    <div class="ladder" hidden>
-      <div class="eyebrow" style="margin-top:0">分潤級距</div>
-      <h3 class="ladder-h">做久、做好，比例就往上</h3>
-      <p class="lede" style="font-size:.95rem">
-        我們不做「談進來時多少、三年後還是多少」這種事。調升條件公開，達標就調，不用自己開口爭取。
-      </p>
-
-      <ol class="rungs">
-        <li>
-          <span class="pct num">60<i>%</i></span>
-          <div>
-            <h4>入門</h4>
-            <p>通過手技評估、完成服務流程訓練後即適用。</p>
-          </div>
-        </li>
-        <li>
-          <span class="pct num">65<i>%</i></span>
-          <div>
-            <h4>進階</h4>
-            <p>累積服務達 <b>【○○】</b> 單，且客戶評價維持 <b>【○.○】</b> 分以上。</p>
-          </div>
-        </li>
-        <li class="top">
-          <span class="pct num">70<i>%</i></span>
-          <div>
-            <h4>資深</h4>
-            <p>合作滿 <b>【○】</b> 年，或持有 <b>【指定證照】</b>，並具備飯店／企業特約出勤資格。</p>
-          </div>
-        </li>
-      </ol>
-
-      <p class="disclaim" style="color:var(--sumi-soft)">
-        ※ 級距條件與調整時點以雙方書面合作契約所載為準。已達標者由公司主動通知調整，無需另行申請。
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ══ 安全 ══ -->
+<!-- ══ 安全（提前到第一區）══ -->
 <section class="sec safe" id="safety">
   <div class="wrap">
     <div class="eyebrow">安全保障</div>
     <h2>到府服務，安全是第一個要解決的問題</h2>
     <p class="lede">
-      我們知道到府按摩最讓人不安的是什麼——尤其是女性師傅，走進一個不認識的人的家裡。
-      所以這件事我們排在分潤前面處理。
+      我們知道到府按摩最讓人不安的是什麼——尤其是女性師傅，一個人走進不認識的人家裡。
+      所以這件事我們排在分潤前面講。抽幾成可以談，這一段不能將就。
     </p>
 
     <div class="seal">
@@ -560,21 +554,249 @@ footer h4{font-family:var(--serif);color:var(--washi);font-size:1.1rem;margin-bo
 
     <div class="cards">
       <article data-n="01">
-        <h3>接單前先過濾</h3>
-        <p>所有預約由客服統一接單，留存客戶姓名、電話與地址，並建立評價與黑名單機制。異常客戶直接不派單。</p>
+        <h3>接單前先查核客人</h3>
+        <p>所有預約由客服統一接單，留存客戶姓名、電話與地址，並建立評價與黑名單機制。紀錄異常或言詞不當者，直接不派單，不會為了成交把單塞給師傅。</p>
       </article>
       <article data-n="02">
-        <h3>出勤回報機制</h3>
-        <p>到府、開始、結束三個時點回報。現場若遇言語輕浮、行為異常或空間不安全，師傅有權立即終止並離開，全額服務費照算。</p>
+        <h3>三時點出勤回報</h3>
+        <p>到府、開始、結束三個時點回報客服。現場若遇言語輕浮、行為異常或空間不安全，師傅有權立即終止並離開，該筆服務報酬照付（不因客人拒付而扣除，詳見合作契約）。</p>
       </article>
       <article data-n="03">
-        <h3>師傅隱私不外流</h3>
-        <p>客人一律透過公司窗口聯繫，不提供師傅個人 LINE 與手機。下班就是下班。</p>
+        <h3>你的手機不會外流</h3>
+        <p>客人一律透過公司窗口聯繫，不提供師傅個人 LINE 與手機號碼。收工之後，沒有人能直接找到你。</p>
       </article>
       <article data-n="04">
-        <h3>優先開發低風險通路</h3>
-        <p>持續開發星級飯店客房、企業福委與安養機構特約。這類場域有物業管理、動線公開，安全性明顯高於一般住宅。</p>
+        <h3>公司有投保，不是口頭保證</h3>
+        <p>合作契約第十二條約定公司投保營業責任險與傷害險／雇主意外責任險，承保你執行服務期間（含合理往返途中）的意外。險種與保額寫在契約附件三，簽約時可以要保單核對；沒投保你可以立刻解約。</p>
       </article>
+      <article data-n="05">
+        <h3>優先開發低風險通路</h3>
+        <p>持續開發星級飯店客房、企業福委與安養機構特約。這類場域有物業管理、出入有紀錄、動線公開，安全性明顯高於一般住宅。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 合作條件對照 ══ -->
+<section class="sec" id="terms">
+  <div class="wrap">
+    <div class="eyebrow">合作條件</div>
+    <h2>我們把「面談才會講的事」寫在這裡</h2>
+    <p class="lede">很多師傅不敢換，是因為不知道換過去會遇到什麼。以下逐條對照。</p>
+
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead>
+          <tr><th>項目</th><th>部分傳統店家常見情形</th><th>幕府時代</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>分潤比例</td><td>面談才講，師傅一般落在四成到五成</td><td>師傅 60% 起，寫在網頁上，合作前白紙黑字</td></tr>
+          <tr><td>分潤會不會漲</td><td>做三年和做三個月一樣，除非自己開口爭取</td><td>訂有明確調升條件（年資／累積單數／評價／證照），達標由公司主動調整</td></tr>
+          <tr><td>保證金／教材費</td><td>入職押金、教材費、制服費</td><td>一律不收。任何要你先付錢的合作，都值得先問清楚</td></tr>
+          <tr><td>底薪與工時</td><td>綁班表，沒客人也要待在店裡空等</td><td>自己開放可接單時段，沒開放就不派單，也沒有最低單數</td></tr>
+          <tr><td>找客人</td><td>要師傅自己拉客、自己發文經營</td><td>公司負責官網、Google、社群與飯店通路開發</td></tr>
+          <tr><td>客人過濾</td><td>來者不拒，風險由師傅自己承擔</td><td>客服統一接單，留存客戶資料、建立黑名單</td></tr>
+          <tr><td>你的手機號碼</td><td>直接給客人，下班還被訊息騷擾</td><td>公司統一對外窗口，不外流師傅私人聯絡方式</td></tr>
+          <tr><td>遇到怪客人</td><td>「忍一下就過去了」</td><td>師傅有權當場終止服務離開，公司無條件支持並協助後續</td></tr>
+          <tr><td>結算方式</td><td>月結、拖款、對不到帳</td><td>固定週期結算，逐筆明細可對帳</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lede" style="font-size:.8rem;margin-top:20px">
+      ※ 左欄為業界部分店家之常見情形通例描述，並非指涉任何特定業者，亦不代表所有同業皆如此；
+      實務上亦有制度完善的店家。右欄為幕府時代之合作方針，實際條件以雙方書面合作契約所載為準。
+    </p>
+
+    <!-- ═══ 分潤級距 ═══
+         ★ 這三段一旦公開，師傅達標你就必須調升，否則構成就服法第5條第2項第1款不實廣告。
+           「公司公告標準」必須真的有一份書面文件，且面談時要交付。 -->
+    <div class="ladder">
+      <div class="eyebrow" style="margin-top:0">分潤級距</div>
+      <h3 class="ladder-h">做久、做好，比例就往上</h3>
+      <p class="lede" style="font-size:.95rem">
+        我們不做「談進來時多少、三年後還是多少」這種事。
+        級距的判定標準以書面公告，達標由公司主動通知調整，不需要你自己開口爭取。
+      </p>
+
+      <ol class="rungs">
+        <li>
+          <span class="pct num">60<i>%</i></span>
+          <div>
+            <h4>入門</h4>
+            <p>通過手技評估、完成服務流程訓練後即適用。<b>所有新加入師傅一律自此級距起算。</b></p>
+          </div>
+        </li>
+        <li>
+          <span class="pct num">65<i>%</i></span>
+          <div>
+            <h4>進階</h4>
+            <p>累積服務單數與客戶平均評價達公司公告之標準，且無重大服務申訴紀錄。</p>
+          </div>
+        </li>
+        <li class="top">
+          <span class="pct num">70<i>%</i></span>
+          <div>
+            <h4>資深</h4>
+            <p>合作年資與服務品質達公司公告之標準，或持有公告認可之相關證照，並取得飯店／企業特約出勤資格。</p>
+          </div>
+        </li>
+      </ol>
+
+      <p class="lede" style="font-size:.82rem">
+        ※ 各級距之具體門檻數值（單數、評價分數、年資、認可證照清單）載於合作契約附件，
+        於初談時提供書面說明，不會等到你簽完約才告訴你。級距條件如有調整，將於生效日前公告，
+        且不溯及已達標之師傅。
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="seigaiha" aria-hidden="true"></div>
+
+<!-- ══ v4 新增：合作契約公開 ══ -->
+<section class="sec contract" id="contract">
+  <div class="wrap">
+    <div class="eyebrow reveal">合作契約</div>
+    <h2 class="reveal">整份契約，我們放在網路上</h2>
+    <p class="lede reveal">
+      不是摘要，不是重點整理，是你未來要簽的那一份全文。
+      你可以在家慢慢看、拿去問朋友、問律師，也可以直接指出哪一條你覺得不合理——我們願意談。
+    </p>
+
+    <div class="ct-grid">
+      <div class="reveal">
+        <ul class="ct-list">
+          <li><b>沒有第二份契約。</b>面談當天拿到的紙本，內容和網頁一致。如有差異，以對按摩師較有利者為準。</li>
+          <li><b>三日審閱期。</b>簽約當天可以帶回去看，不必當場簽。覺得哪一條不合理，第十八條寫明我們要回應你。</li>
+          <li><b>隨時可終止，不收違約金。</b>七日前通知即可，不需要理由。</li>
+          <li><b>沒有扣點、沒有罰款。</b>第十七條明文禁止公司以罰款作為管理手段。</li>
+          <li><b>公司投保責任險與傷害險。</b>第十二條與附件三載明險種與保額，沒投保你可以立刻解約。</li>
+          <li><b>安全條款優先。</b>第十條明定：與其他條文衝突時，一律以安全條款為準。</li>
+          <li><b>不是競業禁止。</b>第十四條只禁止繞過公司私接公司客戶，三個月，不限制你去別家工作。</li>
+          <li><b>群組公告不能當規定。</b>第九條第六項：公司不得用 LINE 群組公告增加你的義務。</li>
+        </ul>
+      </div>
+
+      <div class="ct-doc reveal">
+        <h3>契約目次</h3>
+        <ol>
+          <li>定義</li>
+          <li>契約性質與雙方關係</li>
+          <li>合作服務內容</li>
+          <li>服務方法之自主</li>
+          <li>時段自主與派單</li>
+          <li>服務報酬與分潤級距</li>
+          <li>結算、對帳與給付</li>
+          <li>費用負擔與禁止收費</li>
+        </ol>
+        <p class="more">……以下至第二十條，另含附件一至附件三</p>
+        <a class="btn btn-gold" style="width:100%" href="agreement.html">閱讀契約全文</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 試算器 ══ -->
+<section class="sec calc" id="calc">
+  <div class="wrap">
+    <div class="eyebrow">收入試算</div>
+    <h2>把數字攤開來看</h2>
+    <p class="lede">拉一下就知道。這裡沒有「業界最高」四個字，只有你自己按出來的結果——而且我們把成本也一起扣給你看。</p>
+
+    <div class="calc-grid">
+      <div>
+        <div class="field">
+          <label for="days">一週可接單天數 <b><span id="v-days">4</span> 天</b></label>
+          <input type="range" id="days" min="1" max="7" value="4" step="1">
+        </div>
+
+        <div class="field">
+          <label for="perday">平均每天接單數 <b><span id="v-perday">2</span> 單</b></label>
+          <input type="range" id="perday" min="1" max="4" value="2" step="1">
+        </div>
+
+        <div class="field">
+          <div class="flabel">主力服務項目</div>
+          <div class="chips" id="svc" role="group" aria-label="主力服務項目">
+            <button type="button" class="chip" data-p="1800" aria-pressed="false">肩頸／腳底 60 分・1,800</button>
+            <button type="button" class="chip" data-p="2800" aria-pressed="true">全身 90 分・2,800</button>
+            <button type="button" class="chip" data-p="3200" aria-pressed="false">精油 90 分・3,200</button>
+            <button type="button" class="chip" data-p="1600" aria-pressed="false">樂齡 60 分・1,600</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="flabel">你目前的分潤級距</div>
+          <div class="chips" id="tier" role="group" aria-label="分潤級距">
+            <button type="button" class="chip" data-s="0.60" aria-pressed="true">入門 60%</button>
+            <button type="button" class="chip" data-s="0.65" aria-pressed="false">進階 65%</button>
+            <button type="button" class="chip" data-s="0.70" aria-pressed="false">資深 70%</button>
+          </div>
+          <p class="field-note">新加入的師傅請用「入門 60%」試算。這是你實際會拿到的起始比例，不要用 70% 騙自己。</p>
+        </div>
+
+        <div class="field">
+          <label for="cost">每單交通＋耗材粗估 <b>NT$ <span id="v-cost">150</span></b></label>
+          <input type="range" id="cost" min="0" max="400" value="150" step="10">
+          <p class="field-note">機車油錢、精油、免洗床單、酒精等自備耗材。實際依你的出勤距離與用料而定。</p>
+        </div>
+      </div>
+
+      <div class="result">
+        <div class="cap">試算月分潤（稅前・未扣成本）</div>
+        <div class="big"><s>NT$</s><span id="r-take">57,120</span></div>
+        <p class="sub">扣掉交通與耗材後，實際入袋約 <b>NT$ <span id="r-net">52,020</span></b></p>
+
+        <div class="rows">
+          <div><span>每月預估接單數</span><b><span id="r-jobs">34</span> 單</b></div>
+          <div><span>服務營收合計</span><b>NT$ <span id="r-gross">95,200</span></b></div>
+          <div class="hl"><span>你的分潤（<span id="r-pct">60</span>%）</span><b>NT$ <span id="r-take2">57,120</span></b></div>
+          <div><span>公司分潤</span><b>NT$ <span id="r-cut">38,080</span></b></div>
+          <div><span>交通與耗材（自行負擔）</span><b>− NT$ <span id="r-cost">5,100</span></b></div>
+          <div><span>同樣單數在部分傳統店（師傅 45%）</span><b>NT$ <span id="r-shop">42,840</span></b></div>
+          <div class="hl"><span>分潤差額</span><b>+ NT$ <span id="r-diff">14,280</span></b></div>
+        </div>
+
+        <p class="disclaim">
+          ※ 本試算僅為依您輸入條件之數學運算結果，<strong>非收入保證，亦非底薪或最低報酬承諾</strong>。
+          實際收入取決於當期接單量、客人預約狀況與服務完成情形。
+          金額為稅前，尚未計入應負擔之稅費與保險費用。
+          對照組「部分傳統店師傅 45%」為市場常見區間之舉例，非特定業者之實際數據。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ v4 新增：你要代表的品牌 ══ -->
+<section class="sec brandsec" id="brand">
+  <div class="wrap">
+    <div class="eyebrow reveal">品牌形象</div>
+    <h2 class="reveal">客人看到的我們，長這樣</h2>
+    <p class="lede reveal">
+      「公司負責找客人」聽起來很虛，所以我們把實際在跑的東西給你看。
+      客人不是憑空出現的，是這些素材、這個官網、這些通路帶進來的。
+    </p>
+
+    <div class="br-grid">
+      <figure class="br-art reveal">
+        <img src="assets/brand-service.jpg" alt="幕府時代 Move Time 台南到府按摩服務主視覺，強調把放鬆帶回家、專業舒緩與安心預約" width="1200" height="675" loading="lazy">
+        <figcaption>幕府時代 Move Time 對外服務主視覺（客戶端）</figcaption>
+      </figure>
+
+      <div class="reveal">
+        <ul class="br-points">
+          <li><b>官網與 SEO。</b>「台南到府按摩」相關關鍵字持續經營中，客人是自己搜尋找上門的，不是靠拉客。</li>
+          <li><b>Google 商家與地圖。</b>評價與資訊由公司維護，你不需要經營自己的粉專。</li>
+          <li><b>社群與廣告投放。</b>素材、文案、預算由公司負責，成本不轉嫁給師傅。</li>
+          <li><b>飯店與企業通路。</b>持續開發星級飯店客房、企業福委與安養機構特約，這類單價較高、場域也相對安全。</li>
+          <li><b>統一客服窗口。</b>預約、改期、客訴都由客服處理，不會半夜有陌生號碼打給你。</li>
+        </ul>
+        <p class="lede" style="font-size:.9rem;margin-top:20px">
+          你要做的只有一件事：把手上這一單做好，讓客人願意再約。剩下的我們處理。
+        </p>
+      </div>
     </div>
   </div>
 </section>
@@ -625,28 +847,27 @@ footer h4{font-family:var(--serif);color:var(--washi);font-size:1.1rem;margin-bo
       共同底線只有兩件事：<strong>品格端正，不從事也不默許任何色情服務</strong>；
       以及<strong>能好好跟客人說話</strong>——服務前問清楚需求、過程中確認舒適度，這比手勁重不重要。
     </p>
-  </div>
-</section>
 
-<!-- ══ 現職師傅（佔位，勿編造）══ -->
-<!--
-  ★ #voices 區塊已預留但先隱藏。
-  請取得現職師傅（如阿凱師、綵玲）書面同意後，貼上「真實」的話再取消 hidden。
-  假推薦文有公平交易法第21條虛偽不實廣告的風險，招募情境還會疊上就服法第5條。
--->
-<section class="sec safe" id="voices" hidden>
-  <div class="wrap">
-    <div class="eyebrow">師傅怎麼說</div>
-    <h2>來自現在正在跑單的人</h2>
-    <div class="cards">
-      <article data-n="01"><h3>【師傅暱稱・年資】</h3><p>【本人同意刊登之真實內容】</p></article>
-      <article data-n="02"><h3>【師傅暱稱・年資】</h3><p>【本人同意刊登之真實內容】</p></article>
+    <!-- ═══ 取代假推薦文的誠實區塊 ═══
+         ★ 等取得 3~5 位現職師傅書面同意後，可把這一段換成真實心得。
+           在那之前，這段文字本身就是信任訊號，不要放編造的推薦文。
+           假推薦文有公平交易法第21條虛偽不實廣告風險，招募情境還會疊上就服法第5條。 -->
+    <div class="honest">
+      <h3>這裡本來要放師傅推薦文，我們先空著</h3>
+      <p>
+        招募頁放五星好評很容易，寫兩句「收入超高、氣氛超好」也不難。
+        但我們現在合作的師傅人數還不多，在取得每一位本人書面同意之前，我們不會替任何人發言。
+      </p>
+      <p>
+        如果你想聽真實的說法，面談時可以直接提出——我們安排你和現職師傅聊，
+        我們不在場。你想問抽成準不準時、客服會不會偏袒客人、遇到狀況公司到底管不管，都可以問。
+      </p>
     </div>
   </div>
 </section>
 
 <!-- ══ FAQ ══ -->
-<section class="sec" id="faq">
+<section class="sec safe faq" id="faq">
   <div class="wrap">
     <div class="eyebrow">常見問題</div>
     <h2>投遞前你可能想先問的</h2>
@@ -657,8 +878,28 @@ footer h4{font-family:var(--serif);color:var(--washi);font-size:1.1rem;margin-bo
         <p>不需要。保證金、教材費、制服費、加盟金，我們一律不收。合作期間也不會要求你購買任何商品或投資。若你在其他地方遇到要求先付錢的「按摩師招募」，請提高警覺。</p>
       </details>
       <details>
+        <summary>這是僱傭還是合作承攬？有勞健保嗎？</summary>
+        <p>合作承攬。你自行決定開放時段、沒有最低接單數、報酬依實際完成件數分潤，因此公司<strong>不代為投保勞健保、也不提繳勞退</strong>，這點我們必須先講清楚。相對地，你保有時段與接單與否的決定權，也可以同時在別的地方工作。你可以自行參加職業工會投保勞保健保，我們會提供管道資訊。完整說明在合作契約第二條，包含我們對自己的七項約束。</p>
+      </details>
+      <details>
         <summary>合作報酬與結算方式怎麼確認？</summary>
-        <p>會依服務項目、經驗與合作方式於初談時完整說明，並在正式合作前以書面契約確認報酬比例、結算週期與相關條件，不會只用口頭約定。</p>
+        <p>會依服務項目、經驗與合作方式於初談時完整說明，並在正式合作前以書面契約確認報酬比例、結算週期、扣款項目與對帳方式，不會只用口頭約定。每期結算提供逐筆明細，你可以自己核對。</p>
+      </details>
+      <details>
+        <summary>什麼情況算「不當服務要求」？誰來判斷？</summary>
+        <p>包含但不限於：要求性服務或暗示性交易、觸碰師傅身體隱私部位、言語性騷擾、拍攝或錄影、要求在無法確保安全的空間服務、酒醉或明顯神智不清。判斷權在現場的你——你覺得不對就可以停，不需要先取得公司同意、也不需要事後被檢討。回報後由公司負責與客人溝通並處理後續，這些定義與流程都會寫進合作契約。</p>
+      </details>
+      <details>
+        <summary>如果客人因此拒付，我還拿得到錢嗎？</summary>
+        <p>拿得到。經回報並查證確有不當要求或安全疑慮而中止的服務，該筆服務報酬由公司依約支付給你，不因客人拒付而扣減，追討由公司自行處理。這一條會明確寫在合作契約，不是口頭承諾。</p>
+      </details>
+      <details>
+        <summary>沒有勞保，那我出勤受傷怎麼辦？</summary>
+        <p>承攬不代表公司免責。合作契約第十二條約定公司要投保兩種保險：一是<strong>營業責任保險</strong>（服務中不慎讓客人受傷或財物受損），二是<strong>團體傷害保險或雇主意外責任保險</strong>（你在執行服務期間、含合理往返途中受傷）。險種與保額寫在契約附件三，簽約時你可以要保單影本核對；公司沒投保，你可以立刻解約並求償。另外，職業安全衛生法規定事業單位招人承攬時，就職業災害補償仍可能與承攬人負連帶責任——我們沒有拿承攬當免死金牌。也建議你自行加保個人傷害險或工會勞保，雙重保障。</p>
+      </details>
+      <details>
+        <summary>報稅要注意什麼？跟以前領薪水一樣嗎？</summary>
+        <p>不一樣。承攬報酬不是薪資所得，公司會依法扣繳並開立扣繳憑單給你，你自己申報綜所稅。另外有一件事我們主動提醒：個人持續以承攬方式提供勞務，<strong>月銷售額達財政部所定起徵點（銷售勞務目前為每月 4 萬元）時，可能被要求辦理稅籍登記並課徵營業稅</strong>。以入門級距試算的月分潤約 4.8 萬來看，是有機會碰到這條線的。這是承攬模式最常被忽略的一環，我們寧可先講，你可以先找記帳士問清楚。詳見合作契約第十五條。</p>
       </details>
       <details>
         <summary>我現在有正職／在店裡上班，可以兼職接嗎？</summary>
@@ -677,17 +918,66 @@ footer h4{font-family:var(--serif);color:var(--washi);font-size:1.1rem;margin-bo
         <p>不用。目前到府服務不攜帶按摩床，由客人準備可平躺的空間（床墊、沙發床、瑜珈墊等），這點在客人預約時客服就會先確認好。</p>
       </details>
       <details>
-        <summary>如果客人要求不當服務怎麼辦？</summary>
-        <p>立刻停止服務、離開現場、回報公司。服務費照算，後續由公司處理，包含列入黑名單與協助提告。你不需要自己面對，也不需要「先忍完這一單」。</p>
-      </details>
-      <details>
-        <summary>從投履歷到可以接單，大概多久？</summary>
+        <summary>從投遞到可以接單，大概多久？</summary>
         <p>一般 5 到 10 天。流程是：LINE 或表單投遞 → 電話或面對面初談 → 手技評估 → 簽署合作契約 → 開通接單。中間不會有任何收費環節。</p>
       </details>
       <details>
         <summary>服務區域只有台南嗎？</summary>
         <p>目前主力在台南市（東區、北區、中西區、南區、安平、安南為主）。永康、仁德、歸仁等區視師傅所在位置安排。若你在其他縣市，也歡迎先聊，我們正在評估擴點。</p>
       </details>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ v4 新增：深色形象帶（進入應徵區的視覺過渡）══ -->
+<div class="band" aria-hidden="false">
+  <img src="assets/join-navy.jpg" alt="幕府時代 Move Time 按摩師招募：彈性合作、安心接案、公司派單" width="1400" height="788" loading="lazy">
+</div>
+
+<!-- ══ v4：直式招募海報（目前 hidden，勿逕行開啟）══
+     ★★ 為什麼先關掉 ★★
+     assets/poster-recruit.jpg 上面印著「你的月收入（70%）$56,000 起」。
+     這與本頁及合作契約的內容直接衝突：新加入師傅一律 60% 起算，
+     70% 是資深級距。海報寫「70%…起」等於把最高級距當成起跳點。
+
+     就業服務法第5條第2項第1款：招募廣告與實際條件不符即屬不實廣告，
+     同法第65條可處 30~150 萬元罰鍰，法院見解為「一部不符亦構成」。
+     且本頁最大的資產是「透明」，一張海報就足以推翻整頁的可信度。
+
+     另外兩處也要一併改：
+     - 「服務費／小時 $800 × 100 小時」是時薪邏輯，本頁與契約都是「按單分潤」，
+       兩套算法並存，求職者一比對就會發現對不上。
+     - 「2小時內回覆」是服務承諾，本頁寫的是 1–2 個工作天，做不到就是不實。
+
+     ★ 2026.08.10 更新：海報已重製為「入門 60%／約 $48,000」並改為按單計算邏輯，
+       「2小時內回覆」亦已移除，主要法律風險解除，故本區塊已啟用。
+
+     ★ 下次重製時仍建議修正三處：
+       (1)「零客訴風險」→ 改為「客訴由公司處理」。承諾零風險實務不可能達成，
+          且與合作契約第十七條第三項之客訴處理程序自相矛盾。
+       (2)「上不封頂」→ 改為「接越多、領越多」。收入無上限之表述搭配具體金額，
+          仍有就服法§5 II ①之疑慮。
+       (3)「平台派單・平台保障」→ 改為「公司派單・制度保障」。
+          契約與網頁均以「公司」自稱，「平台」二字在勞動法脈絡另有意涵，用語應統一。 -->
+<section class="sec" id="poster">
+  <div class="wrap">
+    <div class="eyebrow">招募海報</div>
+    <h2>認識同行的朋友？把這張傳給他</h2>
+    <p class="lede">
+      我們沒有介紹獎金制度，也不打算有——那容易讓人為了獎金推薦不適合的人。
+      如果你認識覺得會喜歡這種合作方式的師傅，單純轉傳就好。
+    </p>
+    <div class="poster-grid">
+      <img src="assets/poster-recruit.jpg" alt="幕府時代 Move Time 按摩師招募海報" width="900" height="1350" loading="lazy">
+      <div>
+        <ul class="br-points" style="margin-top:0">
+          <li><b>長按存圖</b>，直接傳 LINE 或發限動。</li>
+          <li>海報收入試算為<b>入門 60% 級距</b>示例（34 單 × 2,800 × 60% = 57,120），與本頁及合作契約一致。</li>
+          <li>轉傳前建議附一句你自己的話，比任何文案都有用。</li>
+        </ul>
+        <a class="btn" style="margin-top:18px" href="assets/poster-recruit.jpg" download>下載海報</a>
+      </div>
     </div>
   </div>
 </section>
@@ -700,8 +990,8 @@ footer h4{font-family:var(--serif);color:var(--washi);font-size:1.1rem;margin-bo
 
     <div class="steps">
       <div><b>STEP 01</b><h4>投遞</h4><p>填右邊 30 秒表單，或加 LINE 傳訊息。不用做正式履歷。</p></div>
-      <div><b>STEP 02</b><h4>初談</h4><p>電話或約在店裡聊。說明分潤、派單方式與合作條件。</p></div>
-      <div><b>STEP 03</b><h4>手技評估</h4><p>實際做一次，確認手法穩定度與流程掌握。</p></div>
+      <div><b>STEP 02</b><h4>初談</h4><p>電話或約在店裡聊。說明分潤級距、派單方式與契約條件，並交付書面說明。</p></div>
+      <div><b>STEP 03</b><h4>手技評估</h4><p>實際做一次，確認手法穩定度與流程掌握。評估不收費。</p></div>
       <div><b>STEP 04</b><h4>簽約上線</h4><p>簽署合作契約、開通接單權限，開始排自己的時段。</p></div>
     </div>
 
@@ -710,7 +1000,14 @@ footer h4{font-family:var(--serif);color:var(--washi);font-size:1.1rem;margin-bo
         <h3>30 秒投遞</h3>
         <p>只留最必要的欄位。我們會在 1–2 個工作天內用電話或 LINE 與你聯繫。</p>
 
+        <div class="err" id="err"></div>
+
         <form id="joinForm" novalidate>
+          <div class="hp" aria-hidden="true">
+            <label for="company">公司（請勿填寫）</label>
+            <input id="company" name="company" tabindex="-1" autocomplete="off">
+          </div>
+
           <label for="n">稱呼 <span>*</span></label>
           <input id="n" name="name" required autocomplete="name" placeholder="陳師傅 / 小美">
 
@@ -744,23 +1041,62 @@ footer h4{font-family:var(--serif);color:var(--washi);font-size:1.1rem;margin-bo
           <label for="m">想先問的事（選填）</label>
           <textarea id="m" name="msg" placeholder="例：我目前還在職，想先兼職接單可以嗎？"></textarea>
 
+          <label class="agree" for="agree">
+            <input type="checkbox" id="agree" name="agree" required>
+            <span>我已閱讀並同意下方「<a href="#privacy-notice" id="openPrivacy">招募個人資料蒐集告知事項</a>」，同意幕府時代 Move Time 於招募聯繫目的範圍內蒐集、處理及利用本表單所填個人資料。</span>
+          </label>
+
           <button type="submit" class="btn" style="width:100%">送出應徵</button>
-          <p style="font-size:.76rem;color:var(--sumi-soft);margin-top:12px;line-height:1.7">
-            送出即表示同意本公司為招募聯繫之目的蒐集、處理及利用上述個人資料。
-            你可隨時要求查詢、更正或刪除。我們不會將資料提供給第三人。
-          </p>
         </form>
 
         <div class="ok" id="ok">
           收到了，謝謝你。我們會在 1–2 個工作天內與你聯繫，請留意來電與 LINE 訊息。
         </div>
+
+        <!-- ═══ 個資法第8條告知事項 ═══ -->
+        <details class="privacy" id="privacy-notice">
+          <summary>招募個人資料蒐集告知事項</summary>
+          <div class="body">
+            <p>依《個人資料保護法》第8條規定，於蒐集您的個人資料前，向您告知下列事項：</p>
+
+            <h4>一、蒐集之單位</h4>
+            <p>幕府時代 Move Time（以下稱本公司）。</p>
+
+            <h4>二、蒐集之目的</h4>
+            <p>人事管理（法定特定目的代號 002）、契約、類似契約或其他法律關係事務（069），
+            具體用途為：招募聯繫、資格評估、面談與手技評估安排、合作條件洽談，以及後續合作關係之建立與管理。</p>
+
+            <h4>三、個人資料之類別</h4>
+            <p>辨識個人者（如姓名或稱呼、聯絡電話、居住區域）、職業與工作經歷（如實務年資、擅長項目），
+            以及您主動於備註欄填寫之內容。</p>
+
+            <h4>四、利用期間、地區、對象及方式</h4>
+            <ol>
+              <li>期間：自您送出表單之日起，至蒐集目的消失或您請求刪除之日止；未進入合作關係者，本公司保存至多 1 年後刪除。</li>
+              <li>地區：中華民國臺澎金馬地區。</li>
+              <li>對象：本公司內部負責招募與合作管理之人員。除法令另有規定或經您另行同意外，不提供第三人。</li>
+              <li>方式：以電子檔或紙本形式儲存，並以電話、簡訊、電子郵件或通訊軟體與您聯繫。</li>
+            </ol>
+
+            <h4>五、您得行使之權利</h4>
+            <p>依個人資料保護法第3條，您得向本公司請求查詢或閱覽、製給複製本、補充或更正、停止蒐集處理利用，或請求刪除您的個人資料。
+            行使方式：透過本頁招募專用 LINE 或來電提出，本公司將於 15 日內回覆處理。</p>
+
+            <h4>六、不提供個人資料之影響</h4>
+            <p>您可自由選擇是否提供。惟若未提供稱呼、聯絡電話與實務年資等必要欄位，本公司將無法與您聯繫或安排後續招募流程。</p>
+
+            <h4>七、其他</h4>
+            <p>本公司招募程序不因性別、性傾向、年齡、婚姻、容貌、身心障礙或其他就業服務法第5條第1項所列事由而為差別待遇，
+            亦不收取任何保證金、費用或要求提供非屬招募所需之證件正本。</p>
+          </div>
+        </details>
       </div>
 
       <div class="panel">
         <h3>想先問清楚再說？</h3>
-        <p>直接加 LINE，傳「<strong>我想了解招募</strong>」就好。可以只問問題，不代表要應徵。</p>
+        <p>直接加 LINE，傳「<strong>我想了解招募</strong>」就好。可以只問問題，不代表要應徵，我們不會一直追你。</p>
         <div class="contact-row">
-          <img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A%2F%2Flin.ee%2FtXNyqDX" alt="幕府時代 Move Time 招募專用 LINE 官方帳號 QR Code">
+          <img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A%2F%2Flin.ee%2FtXNyqDX" alt="幕府時代 Move Time 招募專用 LINE 官方帳號 QR Code" width="132" height="132" loading="lazy">
           <div>
             <div style="font-size:.8rem;color:var(--sumi-soft);margin-bottom:2px">招募專用 LINE</div>
             <div class="lineid">@927psgor</div>
@@ -788,20 +1124,23 @@ footer h4{font-family:var(--serif);color:var(--washi);font-size:1.1rem;margin-bo
       <a href="https://www.movetimespa.com/elderly-relaxation/">樂齡舒緩服務</a>
       <a href="https://www.movetimespa.com/partner/">飯店合作提案</a>
       <a href="https://www.movetimespa.com/join/">按摩師招募</a>
+      <a href="agreement.html">合作契約範本</a>
+      <a href="#privacy-notice">個資告知事項</a>
       <a href="https://www.facebook.com/movetimetntw">Facebook</a>
     </div>
 
     <p class="legal">
-      本頁所載分潤比例、費用與合作條件，以雙方簽署之書面合作契約內容為準。
+      本頁所載分潤比例、級距條件、費用與合作方式，以雙方簽署之書面合作契約內容為準；
+      收入試算結果為數學運算示例，非收入保證。<br>
       幕府時代 Move Time 提供之服務為到府按摩與放鬆舒緩服務，不涉及醫療診斷、治療、復健、疾病改善或療效保證。<br>
-      本公司招募不因性別、年齡、婚姻、容貌或身心障礙而有差別待遇，且不收取任何保證金或費用。<br>
+      本公司招募不因性別、性傾向、年齡、婚姻、容貌或身心障礙而有差別待遇，且不收取任何保證金或費用。<br>
       © 2026 幕府時代 Move Time. All rights reserved.
     </p>
   </div>
 </footer>
 
 <div class="dock">
-  <a class="a" href="#calc">收入試算</a>
+  <a class="a" href="#contract">合作契約</a>
   <a class="b" href="https://lin.ee/tXNyqDX" data-line>加 LINE 應徵</a>
 </div>
 
@@ -811,16 +1150,17 @@ footer h4{font-family:var(--serif);color:var(--washi);font-size:1.1rem;margin-bo
   "@context":"https://schema.org",
   "@type":"JobPosting",
   "title":"到府按摩師（台南・可兼職・分潤制）",
-  "description":"<p>幕府時代 Move Time 招募台南到府按摩師。公司負責客源開發、客服接單與客戶過濾，師傅專注於服務。合作方式與報酬條件於面談及書面契約中清楚確認。不收保證金與教材費，可自行設定接單時段。落實性騷擾與性交易雙重零容忍政策，公司統一對外窗口，不外流師傅私人聯絡方式。</p><ul><li>需具備按摩實務經驗；剛結訓之新手需通過手技評估</li><li>需自備機車或汽車，服務範圍為台南市</li><li>品格端正，不從事或默許任何色情服務</li></ul>",
+  "description":"<p>幕府時代 Move Time 招募台南到府按摩師。公司負責客源開發、客服接單與客戶事前查核，師傅專注於服務。合作方式與報酬條件於面談及書面契約中逐條確認，不收保證金與教材費，可自行設定接單時段且無最低接單數。</p><p>安全機制：落實性騷擾與性交易雙重零容忍政策；客戶資料留存與黑名單機制；到府、開始、結束三時點回報；公司為統一對外窗口，不外流師傅私人聯絡方式。</p><ul><li>分潤自 60% 起算，依公司公告之單數、評價、年資與證照標準調升至 65% 或 70%</li><li>需具備按摩實務經驗；剛結訓之新手需通過手技評估，訓練期不收費</li><li>需自備機車或汽車，服務範圍為台南市</li><li>品格端正，不從事或默許任何色情服務</li></ul>",
   "identifier":{"@type":"PropertyValue","name":"Move Time","value":"MT-THERAPIST-2026"},
-  "datePosted":"2026-08-03",
+  "datePosted":"2026-08-10",
   "validThrough":"2026-12-31",
   "employmentType":["PART_TIME","CONTRACTOR"],
   "hiringOrganization":{
     "@type":"Organization",
     "name":"幕府時代 Move Time",
     "sameAs":"https://www.movetimespa.com",
-    "url":"https://www.movetimespa.com"
+    "url":"https://www.movetimespa.com",
+    "logo":"https://www.movetimespa.com/assets/logo.png"
   },
   "jobLocation":{
     "@type":"Place",
@@ -829,11 +1169,15 @@ footer h4{font-family:var(--serif);color:var(--washi);font-size:1.1rem;margin-bo
       "streetAddress":"北安路一段10號",
       "addressLocality":"北區",
       "addressRegion":"台南市",
+      "postalCode":"704",
       "addressCountry":"TW"
     }
   },
   "jobLocationType":"TELECOMMUTE",
   "applicantLocationRequirements":{"@type":"Country","name":"TW"},
+  "incentiveCompensation":"依服務營收分潤，自 60% 起算，達公司公告標準後調升至 65% 或 70%。",
+  "jobBenefits":"不收保證金、教材費與制服費；公司負責客源開發與客戶事前查核；接單時段自訂，無最低接單數；師傅私人聯絡方式不外流。",
+  "qualifications":"具按摩實務經驗；剛結訓之新手需通過手技評估。",
   "directApply":true,
   "url":"https://www.movetimespa.com/join/"
 }
@@ -845,52 +1189,75 @@ footer h4{font-family:var(--serif);color:var(--washi);font-size:1.1rem;margin-bo
   "@type":"FAQPage",
   "mainEntity":[
     {"@type":"Question","name":"應徵幕府時代按摩師需要先付任何費用嗎？","acceptedAnswer":{"@type":"Answer","text":"不需要。保證金、教材費、制服費、加盟金一律不收，合作期間也不會要求購買任何商品或投資。"}},
-    {"@type":"Question","name":"合作報酬與結算方式怎麼確認？","acceptedAnswer":{"@type":"Answer","text":"報酬與結算條件會依服務項目、經驗與合作方式於初談時完整說明，並在正式合作前以書面契約確認。"}},
+    {"@type":"Question","name":"按摩師是僱傭還是合作承攬？有勞健保嗎？","acceptedAnswer":{"@type":"Answer","text":"目前採合作分潤模式，師傅自行決定開放時段、無最低接單數、依實際完成服務件數分潤，屬承攬性質，公司不代為投保勞健保。實際契約定位與報酬安排於初談時說明並以書面契約確認。"}},
+    {"@type":"Question","name":"合作報酬與結算方式怎麼確認？","acceptedAnswer":{"@type":"Answer","text":"報酬與結算條件會依服務項目、經驗與合作方式於初談時完整說明，並在正式合作前以書面契約確認報酬比例、結算週期、扣款項目與對帳方式，每期提供逐筆明細。"}},
+    {"@type":"Question","name":"什麼情況算不當服務要求？誰來判斷？","acceptedAnswer":{"@type":"Answer","text":"包含要求性服務或暗示性交易、觸碰隱私部位、言語性騷擾、拍攝錄影、無法確保安全的空間、客人酒醉或神智不清等。判斷權在現場的師傅，可立即終止並離開，回報後由公司處理後續，相關定義與流程載於合作契約。"}},
+    {"@type":"Question","name":"客人因不當要求被中止服務而拒付，師傅還拿得到報酬嗎？","acceptedAnswer":{"@type":"Answer","text":"經回報並查證確有不當要求或安全疑慮而中止之服務，該筆服務報酬由公司依約支付，不因客人拒付而扣減，追討由公司自行處理。"}},
+    {"@type":"Question","name":"按摩師沒有勞保，執行服務受傷怎麼辦？","acceptedAnswer":{"@type":"Answer","text":"合作契約第十二條約定公司投保營業責任保險，以及團體傷害保險或雇主意外責任保險，承保按摩師執行服務期間含合理往返途中之意外傷害。險種與保額載於契約附件三，簽約時可索取保單影本核對；公司未投保者，按摩師得立即終止契約並請求賠償。另建議自行加保個人傷害險或參加職業工會勞保。"}},
+    {"@type":"Question","name":"承攬按摩師的報稅方式與領薪水有何不同？","acceptedAnswer":{"@type":"Answer","text":"承攬報酬非薪資所得，公司依法扣繳並開立扣繳憑單，按摩師自行申報綜合所得稅。另需注意個人持續以承攬方式提供勞務，月銷售額達財政部所定小規模營業人起徵點（銷售勞務目前為每月新臺幣四萬元）時，可能被要求辦理稅籍登記並課徵營業稅。"}},
     {"@type":"Question","name":"有正職可以兼職接單嗎？","acceptedAnswer":{"@type":"Answer","text":"可以。師傅自行決定每週開放的接單時段，未開放時段不派單，也沒有最低接單數要求。"}},
     {"@type":"Question","name":"一定要有按摩證照嗎？","acceptedAnswer":{"@type":"Answer","text":"證照不是硬性門檻，主要以手技評估與服務態度為準。有證照或完訓證明可作為分潤級距與派單安排的參考。"}},
-    {"@type":"Question","name":"從投遞到開始接單需要多久？","acceptedAnswer":{"@type":"Answer","text":"一般約 5 到 10 天。流程為投遞、初談、手技評估、簽署合作契約、開通接單，全程不收費。"}},
-    {"@type":"Question","name":"遇到客人要求不當服務怎麼辦？","acceptedAnswer":{"@type":"Answer","text":"師傅有權立即終止服務並離開現場，服務費照算。後續由公司處理，包含列入黑名單與協助提告。"}}
+    {"@type":"Question","name":"從投遞到開始接單需要多久？","acceptedAnswer":{"@type":"Answer","text":"一般約 5 到 10 天。流程為投遞、初談、手技評估、簽署合作契約、開通接單，全程不收費。"}}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"首頁","item":"https://www.movetimespa.com/"},
+    {"@type":"ListItem","position":2,"name":"按摩師招募","item":"https://www.movetimespa.com/join/"}
   ]
 }
 </script>
 
 <script>
-/* ═══════════ CONFIG：上線前把這裡改成真實數字 ═══════════ */
+/* ═══════════ CONFIG：上線前確認 ═══════════ */
 const CONFIG = {
-  therapistShare : 0.60,   // 幕府時代 師傅分潤起跳（0.60 = 60%），依年資／經驗／證照調升
-  shopShare      : 0.45,   // 對照組：傳統店家師傅可拿的比例（示範值，請確認市場行情後調整）
-  weeksPerMonth  : 4.3
+  defaultShare  : 0.60,   // 預設試算級距（新加入師傅實際起跳）
+  shopShare     : 0.45,   // 對照組：部分傳統店家師傅可拿比例（示範值，須有來源可佐證）
+  weeksPerMonth : 4.3
 };
-/* ═════════════════════════════════════════════════════ */
+/* ═════════════════════════════════════════ */
 
 const $ = id => document.getElementById(id);
 const fmt = n => Math.round(n).toLocaleString('en-US');
 
 let price = 2800;
+let share = CONFIG.defaultShare;
 
 function calc(){
   const days   = +$('days').value;
   const perDay = +$('perday').value;
-  const jobs   = days * perDay * CONFIG.weeksPerMonth;
-  const gross  = jobs * price;
-  const take   = gross * CONFIG.therapistShare;
-  const shop   = gross * CONFIG.shopShare;
+  const cost   = +$('cost').value;
+
+  const jobs  = Math.round(days * perDay * CONFIG.weeksPerMonth);
+  const gross = jobs * price;
+  const take  = gross * share;
+  const spend = jobs * cost;
+  const shop  = gross * CONFIG.shopShare;
 
   $('v-days').textContent   = days;
   $('v-perday').textContent = perDay;
-  $('r-jobs').textContent   = Math.round(jobs);
-  $('r-gross').textContent  = fmt(gross);
-  $('r-take').textContent   = fmt(take);
-  $('r-take2').textContent  = fmt(take);
-  $('r-cut').textContent    = fmt(gross - take);
-  $('r-shop').textContent   = fmt(shop);
-  $('r-diff').textContent   = fmt(take - shop);
-  $('r-pct').textContent    = Math.round(CONFIG.therapistShare * 100);
+  $('v-cost').textContent   = fmt(cost);
+
+  $('r-jobs').textContent  = jobs;
+  $('r-gross').textContent = fmt(gross);
+  $('r-take').textContent  = fmt(take);
+  $('r-take2').textContent = fmt(take);
+  $('r-net').textContent   = fmt(Math.max(take - spend, 0));
+  $('r-cut').textContent   = fmt(gross - take);
+  $('r-cost').textContent  = fmt(spend);
+  $('r-shop').textContent  = fmt(shop);
+  $('r-diff').textContent  = fmt(take - shop);
+  $('r-pct').textContent   = Math.round(share * 100);
 }
 
-$('days').addEventListener('input', calc);
-$('perday').addEventListener('input', calc);
+['days','perday','cost'].forEach(id => $(id).addEventListener('input', calc));
 
+/* 服務項目 */
 document.querySelectorAll('#svc .chip').forEach(c => {
   c.addEventListener('click', () => {
     document.querySelectorAll('#svc .chip').forEach(x => x.setAttribute('aria-pressed','false'));
@@ -900,24 +1267,82 @@ document.querySelectorAll('#svc .chip').forEach(c => {
   });
 });
 
+/* 分潤級距 */
+document.querySelectorAll('#tier .chip').forEach(c => {
+  c.addEventListener('click', () => {
+    document.querySelectorAll('#tier .chip').forEach(x => x.setAttribute('aria-pressed','false'));
+    c.setAttribute('aria-pressed','true');
+    share = +c.dataset.s;
+    calc();
+  });
+});
+
 calc();
 
+/* ── v4：scroll reveal ── */
+(function(){
+  const els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window) ||
+     window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(e => e.classList.add('in'));
+    return;
+  }
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach((en,i)=>{
+      if(en.isIntersecting){
+        setTimeout(()=>en.target.classList.add('in'), i*70);
+        io.unobserve(en.target);
+      }
+    });
+  },{rootMargin:'0px 0px -12% 0px', threshold:.12});
+  els.forEach(e => io.observe(e));
+})();
+
+/* 個資告知事項：點連結時自動展開 details */
+$('openPrivacy').addEventListener('click', e => {
+  e.preventDefault();
+  const d = $('privacy-notice');
+  d.open = true;
+  d.scrollIntoView({behavior:'smooth', block:'center'});
+});
+
 /* ── 表單送出 ──
-   FORM_ENDPOINT 換成你的 GAS Web App 網址（doPost）或 Formspree endpoint。
-   目前為未設定狀態：會直接顯示成功訊息但不送出，請務必替換。 */
+   FORM_ENDPOINT 換成你的 GAS Web App 網址（doPost）。
+   未設定時會 fallback 到 LINE 帶參數訊息，不會靜默失敗。 */
 const FORM_ENDPOINT = 'FORM_ENDPOINT';
+
+function showErr(msg){
+  const e = $('err');
+  e.textContent = msg;
+  e.style.display = 'block';
+  e.scrollIntoView({behavior:'smooth', block:'center'});
+}
 
 $('joinForm').addEventListener('submit', async e => {
   e.preventDefault();
   const f = e.target;
+  $('err').style.display = 'none';
+
+  if(f.company.value){ return; }              // 蜜罐：機器人填了就靜默丟棄
+
   if(!f.name.value.trim() || !f.phone.value.trim() || !f.exp.value){
-    alert('請填寫稱呼、聯絡電話與實務年資。');
+    showErr('請填寫稱呼、聯絡電話與實務年資，這三項是聯繫你的必要資訊。');
     return;
   }
+  if(!/^[0-9+\-\s()]{8,20}$/.test(f.phone.value.trim())){
+    showErr('聯絡電話格式看起來不太對，請再確認一次（例：0912-345-678）。');
+    return;
+  }
+  if(!f.agree.checked){
+    showErr('請先閱讀並勾選同意「招募個人資料蒐集告知事項」，我們才能保留你的聯絡方式。');
+    return;
+  }
+
   const btn = f.querySelector('button[type=submit]');
   btn.disabled = true; btn.textContent = '送出中…';
 
   const payload = Object.fromEntries(new FormData(f).entries());
+  delete payload.company;
   payload.source = 'join-page';
   payload.ts = new Date().toISOString();
 
@@ -938,7 +1363,7 @@ $('joinForm').addEventListener('submit', async e => {
     }
   }catch(err){
     btn.disabled = false; btn.textContent = '送出應徵';
-    alert('送出時發生問題，請改用 LINE 與我們聯繫：@927psgor');
+    showErr('送出時發生問題，請改用本頁的招募專用 LINE（@927psgor）與我們聯繫。');
   }
 });
 </script>

@@ -477,10 +477,12 @@ footer h4{font-family:var(--serif);color:var(--washi);font-size:1.1rem;margin-bo
 .br-points li::before{content:"";position:absolute;left:0;top:.6em;width:12px;height:1.5px;background:var(--shu)}
 .br-points li b{color:var(--sumi)}
 
-/* ── v4：深色形象帶 ── */
-.band{position:relative;background:var(--sumi);overflow:hidden}
-.band img{width:100%;max-height:340px;object-fit:cover;object-position:center;opacity:.92}
-@media(max-width:640px){.band img{max-height:210px}}
+/* ── v4：深色形象帶 ──
+   注意：join-navy.jpg 是含有文字的完整主視覺，
+   絕對不能用 max-height + object-fit:cover 裁切，否則標題會被切掉。
+   此處以完整比例顯示，僅限制最大寬度，兩側留深色留白。 */
+.band{background:var(--sumi);display:flex;justify-content:center}
+.band img{width:100%;max-width:1400px;height:auto}
 
 /* ── v4：海報區塊 ── */
 .poster-grid{display:grid;gap:30px;margin-top:40px;align-items:start}

@@ -2,12 +2,12 @@
 <!--
   ============================================================
   幕府時代 Move Time — 按摩師招募頁 v4
-  上線路徑：https://www.movetimespa.com/join/
+  上線路徑：https://www.movetimespa.com/massager/
   ============================================================
 
   ★ v4 相對於 v3 的變更重點
   A. 主視覺換為 assets/hero-join-light.jpg（米白／苔綠版，與 washi 色盤一致）。
-  B. 新增 #contract 區塊：合作契約全文公開，連向 /join/agreement/。
+  B. 新增 #contract 區塊：合作契約全文公開，連向 agreement.html。
      這是本頁繼「安全」之後的第二個核心 USP，同業幾乎沒人敢這樣做。
   C. 新增 #brand 區塊（assets/brand-service.jpg）：讓師傅看到自己要代表的品牌，
      順帶回答「公司到底怎麼幫我找客人」。
@@ -59,18 +59,18 @@
 
 <title>按摩師招募｜幕府時代 Move Time｜台南到府按摩・安全有後盾・時間自主</title>
 <meta name="description" content="台南到府按摩品牌幕府時代 Move Time 招募按摩師。公司負責接單並事前過濾客戶，師傅私人聯絡方式不外流；不收保證金與教材費，分潤 60% 起、條件書面確認。歡迎資深師傅與剛結訓新手洽談。">
-<link rel="canonical" href="https://www.movetimespa.com/join/">
+<link rel="canonical" href="https://www.movetimespa.com/massager/">
 <meta name="robots" content="index, follow">
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:site_name" content="幕府時代 Move Time">
-<meta property="og:url" content="https://www.movetimespa.com/join/">
+<meta property="og:url" content="https://www.movetimespa.com/massager/">
 <meta property="og:title" content="按摩師招募｜幕府時代 Move Time｜我們幫你找客人，也幫你過濾客人">
 <meta property="og:description" content="不收保證金、不收教材費，分潤 60% 起。客戶由公司統一接單與事前過濾，師傅手機不外流。台南到府按摩師招募中。">
 <meta name="twitter:card" content="summary_large_image">
-<meta property="og:image" content="https://www.movetimespa.com/join/assets/join-navy.jpg">
-<meta name="twitter:image" content="https://www.movetimespa.com/join/assets/join-navy.jpg">
+<meta property="og:image" content="https://www.movetimespa.com/massager/join-navy.jpg">
+<meta name="twitter:image" content="https://www.movetimespa.com/massager/join-navy.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -105,7 +105,17 @@ body{
   padding-bottom:76px; /* 行動版底部 CTA 條 */
 }
 @media(min-width:900px){body{padding-bottom:0}}
-img{max-width:100%;display:block}
+img{max-width:100%;height:auto;display:block}
+
+/* ── v4 修正：Grid 項目防撐版 ──
+   CSS Grid 項目預設 min-width:auto，圖片的 width 屬性（如 1200）會成為
+   最小內容寬度，把該欄硬撐開、擠壓其他欄。破圖時尤其明顯。
+   統一設 min-width:0 讓 fr 分配正常運作。 */
+.hero-grid>*,.hero-copy>*,.calc-grid>*,.ct-grid>*,
+.br-grid>*,.poster-grid>*,.apply-grid>*,.tiers>*,.cards>*{min-width:0}
+
+/* 圖片載入失敗時的 alt 文字樣式（避免整塊空白） */
+img{font-size:.85rem;color:var(--sumi-soft);line-height:1.6}
 a{color:inherit}
 
 .wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
@@ -460,7 +470,7 @@ footer h4{font-family:var(--serif);color:var(--washi);font-size:1.1rem;margin-bo
 @media(min-width:900px){.br-grid{grid-template-columns:1.05fr .95fr;gap:50px}}
 .br-art{position:relative}
 .br-art img{width:100%;aspect-ratio:16/9;object-fit:cover;border:1px solid rgba(33,30,27,.14);
-  box-shadow:0 18px 44px rgba(33,30,27,.16)}
+  box-shadow:0 18px 44px rgba(33,30,27,.16);background:var(--washi)}
 .br-art figcaption{font-size:.78rem;color:var(--sumi-soft);margin-top:10px;letter-spacing:.04em}
 .br-points{list-style:none;margin-top:22px}
 .br-points li{position:relative;padding-left:26px;margin-bottom:14px;font-size:.95rem;color:var(--sumi-soft)}
@@ -475,7 +485,7 @@ footer h4{font-family:var(--serif);color:var(--washi);font-size:1.1rem;margin-bo
 /* ── v4：海報區塊 ── */
 .poster-grid{display:grid;gap:30px;margin-top:40px;align-items:start}
 @media(min-width:820px){.poster-grid{grid-template-columns:.8fr 1.2fr;gap:44px}}
-.poster-grid img{border:1px solid rgba(33,30,27,.16);box-shadow:0 16px 40px rgba(33,30,27,.16)}
+.poster-grid img{border:1px solid rgba(33,30,27,.16);box-shadow:0 16px 40px rgba(33,30,27,.16);max-width:420px;width:100%}
 </style>
 </head>
 <body>
@@ -499,7 +509,7 @@ footer h4{font-family:var(--serif);color:var(--washi);font-size:1.1rem;margin-bo
   <div class="wrap">
     <div class="hero-grid">
       <figure class="hero-art">
-        <img src="assets/hero-join-light.jpg" alt="幕府時代 Move Time 台南到府按摩師招募主視覺：按摩師為客人服務，強調彈性合作、安心接案、公司派單" width="1600" height="900" fetchpriority="high">
+        <img src="hero-join-light.jpg" alt="幕府時代 Move Time 台南到府按摩師招募主視覺：按摩師為客人服務，強調彈性合作、安心接案、公司派單" width="1600" height="900" fetchpriority="high">
         <figcaption class="hero-badge">台南到府按摩師招募中</figcaption>
       </figure>
 
@@ -781,7 +791,7 @@ footer h4{font-family:var(--serif);color:var(--washi);font-size:1.1rem;margin-bo
 
     <div class="br-grid">
       <figure class="br-art reveal">
-        <img src="assets/brand-service.jpg" alt="幕府時代 Move Time 台南到府按摩服務主視覺，強調把放鬆帶回家、專業舒緩與安心預約" width="1200" height="675" loading="lazy">
+        <img src="brand-service.jpg" alt="幕府時代 Move Time 台南到府按摩服務主視覺，強調把放鬆帶回家、專業舒緩與安心預約" width="1200" height="675" loading="lazy">
         <figcaption>幕府時代 Move Time 對外服務主視覺（客戶端）</figcaption>
       </figure>
 
@@ -932,7 +942,7 @@ footer h4{font-family:var(--serif);color:var(--washi);font-size:1.1rem;margin-bo
 
 <!-- ══ v4 新增：深色形象帶（進入應徵區的視覺過渡）══ -->
 <div class="band" aria-hidden="false">
-  <img src="assets/join-navy.jpg" alt="幕府時代 Move Time 按摩師招募：彈性合作、安心接案、公司派單" width="1400" height="788" loading="lazy">
+  <img src="join-navy.jpg" alt="幕府時代 Move Time 按摩師招募：彈性合作、安心接案、公司派單" width="1400" height="788" loading="lazy">
 </div>
 
 <!-- ══ v4：直式招募海報（目前 hidden，勿逕行開啟）══
@@ -969,14 +979,14 @@ footer h4{font-family:var(--serif);color:var(--washi);font-size:1.1rem;margin-bo
       如果你認識覺得會喜歡這種合作方式的師傅，單純轉傳就好。
     </p>
     <div class="poster-grid">
-      <img src="assets/poster-recruit.jpg" alt="幕府時代 Move Time 按摩師招募海報" width="900" height="1350" loading="lazy">
+      <img src="poster-recruit.jpg" alt="幕府時代 Move Time 按摩師招募海報" width="900" height="1350" loading="lazy">
       <div>
         <ul class="br-points" style="margin-top:0">
           <li><b>長按存圖</b>，直接傳 LINE 或發限動。</li>
           <li>海報收入試算為<b>入門 60% 級距</b>示例（34 單 × 2,800 × 60% = 57,120），與本頁及合作契約一致。</li>
           <li>轉傳前建議附一句你自己的話，比任何文案都有用。</li>
         </ul>
-        <a class="btn" style="margin-top:18px" href="assets/poster-recruit.jpg" download>下載海報</a>
+        <a class="btn" style="margin-top:18px" href="poster-recruit.jpg" download>下載海報</a>
       </div>
     </div>
   </div>
@@ -1123,7 +1133,7 @@ footer h4{font-family:var(--serif);color:var(--washi);font-size:1.1rem;margin-bo
       <a href="https://www.movetimespa.com/tainan-home-massage/">台南到府按摩指南</a>
       <a href="https://www.movetimespa.com/elderly-relaxation/">樂齡舒緩服務</a>
       <a href="https://www.movetimespa.com/partner/">飯店合作提案</a>
-      <a href="https://www.movetimespa.com/join/">按摩師招募</a>
+      <a href="https://www.movetimespa.com/massager/">按摩師招募</a>
       <a href="agreement.html">合作契約範本</a>
       <a href="#privacy-notice">個資告知事項</a>
       <a href="https://www.facebook.com/movetimetntw">Facebook</a>
@@ -1159,8 +1169,7 @@ footer h4{font-family:var(--serif);color:var(--washi);font-size:1.1rem;margin-bo
     "@type":"Organization",
     "name":"幕府時代 Move Time",
     "sameAs":"https://www.movetimespa.com",
-    "url":"https://www.movetimespa.com",
-    "logo":"https://www.movetimespa.com/assets/logo.png"
+    "url":"https://www.movetimespa.com"
   },
   "jobLocation":{
     "@type":"Place",
@@ -1179,7 +1188,7 @@ footer h4{font-family:var(--serif);color:var(--washi);font-size:1.1rem;margin-bo
   "jobBenefits":"不收保證金、教材費與制服費；公司負責客源開發與客戶事前查核；接單時段自訂，無最低接單數；師傅私人聯絡方式不外流。",
   "qualifications":"具按摩實務經驗；剛結訓之新手需通過手技評估。",
   "directApply":true,
-  "url":"https://www.movetimespa.com/join/"
+  "url":"https://www.movetimespa.com/massager/"
 }
 </script>
 
@@ -1208,7 +1217,7 @@ footer h4{font-family:var(--serif);color:var(--washi);font-size:1.1rem;margin-bo
   "@type":"BreadcrumbList",
   "itemListElement":[
     {"@type":"ListItem","position":1,"name":"首頁","item":"https://www.movetimespa.com/"},
-    {"@type":"ListItem","position":2,"name":"按摩師招募","item":"https://www.movetimespa.com/join/"}
+    {"@type":"ListItem","position":2,"name":"按摩師招募","item":"https://www.movetimespa.com/massager/"}
   ]
 }
 </script>

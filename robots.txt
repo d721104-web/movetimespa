@@ -1,27 +1,4 @@
-# robots.txt - 幕府時代 Move Time
-# https://www.movetimespa.com
-
 User-agent: *
 Allow: /
 
-# 讓 Google 找到 sitemap
 Sitemap: https://www.movetimespa.com/sitemap.xml
-
-# 特別允許重要的 AI 爬蟲（GEO 用）
-User-agent: GPTBot
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /

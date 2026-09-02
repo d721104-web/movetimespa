@@ -3,6 +3,16 @@
 
 <html class="scroll-smooth" lang="zh-TW">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BHWV74H0DQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BHWV74H0DQ');
+</script>
+<script defer src="/assets/js/ga4-tracking.js"></script>
+
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>台南按摩師招募｜到府接案・時間自主・分潤 60% 起｜Move Time</title>
@@ -1164,11 +1174,28 @@ $('joinForm').addEventListener('submit', async e => {
         headers:{'Content-Type':'text/plain;charset=utf-8'},
         body: JSON.stringify(payload)
       });
+      if (typeof window.trackMoveTimeEvent === 'function') {
+        window.trackMoveTimeEvent('massager_apply', {
+          cta_location: 'application_form',
+          submit_method: 'web_form'
+        });
+      }
       f.hidden = true;
       $('ok').style.display = 'block';
       $('ok').scrollIntoView({behavior:'smooth', block:'center'});
     }else{
       const msg = `我想應徵按摩師%0A稱呼：${encodeURIComponent(payload.name)}%0A電話：${encodeURIComponent(payload.phone)}%0A年資：${encodeURIComponent(payload.exp)}%0A擅長：${encodeURIComponent(payload.skill || '未填')}%0A區域：${encodeURIComponent(payload.area || '未填')}%0A備註：${encodeURIComponent(payload.msg || '無')}`;
+      if (typeof window.trackMoveTimeEvent === 'function') {
+        window.trackMoveTimeEvent('massager_apply', {
+          cta_location: 'application_form',
+          submit_method: 'line_fallback'
+        });
+        window.trackMoveTimeEvent('line_click', {
+          cta_location: 'application_form',
+          link_url: 'https://line.me/R/oaMessage/%40927psgor/',
+          link_text: '送出應徵（LINE）'
+        });
+      }
       window.location.href = `https://line.me/R/oaMessage/%40927psgor/?${msg}`;
       btn.disabled = false; btn.textContent = '送出應徵';
     }

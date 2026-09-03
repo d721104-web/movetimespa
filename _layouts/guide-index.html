@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+{% include guide-head.html %}
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"{{ site.url }}/"},{"@type":"ListItem","position":2,"name":"到府按摩知識庫","item":"{{ site.url }}/guide/"}]},
+    {"@type":"CollectionPage","name":{{ page.title | jsonify }},"url":"{{ site.url }}/guide/","description":{{ page.description | jsonify }},"isPartOf":{"@type":"WebSite","name":"{{ site.data.site.site_name }}","url":"{{ site.url }}/"}}
+  ]
+}
+</script>
+</head>
+<body>
+{% include guide-header.html %}
+<main>
+<section class="hero"><div class="wrap">
+<div class="crumb"><a href="/">首頁</a> ／ 到府按摩知識庫</div>
+<div class="ey">MOVE TIME GUIDE</div>
+<h1>到府按摩知識庫</h1>
+<p class="lede">把預約前最常遇到的問題拆開說清楚：價格怎麼看、時間怎麼選、第一次要準備什麼、安全流程怎麼做。內容以 Move Time 實際服務資訊為基礎，持續更新。</p>
+</div></section>
+<section class="wrap article-list">
+{% assign guide_list = site.guides | sort: 'order' %}
+<div class="grid">
+{% for guide in guide_list %}
+<article class="card article-card">
+<span class="kicker">{{ guide.category | default: '到府按摩' }}</span>
+<h2><a href="{{ guide.url }}">{{ guide.card_title | default: guide.title }}</a></h2>
+<p>{{ guide.summary }}</p>
+<a class="more" href="{{ guide.url }}">閱讀完整文章 →</a>
+</article>
+{% endfor %}
+</div>
+{% include guide-cta.html location="guide_bottom" title="已經知道想選哪個服務？" text="直接把希望的日期、時間、台南區域與服務需求傳給客服，我們會協助確認可預約時段。" primary_text="LINE 詢問預約" secondary_url="/services/" secondary_text="先看服務與價格" %}
+</section>
+</main>
+{% include guide-footer.html %}
+</body></html>

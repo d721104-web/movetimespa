@@ -1,0 +1,8 @@
+<div class="cta-box" data-ga-location="{{ include.location | default: 'article_cta' }}">
+<h2 style="margin-top:0;color:#fff">{{ include.title }}</h2>
+<p>{{ include.text }}</p>
+<div class="cta-row">
+<a class="btn btn-primary" href="{{ site.data.site.line_url }}" target="_blank" rel="noopener">{{ include.primary_text | default: 'LINE 詢問預約' }}</a>
+{% if include.secondary_url %}<a class="btn btn-secondary" href="{{ include.secondary_url }}">{{ include.secondary_text | default: '查看服務與價格' }}</a>{% endif %}
+</div>
+</div>

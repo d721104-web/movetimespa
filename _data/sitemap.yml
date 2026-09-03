@@ -1,0 +1,14 @@
+- path: /
+  priority: "1.0"
+- path: /services/
+  priority: "0.9"
+- path: /tainan-home-massage/
+  priority: "0.9"
+- path: /guide/
+  priority: "0.9"
+- path: /elderly-relaxation/
+  priority: "0.8"
+- path: /partner/
+  priority: "0.7"
+- path: /massager/
+  priority: "0.6"

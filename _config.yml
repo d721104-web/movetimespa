@@ -1,0 +1,31 @@
+title: 幕府時代 Move Time
+description: 台南到府按摩與放鬆舒緩服務
+url: https://www.movetimespa.com
+baseurl: ""
+lang: zh-TW
+timezone: Asia/Taipei
+markdown: kramdown
+encoding: utf-8
+
+collections:
+  guides:
+    output: true
+    permalink: /guide/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: guides
+    values:
+      layout: guide-article
+      robots: "index, follow"
+
+exclude:
+  - README.md
+  - ARTICLE-TEMPLATE.md
+  - SEARCH-CONSOLE-NEXT-STEPS.md
+  - SEO-CONTENT-PLAN.md
+  - tools
+  - Gemfile
+  - Gemfile.lock
+  - vendor

@@ -1,0 +1,9 @@
+<header class="top"><div class="wrap">
+<a class="brand" href="/">{{ site.data.site.brand_zh }} <span>{{ site.data.site.brand_en }}</span></a>
+<nav class="nav" aria-label="主要導覽">
+<a href="/services/">服務與價格</a>
+<a href="/tainan-home-massage/">到府指南</a>
+<a href="/guide/"{% if page.collection == 'guides' or page.guide_index %} aria-current="page"{% endif %}>按摩知識庫</a>
+<a href="/elderly-relaxation/">樂齡舒緩</a>
+<a class="cta" href="{{ site.data.site.line_url }}" target="_blank" rel="noopener" data-ga-location="navigation">LINE 預約</a>
+</nav></div></header>

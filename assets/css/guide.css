@@ -1,0 +1,68 @@
+:root{
+  --bg:#f7f3ed;--card:#fffdf9;--ink:#2c1f12;--muted:#725e50;
+  --brown:#6b4c35;--gold:#b8935a;--line:#e6dccf;--dark:#21170f;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC",system-ui,sans-serif;line-height:1.85}
+a{color:inherit}
+.wrap{max-width:1080px;margin:auto;padding:0 22px}
+.top{position:sticky;top:0;z-index:30;background:rgba(247,243,237,.95);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
+.top .wrap{min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{font-family:"Noto Serif TC",serif;font-weight:900;text-decoration:none}
+.brand span{font-family:Arial,sans-serif;font-weight:400;color:var(--gold)}
+.nav{display:flex;gap:18px;align-items:center;font-size:.9rem}
+.nav a{text-decoration:none;color:var(--muted)}
+.nav a:hover{color:var(--ink)}
+.nav .cta{background:var(--brown);color:#fff;padding:8px 14px;border-radius:999px}
+.hero{padding:72px 0 46px}
+.crumb{font-size:.82rem;color:var(--muted);margin-bottom:16px}
+.ey{color:var(--gold);letter-spacing:.18em;font-size:.8rem}
+h1,h2,h3{font-family:"Noto Serif TC",serif;line-height:1.35}
+h1{font-size:clamp(2.2rem,5vw,3.6rem);margin:.25em 0 .4em}
+h2{font-size:clamp(1.5rem,3vw,2rem);margin:2.2em 0 .65em}
+h3{font-size:1.2rem}
+.lede{max-width:760px;color:var(--muted);font-size:1.05rem}
+.kicker{display:inline-block;background:#efe6d8;color:var(--brown);padding:6px 10px;border-radius:999px;font-size:.8rem;font-weight:700}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.article-list{padding-bottom:70px}
+.article-card a{text-decoration:none}
+.article-card h2{font-size:1.35rem;margin:.3em 0 .4em}
+.article-card p{color:var(--muted);margin:.4em 0}
+.article-card .more{display:inline-block;margin-top:12px;color:var(--brown);border-bottom:1px solid var(--gold)}
+.content{max-width:820px;margin:auto;padding-bottom:70px}
+.content p,.content li{color:#554438}
+.summary{background:#fff7e8;border:1px solid #ead6b2;border-radius:14px;padding:22px;margin:24px 0}
+.price-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.price-table th,.price-table td{padding:13px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.price-table th{background:#f1e8dd;font-family:"Noto Serif TC",serif}
+.price-table tr:last-child td{border-bottom:0}
+.note{border-left:3px solid var(--gold);padding:14px 16px;background:#fbf7f0;color:var(--muted);margin:20px 0}
+.cta-box{background:var(--dark);color:#f7f3ed;border-radius:18px;padding:28px;margin:34px 0}
+.cta-box p{color:rgba(247,243,237,.78)}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:8px;text-decoration:none;font-weight:700}
+.btn-primary{background:#06C755;color:#fff}
+.btn-secondary{border:1px solid rgba(255,255,255,.35);color:#fff}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px 17px;margin:10px 0}
+.faq summary{cursor:pointer;font-weight:700}
+.related{display:flex;flex-wrap:wrap;gap:10px}
+.related a{padding:8px 12px;border:1px solid var(--line);background:#fff;border-radius:999px;text-decoration:none;color:var(--brown)}
+footer{background:var(--dark);color:rgba(247,243,237,.75);padding:36px 0;margin-top:40px;font-size:.88rem}
+footer a{color:#f1d4a7}
+.footer-links{display:flex;flex-wrap:wrap;gap:14px;margin-top:12px}
+.byline{font-size:.85rem;color:var(--muted);margin-top:14px}
+@media(max-width:760px){
+  .nav{display:none}.grid{grid-template-columns:1fr}.hero{padding-top:48px}
+  .price-table{font-size:.9rem}.price-table th,.price-table td{padding:10px}
+}
+
+/* Markdown article defaults */
+.content table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:18px 0 24px}
+.content th,.content td{padding:13px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.content th{background:#f1e8dd;font-family:"Noto Serif TC",serif}
+.content tr:last-child td{border-bottom:0}
+.content ol,.content ul{padding-left:1.4rem}
+.content strong{color:var(--ink)}
+@media(max-width:760px){.content table{font-size:.9rem}.content th,.content td{padding:10px}}

@@ -1,39 +1,23 @@
+---
+layout: null
+permalink: /sitemap.xml
+---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{% for item in site.data.sitemap %}
   <url>
-    <loc>https://www.movetimespa.com/</loc>
-    <lastmod>2026-09-02</lastmod>
+    <loc>{{ site.url }}{{ item.path }}</loc>
     <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <priority>{{ item.priority }}</priority>
   </url>
+{% endfor %}
+{% assign guide_list = site.guides | sort: 'date' | reverse %}
+{% for guide in guide_list %}
   <url>
-    <loc>https://www.movetimespa.com/services/</loc>
-    <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.movetimespa.com/tainan-home-massage/</loc>
-    <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.movetimespa.com/elderly-relaxation/</loc>
-    <lastmod>2026-09-02</lastmod>
+    <loc>{{ site.url }}{{ guide.url }}</loc>
+    <lastmod>{{ guide.modified | default: guide.date | date: '%Y-%m-%d' }}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://www.movetimespa.com/partner/</loc>
-    <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.movetimespa.com/massager/</loc>
-    <lastmod>2026-09-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
+{% endfor %}
 </urlset>

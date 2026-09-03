@@ -1,0 +1,23 @@
+---
+layout: null
+permalink: /guide/feed.xml
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+<title>{{ site.data.site.site_name }} 到府按摩知識庫</title>
+<link>{{ site.url }}/guide/</link>
+<description>台南到府按摩價格、預約、安全與服務選擇。</description>
+<language>zh-TW</language>
+{% assign guide_list = site.guides | sort: 'date' | reverse %}
+{% for guide in guide_list limit:20 %}
+<item>
+<title>{{ guide.title | xml_escape }}</title>
+<link>{{ site.url }}{{ guide.url }}</link>
+<guid>{{ site.url }}{{ guide.url }}</guid>
+<pubDate>{{ guide.date | date_to_rfc822 }}</pubDate>
+<description>{{ guide.summary | xml_escape }}</description>
+</item>
+{% endfor %}
+</channel>
+</rss>

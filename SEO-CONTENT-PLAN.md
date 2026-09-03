@@ -2,8 +2,8 @@
 
 | 週次 | 主題 | 建議 URL | 搜尋意圖 | 主要 CTA |
 |---|---|---|---|---|
-| W1 | 台南到府按摩價格怎麼算？ | /guide/home-massage-price/ | 價格 / 預約 | Services + LINE |
-| W2 | 第一次預約到府按摩，要準備什麼？ | /guide/first-home-massage/ | 第一次預約 | LINE |
+| W1 ✅ | 台南到府按摩價格怎麼算？ | /guide/home-massage-price/ | 價格 / 預約 | Services + LINE |
+| W2 ✅ | 第一次預約到府按摩，要準備什麼？ | /guide/first-home-massage/ | 第一次預約 | LINE |
 | W3 | 按摩 60 分鐘、90 分鐘怎麼選？ | /guide/massage-duration/ | 方案比較 | Services |
 | W4 | 到府按摩安全嗎？ | /guide/home-massage-safety/ | 信任 / 安全 | LINE |
 | W5 | 肩頸按摩跟全身按摩怎麼選？ | /guide/shoulder-vs-full-body/ | 服務比較 | Services |

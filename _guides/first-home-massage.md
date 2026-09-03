@@ -157,9 +157,12 @@ Move Time 每日服務時間目前為<strong>10:00–23:00</strong>，其中 21:
 
 > 「想預約星期六晚上 7 點，地點在台南東區，主要想放鬆肩頸，希望女按摩師；家裡有床可以服務。」
 
-有了日期、區域、需求與現場條件，客服就能開始幫你確認。若還不知道要選 60 分鐘還是 90 分鐘，或想先比較不同服務，也不用急著決定，可以先從服務頁與價格文章開始看。
+有了日期、區域、需求與現場條件，客服就能開始幫你確認。若還不知道要選 60 分鐘還是 90 分鐘，可以直接看 <a href="/guide/massage-duration/">按摩 60 分鐘、90 分鐘怎麼選？</a>；如果還想比較不同服務，也可以先從服務頁與價格文章開始看。
 
 <div class="related">
+<a href="/guide/massage-duration/">60／90 分鐘怎麼選</a>
+<a href="/guide/home-massage-safety/">到府按摩安全</a>
+<a href="/guide/home-vs-shop-massage/">到府 vs 按摩店</a>
 <a href="/services/">服務與價格</a>
 <a href="/guide/home-massage-price/">台南到府按摩價格</a>
 <a href="/tainan-home-massage/">台南到府按摩完整指南</a>

@@ -84,6 +84,9 @@ Move Time 到府服務**不攜帶按摩床**，所以預約前最重要的是準
 如果你已經知道想做全身、肩頸、腳底或精油香氛放鬆，可以直接到服務頁比較；如果還不確定，就把需求交給客服一起判斷。
 
 <div class="related">
+<a href="/guide/massage-duration/">60／90 分鐘怎麼選</a>
+<a href="/guide/home-vs-shop-massage/">到府 vs 按摩店</a>
+<a href="/guide/tainan-hotel-massage/">飯店到房按摩</a>
 <a href="/guide/first-home-massage/">第一次預約準備清單</a>
 <a href="/services/">服務與價格</a>
 <a href="/tainan-home-massage/">台南到府按摩完整指南</a>

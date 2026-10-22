@@ -1,3 +1,5 @@
+> **V3.0 試用改版**：請先閱讀 [V3-LAUNCH-GUIDE.md](V3-LAUNCH-GUIDE.md)，內含單人營運、LINE預約、上線確認事項。
+
 # Move Time 網站維護版（Jekyll + GitHub Pages）
 
 這一版的目的：**之後新增 SEO 文章時，不再手動改 `/guide/index.html` 和 `sitemap.xml`，也不用整包網站重傳。**

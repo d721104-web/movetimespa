@@ -41,259 +41,1010 @@
 <link rel="alternate" hreflang="zh-TW" href="https://www.movetimespa.com/">
 <!-- Local Business Schema -->
 <!-- FAQ Schema -->
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://www.movetimespa.com/#website", "url": "https://www.movetimespa.com/", "name": "幕府時代 Move Time", "alternateName": "Move Time 台南到府按摩", "inLanguage": "zh-TW", "publisher": {"@id": "https://www.movetimespa.com/#organization"}}, {"@type": "Organization", "@id": "https://www.movetimespa.com/#organization", "name": "大奧國際有限公司", "alternateName": "幕府時代 Move Time", "url": "https://www.movetimespa.com/", "telephone": "0980-383-610", "email": "movetimetw@gmail.com", "address": {"@type": "PostalAddress", "streetAddress": "北安路一段10號", "addressLocality": "北區", "addressRegion": "台南市", "postalCode": "704", "addressCountry": "TW"}, "areaServed": {"@type": "City", "name": "台南市"}, "sameAs": ["https://www.facebook.com/movetimetntw", "https://lin.ee/tXNyqDX"]}, {"@type": "Service", "@id": "https://www.movetimespa.com/#service", "name": "台南到府按摩服務", "serviceType": "到府按摩與放鬆舒緩服務", "provider": {"@id": "https://www.movetimespa.com/#organization"}, "areaServed": {"@type": "City", "name": "台南市"}, "offers": {"@type": "AggregateOffer", "lowPrice": "1580", "highPrice": "4200", "priceCurrency": "TWD", "offerCount": "8", "url": "https://www.movetimespa.com/services/"}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://www.movetimespa.com/#website", "url": "https://www.movetimespa.com/", "name": "幕府時代 Move Time", "alternateName": "Move Time 台南到府按摩", "inLanguage": "zh-TW", "publisher": {"@id": "https://www.movetimespa.com/#organization"}}, {"@type": "Organization", "@id": "https://www.movetimespa.com/#organization", "name": "大奧國際有限公司", "alternateName": "幕府時代 Move Time", "url": "https://www.movetimespa.com/", "telephone": "0980-383-610", "email": "movetimetw@gmail.com", "address": {"@type": "PostalAddress", "streetAddress": "北安路一段10號", "addressLocality": "北區", "addressRegion": "台南市", "postalCode": "704", "addressCountry": "TW"}, "areaServed": {"@type": "City", "name": "台南市"}, "sameAs": ["https://www.facebook.com/movetimetntw", "https://line.me/ti/p/@927psgor"]}, {"@type": "Service", "@id": "https://www.movetimespa.com/#service", "name": "台南到府按摩服務", "serviceType": "到府按摩與放鬆舒緩服務", "provider": {"@id": "https://www.movetimespa.com/#organization"}, "areaServed": {"@type": "City", "name": "台南市"}, "offers": {"@type": "AggregateOffer", "lowPrice": "1580", "highPrice": "4200", "priceCurrency": "TWD", "offerCount": "8", "url": "https://www.movetimespa.com/services/"}}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/v3.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600;700&family=Noto+Sans+TC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F7F3ED;--cream-dark:#EDE5D8;--cream-mid:#F2EBE0;
+  --brown:#6B4C35;--brown-mid:#8B6347;--brown-light:#C4A882;
+  --gold:#B8935A;--gold-light:#D4B483;--gold-pale:#F0E4CC;
+  --text:#2C1F12;--text-mid:#5A4030;--text-soft:#8B7260;
+  --white:#FFFDF9;
+  --sw:rgba(107,76,53,0.13);--sd:rgba(44,31,18,0.18);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:"Noto Sans TC",sans-serif;background:var(--cream);color:var(--text);font-weight:300;line-height:1.8;overflow-x:hidden;}
+
+.cursor{width:8px;height:8px;border-radius:50%;background:var(--gold);position:fixed;pointer-events:none;z-index:9999;transition:transform 0.15s ease;mix-blend-mode:multiply;}
+.cursor-ring{width:36px;height:36px;border:1px solid var(--gold);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transition:all 0.2s ease;opacity:0.6;}
+
+#loader{position:fixed;inset:0;background:var(--text);z-index:9000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.5rem;transition:opacity 0.8s ease,visibility 0.8s ease;}
+#loader.gone{opacity:0;visibility:hidden;}
+.ld-logo{font-family:"Noto Serif TC",serif;font-size:2rem;color:var(--cream);letter-spacing:0.15em;opacity:0;animation:ldIn 0.8s 0.3s ease forwards;}
+.ld-bar{width:200px;height:1px;background:rgba(237,229,216,0.2);overflow:hidden;}
+.ld-prog{height:100%;background:var(--gold);width:0%;animation:ldProg 1.5s 0.5s ease forwards;}
+.ld-txt{font-size:0.72rem;color:rgba(237,229,216,0.4);letter-spacing:0.3em;opacity:0;animation:ldIn 0.5s 0.6s ease forwards;}
+@keyframes ldIn{to{opacity:1;}}
+@keyframes ldProg{to{width:100%;}}
+
+.rv{opacity:0;transform:translateY(40px);transition:opacity 0.85s cubic-bezier(0.22,1,0.36,1),transform 0.85s cubic-bezier(0.22,1,0.36,1);}
+.rl{opacity:0;transform:translateX(-50px);transition:opacity 0.85s cubic-bezier(0.22,1,0.36,1),transform 0.85s cubic-bezier(0.22,1,0.36,1);}
+.rr{opacity:0;transform:translateX(50px);transition:opacity 0.85s cubic-bezier(0.22,1,0.36,1),transform 0.85s cubic-bezier(0.22,1,0.36,1);}
+.rs{opacity:0;transform:scale(0.9);transition:opacity 0.7s ease,transform 0.7s ease;}
+.rv.on,.rl.on,.rr.on,.rs.on{opacity:1;transform:none;}
+[data-d="1"]{transition-delay:0.1s;}[data-d="2"]{transition-delay:0.2s;}
+[data-d="3"]{transition-delay:0.3s;}[data-d="4"]{transition-delay:0.4s;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 6%;display:flex;align-items:center;justify-content:space-between;height:72px;transition:all 0.4s ease;}
+nav.sc{background:rgba(247,243,237,0.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(196,168,130,0.2);}
+.logo{text-decoration:none;display:flex;align-items:center;gap:14px;}
+.logo-icon{width:40px;height:40px;border-radius:50%;background:var(--brown);display:flex;align-items:center;justify-content:center;color:var(--white);font-family:"Noto Serif TC",serif;font-size:0.9rem;font-weight:600;flex-shrink:0;transition:transform 0.3s ease;}
+.logo:hover .logo-icon{transform:rotate(15deg);}
+.logo-text{font-family:"Noto Serif TC",serif;font-size:1rem;font-weight:600;letter-spacing:0.05em;line-height:1.2;transition:color 0.4s;}
+.logo-text span{font-family:"Noto Sans TC",sans-serif;font-weight:300;font-size:0.72rem;display:block;letter-spacing:0.15em;}
+nav:not(.sc) .logo-text{color:var(--white);}
+nav:not(.sc) .logo-text span{color:rgba(255,255,255,0.5);}
+nav:not(.sc) .logo-icon{background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.3);}
+nav.sc .logo-text{color:var(--brown);}
+nav.sc .logo-text span{color:var(--text-soft);}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}
+.nav-links a{text-decoration:none;font-size:0.88rem;transition:color 0.2s;position:relative;}
+nav:not(.sc) .nav-links a{color:rgba(255,255,255,0.8);}
+nav.sc .nav-links a{color:var(--text-mid);}
+.nav-links a:not(.nav-cta)::after{content:"";position:absolute;bottom:-2px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transition:transform 0.3s;transform-origin:left;}
+.nav-links a:not(.nav-cta):hover::after{transform:scaleX(1);}
+.nav-cta{background:var(--gold)!important;color:var(--text)!important;padding:9px 24px;border-radius:2px;font-size:0.85rem!important;font-weight:500!important;}
+.nav-cta:hover{background:var(--brown-light)!important;}
+.hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hbg span{width:22px;height:1.5px;background:var(--brown);display:block;}
+.mm{display:none;position:fixed;top:72px;left:0;right:0;z-index:99;background:var(--cream);border-bottom:1px solid var(--cream-dark);padding:1.5rem 6%;flex-direction:column;gap:1rem;}
+.mm.open{display:flex;}
+.mm a{text-decoration:none;color:var(--text-mid);font-size:1rem;padding:0.4rem 0;border-bottom:1px solid var(--cream-dark);}
+
+#home{min-height:100vh;position:relative;overflow:hidden;display:flex;align-items:center;}
+.hero-bg{position:absolute;inset:0;z-index:0;}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:brightness(0.42) saturate(1.2);}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(44,31,18,0.88) 0%,rgba(44,31,18,0.25) 65%,transparent 100%);}
+.hero-content{position:relative;z-index:2;padding:100px 7% 80px;max-width:680px;}
+.hero-ey{font-size:0.72rem;letter-spacing:0.35em;color:var(--gold-light);text-transform:uppercase;margin-bottom:1.8rem;display:flex;align-items:center;gap:16px;opacity:0;animation:fIn 0.8s 1.8s ease forwards;}
+.hero-ey::before{content:"";width:40px;height:1px;background:var(--gold);display:block;}
+.hero-title{font-family:"Cormorant Garamond",serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:300;line-height:1.1;color:var(--white);margin-bottom:2rem;}
+.hero-title em{font-style:italic;color:var(--gold-light);}
+.line{display:block;overflow:hidden;}
+.line span{display:block;animation:slideUp 1s cubic-bezier(0.22,1,0.36,1) backwards;}
+.line:nth-child(1) span{animation-delay:1.9s;}
+.line:nth-child(2) span{animation-delay:2.05s;}
+.line:nth-child(3) span{animation-delay:2.2s;}
+@keyframes slideUp{from{transform:translateY(110%);}to{transform:translateY(0);}}
+.hero-sub{font-size:0.97rem;color:rgba(237,229,216,0.75);margin-bottom:2.5rem;line-height:2.1;max-width:440px;letter-spacing:0.01em;opacity:0;animation:fIn 0.8s 2.5s ease forwards;}
+.hero-acts{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fIn 0.8s 2.7s ease forwards;}
+@keyframes fIn{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.btn-p{background:var(--gold);color:var(--text);padding:15px 36px;text-decoration:none;font-size:0.9rem;letter-spacing:0.08em;font-weight:500;border-radius:2px;transition:all 0.3s;display:inline-block;position:relative;overflow:hidden;}
+.btn-p::before{content:"";position:absolute;inset:0;background:var(--white);transform:translateX(-101%);transition:transform 0.4s cubic-bezier(0.22,1,0.36,1);}
+.btn-p:hover::before{transform:translateX(0);}
+.btn-p span{position:relative;z-index:1;}
+.btn-s{border:1px solid rgba(255,255,255,0.4);color:var(--white);padding:15px 36px;text-decoration:none;font-size:0.9rem;letter-spacing:0.06em;border-radius:2px;transition:all 0.3s;display:inline-block;}
+.btn-s:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.7);}
+.hero-stats{display:flex;gap:3rem;margin-top:4rem;padding-top:2rem;border-top:1px solid rgba(196,168,130,0.25);opacity:0;animation:fIn 0.8s 2.9s ease forwards;}
+.hs strong{display:block;font-family:"Cormorant Garamond",serif;font-size:2.4rem;font-weight:300;color:var(--gold-light);line-height:1;}
+.hs span{font-size:0.72rem;color:rgba(237,229,216,0.55);letter-spacing:0.1em;margin-top:6px;display:block;}
+.hero-panels{position:absolute;right:5%;bottom:5%;z-index:2;display:flex;gap:12px;align-items:flex-end;opacity:0;animation:fIn 1s 3s ease forwards;}
+.hp{border-radius:4px;overflow:hidden;border:2px solid rgba(255,255,255,0.15);}
+.hp img{object-fit:cover;display:block;filter:brightness(0.85);}
+.hp1{width:140px;height:200px;}
+.hp2{width:110px;height:160px;margin-bottom:20px;}
+.scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fIn 0.8s 3.2s ease forwards;}
+.scroll-hint span{font-size:0.65rem;letter-spacing:0.3em;color:rgba(255,255,255,0.4);text-transform:uppercase;}
+.scroll-mouse{width:22px;height:34px;border:1px solid rgba(255,255,255,0.3);border-radius:12px;display:flex;justify-content:center;padding-top:6px;}
+.scroll-wheel{width:3px;height:7px;background:var(--gold);border-radius:2px;animation:scrollWheel 1.8s infinite;}
+@keyframes scrollWheel{0%{transform:translateY(0);opacity:1;}100%{transform:translateY(10px);opacity:0;}}
+
+.trust-bar{background:var(--brown);color:var(--gold-pale);padding:20px 6%;display:flex;gap:0;align-items:center;justify-content:center;flex-wrap:wrap;font-size:0.78rem;letter-spacing:0.1em;}
+.ti{display:flex;align-items:center;gap:10px;padding:0 2rem;border-right:1px solid rgba(196,168,130,0.25);}
+.ti::before{content:"✦";color:var(--gold-light);font-size:0.6rem;}
+
+section{padding:104px 6%;}
+.sh{text-align:center;margin-bottom:4.5rem;}
+.sey{font-size:0.7rem;letter-spacing:0.35em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;justify-content:center;gap:14px;}
+.sey::before,.sey::after{content:"";width:30px;height:1px;background:var(--gold);display:block;}
+.stitle{font-family:"Cormorant Garamond",serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;color:var(--text);line-height:1.3;letter-spacing:0.02em;}
+.ssub{font-size:0.88rem;color:var(--text-soft);margin-top:0.8rem;line-height:1.8;}
+.mw{max-width:1120px;margin:0 auto;}
+
+#features{background:var(--white);padding:80px 6%;}
+.feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:1000px;margin:0 auto;}
+.fc{padding:3rem 2rem;text-align:center;border-right:1px solid var(--cream-dark);position:relative;overflow:hidden;transition:background 0.3s;}
+.fc::before{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform 0.4s ease;}
+.fc:hover::before{transform:scaleX(1);}
+.fc:last-child{border-right:none;}
+.fc:hover{background:var(--cream);}
+.fi{width:72px;height:72px;border-radius:50%;border:1px solid var(--cream-dark);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:1.8rem;transition:all 0.3s;}
+.fc:hover .fi{border-color:var(--gold);background:var(--gold-pale);transform:scale(1.1);}
+.fc h3{font-family:"Cormorant Garamond",serif;font-size:1.3rem;font-weight:400;color:var(--brown);margin-bottom:0.7rem;}
+.fc p{font-size:0.82rem;color:var(--text-soft);line-height:1.8;}
+
+#services{background:var(--cream);}
+.svc-intro{display:grid;grid-template-columns:1fr 1fr;gap:6rem;max-width:1100px;margin:0 auto 5rem;align-items:center;}
+.svc-intro-img{position:relative;height:520px;border-radius:4px;overflow:hidden;}
+.svc-intro-img img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+.svc-intro-img::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,transparent 60%,rgba(44,31,18,0.5) 100%);}
+.svc-badge-float{position:absolute;bottom:2rem;left:2rem;z-index:2;background:var(--gold);color:var(--text);padding:12px 20px;font-family:"Cormorant Garamond",serif;font-size:1.1rem;}
+.svc-intro-txt .sey{justify-content:flex-start;}
+.svc-intro-txt .sey::before{display:none;}
+.svc-intro-txt h2{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:300;line-height:1.3;margin-bottom:1.5rem;}
+.svc-intro-txt p{font-size:0.9rem;color:var(--text-mid);line-height:2;margin-bottom:1.5rem;}
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;max-width:1120px;margin:0 auto;}
+.sc-card{background:var(--white);border:1px solid var(--cream-dark);overflow:hidden;transition:transform 0.4s cubic-bezier(0.22,1,0.36,1),box-shadow 0.4s ease;}
+.sc-card:hover{transform:translateY(-8px);box-shadow:0 24px 48px rgba(44,31,18,0.12);}
+.sc-img{height:240px;overflow:hidden;position:relative;}
+.sc-img img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform 0.7s cubic-bezier(0.22,1,0.36,1),filter 0.4s ease;}
+.sc-card:hover .sc-img img{transform:scale(1.08);filter:brightness(0.92);}
+.sc-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(44,31,18,0.55) 0%,transparent 60%);}
+.sc-badge{position:absolute;top:1rem;left:1rem;background:var(--gold);color:var(--text);font-size:0.68rem;padding:5px 14px;letter-spacing:0.1em;font-weight:500;}
+.sc-body{padding:1.8rem 1.8rem 1.5rem;}
+.sc-card h3{font-family:"Cormorant Garamond",serif;font-size:1.35rem;font-weight:400;color:var(--text);margin-bottom:0.5rem;}
+.sc-card p{font-size:0.82rem;color:var(--text-soft);line-height:1.8;margin-bottom:1.3rem;}
+.sc-foot{display:flex;justify-content:space-between;align-items:baseline;padding-top:1rem;border-top:1px solid var(--cream-dark);}
+.sc-cta{display:block;width:100%;text-align:center;background:var(--brown);color:var(--white);padding:12px;font-size:0.85rem;letter-spacing:0.1em;text-decoration:none;margin-top:1rem;border-radius:2px;opacity:1;transform:translateY(0);transition:background 0.25s ease;}
+.sc-cta:hover{background:var(--text);}
+.sc-price{font-family:"Cormorant Garamond",serif;font-size:1.6rem;font-weight:400;color:var(--brown);}
+.sc-dur{font-size:0.78rem;color:var(--text-soft);}
+
+.pgrid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:280px 280px;gap:4px;overflow:hidden;}
+.pg{overflow:hidden;position:relative;}
+.pg img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform 0.6s ease,filter 0.4s;}
+.pg:hover img{transform:scale(1.07);filter:brightness(0.75);}
+.pg:first-child{grid-row:span 2;}
+.pg-lbl{position:absolute;inset:0;display:flex;align-items:flex-end;padding:1.5rem;opacity:0;transition:opacity 0.3s;background:linear-gradient(to top,rgba(44,31,18,0.6) 0%,transparent 60%);}
+.pg:hover .pg-lbl{opacity:1;}
+.pg-lbl span{font-family:"Cormorant Garamond",serif;font-size:1rem;color:var(--white);letter-spacing:0.1em;}
+
+#team{background:var(--white);}
+.team-layout{display:grid;grid-template-columns:1fr 1fr;gap:3rem;max-width:1000px;margin:0 auto;}
+.tc{position:relative;overflow:hidden;border-radius:4px;}
+.tc-img-wrap{position:relative;overflow:hidden;height:460px;}
+.tc-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform 0.6s ease;}
+.tc:hover .tc-img-wrap img{transform:scale(1.05);}
+.tc-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(44,31,18,0.92) 0%,rgba(44,31,18,0.15) 60%,transparent 100%);}
+.tc-body{position:absolute;bottom:0;left:0;right:0;padding:2.5rem;}
+.tc-name{font-family:"Cormorant Garamond",serif;font-size:2rem;font-weight:300;color:var(--white);margin-bottom:0.2rem;}
+.tc-role{font-size:0.7rem;color:var(--gold-light);letter-spacing:0.2em;margin-bottom:1rem;}
+.tc-desc{font-size:0.83rem;color:rgba(237,229,216,0.8);line-height:1.8;max-height:0;overflow:hidden;transition:max-height 0.5s ease,opacity 0.4s ease;opacity:0;}
+.tc:hover .tc-desc{max-height:200px;opacity:1;}
+.tc-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:0.8rem;}
+.tc-tag{font-size:0.68rem;border:1px solid rgba(196,168,130,0.4);color:var(--gold-light);padding:3px 10px;border-radius:1px;letter-spacing:0.05em;}
+
+#testimonials{background:var(--text);position:relative;overflow:hidden;}
+.tm-bg-img{position:absolute;inset:0;}
+.tm-bg-img img{width:100%;height:100%;object-fit:cover;opacity:0.1;filter:grayscale(40%);}
+.tm-bg-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(44,31,18,0.92) 0%,rgba(44,31,18,0.75) 100%);}
+#testimonials .stitle{color:var(--cream);}
+#testimonials .sey{color:var(--gold-light);}
+#testimonials .sey::before,#testimonials .sey::after{background:var(--gold-light);}
+.tm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;max-width:1040px;margin:0 auto;position:relative;z-index:1;}
+.tm-card{background:rgba(255,253,249,0.05);border:1px solid rgba(196,168,130,0.18);padding:2.2rem;transition:all 0.4s ease;position:relative;overflow:hidden;}
+.tm-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--gold),transparent);transform:scaleX(0);transition:transform 0.5s ease;}
+.tm-card:hover::before{transform:scaleX(1);}
+.tm-card:hover{background:rgba(255,253,249,0.09);transform:translateY(-4px);}
+.tm-quote{font-family:"Cormorant Garamond",serif;font-size:5rem;color:var(--gold);line-height:0.5;margin-bottom:1.5rem;opacity:0.35;}
+.tm-stars{color:var(--gold);font-size:0.85rem;letter-spacing:4px;margin-bottom:1.2rem;}
+.tm-card p{font-size:0.88rem;color:rgba(237,229,216,0.78);line-height:2;margin-bottom:1.8rem;font-style:italic;}
+.tm-author{display:flex;align-items:center;gap:14px;}
+.tm-av{width:48px;height:48px;border-radius:50%;overflow:hidden;border:2px solid rgba(184,147,90,0.35);flex-shrink:0;}
+.tm-av img{width:100%;height:100%;object-fit:cover;}
+.tm-info strong{display:block;font-size:0.9rem;color:var(--cream);font-weight:400;}
+.tm-info span{font-size:0.75rem;color:rgba(196,168,130,0.6);}
+
+#process{background:var(--cream-mid);}
+.proc-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:960px;margin:0 auto;position:relative;}
+.proc-line{position:absolute;top:40px;left:calc(12.5% + 20px);right:calc(12.5% + 20px);height:1px;background:var(--brown-light);opacity:0.3;z-index:0;}
+.ps{padding:0 1.5rem;text-align:center;position:relative;z-index:1;}
+.ps-num{width:80px;height:80px;border-radius:50%;background:var(--white);border:1px solid var(--cream-dark);display:flex;align-items:center;justify-content:center;margin:0 auto 1.8rem;transition:all 0.4s ease;position:relative;}
+.ps-num::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1px dashed var(--brown-light);opacity:0;transition:opacity 0.3s,transform 0.4s;transform:scale(0.8);}
+.ps:hover .ps-num{background:var(--brown);border-color:var(--brown);}
+.ps:hover .ps-num::after{opacity:0.4;transform:scale(1);}
+.ps-n{font-family:"Cormorant Garamond",serif;font-size:1.3rem;color:var(--brown);transition:color 0.3s;}
+.ps:hover .ps-n{color:var(--white);}
+.ps h3{font-size:0.95rem;color:var(--text);margin-bottom:0.5rem;font-weight:400;}
+.ps p{font-size:0.8rem;color:var(--text-soft);line-height:1.8;}
+
+#faq{background:var(--cream);}
+.faq-in{display:grid;grid-template-columns:1fr 2fr;gap:6rem;max-width:1000px;margin:0 auto;align-items:start;}
+.faq-side h2{font-family:"Cormorant Garamond",serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:300;color:var(--text);line-height:1.3;margin-bottom:1.2rem;}
+.faq-side p{font-size:0.85rem;color:var(--text-soft);line-height:1.9;margin-bottom:2rem;}
+.faq-cl{display:inline-flex;align-items:center;gap:10px;font-size:0.85rem;color:var(--brown);text-decoration:none;border-bottom:1px solid var(--brown-light);padding-bottom:3px;transition:all 0.2s;}
+.faq-cl:hover{border-color:var(--brown);gap:16px;}
+.faq-list{display:flex;flex-direction:column;gap:3px;}
+.faq-item{background:var(--white);border:1px solid var(--cream-dark);overflow:hidden;}
+.faq-q{padding:1.3rem 1.5rem;font-size:0.9rem;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;transition:background 0.2s;gap:1rem;font-weight:400;}
+.faq-q:hover{background:var(--cream);}
+.faq-arr{width:30px;height:30px;border-radius:50%;border:1px solid var(--cream-dark);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:0.75rem;flex-shrink:0;transition:all 0.35s;}
+.faq-q.open .faq-arr{transform:rotate(180deg);background:var(--brown);border-color:var(--brown);color:var(--white);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s;font-size:0.85rem;color:var(--text-mid);line-height:2;padding:0 1.5rem;}
+.faq-a.open{max-height:400px;padding:0 1.5rem 1.5rem;}
+
+#contact{background:var(--text);color:var(--cream);}
+#contact .stitle{color:var(--cream);}
+#contact .sey{color:var(--gold-light);}
+#contact .sey::before,#contact .sey::after{background:var(--gold-light);}
+.ct-wrap{display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;max-width:980px;margin:0 auto;}
+.ct-info-img{height:200px;border-radius:4px;overflow:hidden;margin-bottom:2rem;}
+.ct-info-img img{width:100%;height:100%;object-fit:cover;filter:brightness(0.7) saturate(1.1);}
+.ct-info h3{font-family:"Cormorant Garamond",serif;font-size:1.2rem;font-weight:300;color:var(--gold-light);margin-bottom:2rem;letter-spacing:0.05em;}
+.ct-row{display:flex;gap:16px;margin-bottom:1.5rem;align-items:flex-start;}
+.c-ico{width:42px;height:42px;border-radius:50%;background:rgba(184,147,90,0.12);border:1px solid rgba(184,147,90,0.2);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.ct-row p{font-size:0.85rem;color:rgba(237,229,216,0.7);line-height:1.8;}
+.ct-row strong{color:var(--cream);display:block;font-size:0.9rem;margin-bottom:2px;font-weight:400;}
+.pol-box{background:rgba(184,147,90,0.08);border-left:2px solid var(--gold);padding:14px 18px;margin-top:2rem;font-size:0.78rem;color:rgba(237,229,216,0.55);line-height:1.8;}
+.fb h3{font-family:"Cormorant Garamond",serif;font-size:1.2rem;font-weight:300;color:var(--gold-light);margin-bottom:2rem;letter-spacing:0.05em;}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.fg{margin-bottom:1.1rem;}
+.fg label{display:block;font-size:0.72rem;color:rgba(237,229,216,0.5);margin-bottom:7px;letter-spacing:0.08em;}
+.fg input,.fg select,.fg textarea{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(237,229,216,0.12);color:var(--cream);padding:11px 16px;font-size:0.85rem;font-family:"Noto Sans TC",sans-serif;border-radius:2px;outline:none;transition:all 0.25s;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold);background:rgba(184,147,90,0.07);}
+.fg select option{background:#2C1F12;color:var(--cream);}
+.fg textarea{resize:vertical;min-height:80px;}
+.fn2{font-size:0.72rem;color:rgba(237,229,216,0.35);margin-bottom:1.2rem;line-height:1.8;}
+.btn-sub{width:100%;background:var(--gold);color:var(--text);border:none;padding:15px;font-size:0.9rem;font-family:"Noto Sans TC",sans-serif;font-weight:500;letter-spacing:0.1em;cursor:pointer;border-radius:2px;transition:all 0.3s;position:relative;overflow:hidden;}
+.btn-sub::before{content:"";position:absolute;inset:0;background:var(--white);transform:translateX(-101%);transition:transform 0.4s cubic-bezier(0.22,1,0.36,1);}
+.btn-sub:hover::before{transform:translateX(0);}
+.btn-sub span{position:relative;z-index:1;}
+.fsuc{display:none;text-align:center;padding:3rem 0;}
+.fsuc .ck{font-size:3rem;margin-bottom:1rem;}
+.fsuc h4{font-family:"Cormorant Garamond",serif;font-size:1.5rem;color:var(--gold-light);margin-bottom:0.5rem;font-weight:300;}
+.fsuc p{font-size:0.85rem;color:rgba(237,229,216,0.65);}
+
+.line-cta{background:var(--cream-dark);padding:80px 6%;text-align:center;position:relative;overflow:hidden;}
+.line-cta::before{content:"幕府時代";position:absolute;font-family:"Cormorant Garamond",serif;font-size:12rem;color:rgba(107,76,53,0.05);top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;}
+.lc-in{max-width:560px;margin:0 auto;position:relative;}
+.lc-in h2{font-family:"Cormorant Garamond",serif;font-size:2.2rem;font-weight:300;color:var(--text);margin-bottom:0.8rem;}
+.lc-in p{font-size:0.88rem;color:var(--text-soft);margin-bottom:2.5rem;line-height:1.8;}
+.btn-line{display:inline-flex;align-items:center;gap:14px;background:#06C755;color:#fff;padding:16px 40px;text-decoration:none;font-size:0.95rem;border-radius:4px;font-weight:500;letter-spacing:0.06em;box-shadow:0 6px 24px rgba(6,199,85,0.3);transition:all 0.3s;}
+.btn-line:hover{background:#05b04c;transform:translateY(-3px);box-shadow:0 12px 32px rgba(6,199,85,0.4);}
+
+footer{background:#160D06;color:rgba(237,229,216,0.4);padding:3rem 6%;}
+.ft-in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;max-width:1100px;margin:0 auto;}
+.ft-brand{font-family:"Cormorant Garamond",serif;color:var(--cream);font-size:1.1rem;margin-bottom:4px;font-weight:300;}
+.ft-brand span{font-family:"Noto Sans TC",sans-serif;font-size:0.7rem;color:rgba(237,229,216,0.3);display:block;letter-spacing:0.12em;margin-top:3px;}
+.ft-links{display:flex;gap:2rem;}
+.ft-links a{font-size:0.78rem;color:rgba(237,229,216,0.35);text-decoration:none;transition:color 0.2s;}
+.ft-links a:hover{color:var(--gold-light);}
+
+@media(max-width:1000px){
+  .svc-intro{grid-template-columns:1fr;gap:2.5rem;}
+  .svc-intro-img{height:360px;}
+  .pgrid{grid-template-columns:1fr 1fr;grid-template-rows:auto;}
+  .pg:first-child{grid-row:span 1;height:240px;}
+  .pg{height:240px;}
+}
+@media(max-width:900px){
+  .hero-panels{display:none;}
+  .feat-grid{grid-template-columns:1fr 1fr;}
+  .fc{border-right:1px solid var(--cream-dark);border-bottom:1px solid var(--cream-dark);}
+  .fc:nth-child(2n){border-right:none;}
+  .proc-wrap{grid-template-columns:1fr 1fr;row-gap:2.5rem;}
+  .proc-line{display:none;}
+  .faq-in{grid-template-columns:1fr;}
+  .ct-wrap{grid-template-columns:1fr;gap:2.5rem;}
+  .team-layout{grid-template-columns:1fr;max-width:520px;}
+}
+@media(max-width:600px){
+  .nav-links{display:none;}
+  .hbg{display:flex;}
+  section{padding:64px 4.5%;}
+  .hero-stats{gap:1.5rem;}
+  .hs strong{font-size:1.8rem;}
+  .feat-grid{grid-template-columns:1fr;}
+  .fc{border-right:none;}
+  .pgrid{grid-template-columns:1fr 1fr;grid-template-rows:auto;}
+  .pg:first-child{grid-row:span 1;height:180px;}
+  .pg{height:180px;}
+  .pgrid .pg:nth-child(n+4){display:none;}
+  .f2{grid-template-columns:1fr;}
+  .ft-links{flex-direction:column;gap:0.6rem;}
+  .ft-in{flex-direction:column;text-align:center;}
+  .proc-wrap{grid-template-columns:1fr;}
+  .hero-title{font-size:2.8rem;}
+}
+
+/* ===== 樂齡孝親區塊 & 在地橫幅 RWD ===== */
+@media(max-width:860px){
+  .rwd-two-col {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+  }
+}
+
+/* ===== 圖片版面優化 ===== */
+
+/* 服務卡片圖片：固定比例，人臉不被截 */
+.sc-img {
+  height: 260px;
+  overflow: hidden;
+  position: relative;
+  background: var(--cream-dark);  /* 圖片載入前的佔位色 */
+}
+.sc-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;  /* 往上偏，保留臉部 */
+  transition: transform 0.7s cubic-bezier(0.22,1,0.36,1), filter 0.4s ease;
+}
+.sc-card:hover .sc-img img {
+  transform: scale(1.06);
+  filter: brightness(0.85);
+}
+
+/* pgrid 圖片：統一比例防跳版 */
+.pgrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 280px 280px;
+  gap: 4px;
+  overflow: hidden;
+  background: var(--cream-dark);
+}
+.pg img {
+  object-position: center 25%;
+}
+
+/* 團隊照片容器：加佔位色 */
+.tc-img-wrap {
+  background: var(--cream-dark);
+}
+
+/* hero 背景圖：補佔位色 */
+.hero-bg {
+  background: #1a0d06;
+}
+
+/* 圖片共用：平滑載入淡入 */
+img {
+  color: transparent;        /* 破圖時不顯示 alt 文字樣式 */
+}
+.sc-img img,
+.pg img,
+.tc-img-wrap img,
+.ct-info-img img {
+  opacity: 0;
+  animation: imgFadeIn 0.5s ease forwards;
+}
+@keyframes imgFadeIn {
+  from { opacity: 0; transform: scale(1.02); }
+  to   { opacity: 1; transform: scale(1); }
+}
+/* 但 hover 時 sc-card 的圖不要重複動 */
+.sc-card:hover .sc-img img {
+  animation: none;
+}
+
+/* 聯絡區圖片比例固定 */
+.ct-info-img {
+  height: 220px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--cream-dark);
+}
+.ct-info-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+/* RWD：手機版服務卡片圖高度縮小 */
+@media(max-width:600px) {
+  .sc-img { height: 200px; }
+  .pgrid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+  .pg { height: 180px; }
+  .pg:first-child { grid-row: span 1; height: 180px; }
+}
+
+</style>
+
+<!-- Service Schema - 各按摩項目 -->
+
+<!-- HowTo Schema - 預約流程 -->
+
+<!-- BreadcrumbList Schema -->
+
+<!-- SpeakableSpecification Schema - 給語音搜尋 / AI 引用 -->
+
 </head>
 <body>
-<a class="skip" href="#main">跳到主要內容</a>
 
-<header class="site-head" data-ga-location="header">
-  <div class="wrap">
-    <a class="brand" href="/" aria-label="幕府時代 Move Time 首頁">
-      <span class="brand-mark" aria-hidden="true">幕</span>
-      <span class="brand-name">幕府時代<small>Move Time 台南到府按摩</small></span>
-    </a>
-    <nav class="site-nav" aria-label="主要導覽">
-      <a href="/services/">服務與價格</a>
-      <a href="/elderly-relaxation/">樂齡舒緩</a>
-      <a href="/tainan-home-massage/">到府指南</a>
-      <a href="/guide/">按摩知識庫</a>
-      <a href="#faq">常見問題</a>
-    </nav>
-    <a class="btn btn-line btn-sm" href="https://lin.ee/tXNyqDX" target="_blank" rel="noopener">LINE 詢問檔期</a>
+<div id="loader">
+  <div class="ld-logo">幕府時代</div>
+  <div class="ld-bar"><div class="ld-prog"></div></div>
+  <div class="ld-txt">MOVE TIME · 台南到府按摩</div>
+</div>
+
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="curR"></div>
+
+<nav id="mn">
+  <a href="#home" class="logo">
+    <div class="logo-icon">幕</div>
+    <div class="logo-text">幕府時代 <span>MOVE TIME</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/services/">服務與價格</a></li>
+    <li><a href="/tainan-home-massage/">到府指南</a></li>
+    <li><a href="/guide/">按摩知識庫</a></li>
+    <li><a href="/massager/">按摩師招募</a></li>
+    <li><a href="/elderly-relaxation/">樂齡舒緩</a></li>
+    <li><a href="#contact" class="nav-cta">立即預約</a></li>
+  </ul>
+  <button class="hbg" onclick="toggleMenu()" aria-label="選單">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mm" id="mm">
+  <a href="/services/" onclick="closeMenu()">服務與價格</a>
+  <a href="/tainan-home-massage/" onclick="closeMenu()">到府指南</a>
+  <a href="/guide/" onclick="closeMenu()">按摩知識庫</a>
+  <a href="/massager/" onclick="closeMenu()">按摩師招募</a>
+  <a href="/elderly-relaxation/" onclick="closeMenu()">樂齡舒緩</a>
+  <a href="#faq" onclick="closeMenu()">常見問題</a>
+  <a href="#contact" onclick="closeMenu()">立即預約</a>
+  <a href="https://line.me/ti/p/@927psgor" target="_blank" rel="noopener" style="background:#06C755;color:#fff;text-align:center;border-radius:2px;font-weight:500;margin-top:0.3rem;display:flex;align-items:center;justify-content:center;gap:8px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.952 11.3c0-4.418-4.433-8.02-9.879-8.02C4.63 3.28.2 6.882.2 11.3c0 3.967 3.517 7.29 8.266 7.922.322.069.76.214.872.49.1.25.065.64.032.894l-.14.844c-.043.25-.198.979.857.534 1.056-.446 5.693-3.354 7.766-5.743C19.289 14.55 19.952 13 19.952 11.3z"/></svg> LINE 加入好友 @927psgor</a>
+</div>
+
+<section id="home">
+  <div class="hero-bg">
+    <img width="1600" height="900" src="https://images.pexels.com/photos/6628530/pexels-photo-6628530.jpeg?auto=compress&cs=tinysrgb&w=1600&q=80" alt="台南到府按摩師專業手法" loading="eager" fetchpriority="high" decoding="async">
   </div>
-</header>
-
-<main id="main">
-
-<section class="hero" data-ga-location="hero">
-  <div class="wrap">
-    <div class="noren" aria-hidden="true">
-      <p class="noren-text"><span>在家，</span><span>好好放鬆</span></p>
-      <div class="noren-seal">幕府<br>時代</div>
+  <div class="hero-content">
+    <p class="hero-ey">台南到府按摩 · 專業到府服務</p>
+    <h1 class="hero-title">
+      <span class="line"><span>在家享受</span></span>
+      <span class="line"><span><em>質感放鬆</em></span></span>
+      <span class="line"><span>無需出門</span></span>
+    </h1>
+    <p class="hero-sub">幕府時代 Move Time，融合日式職人精神與專業按摩手法，讓按摩師帶著溫度與技藝直接到府，在您最熟悉的空間，給您一段完整舒適的放鬆時光。</p>
+    <div class="hero-acts">
+      <a href="#contact" class="btn-p"><span>立即預約諮詢</span></a>
+      <a href="https://line.me/ti/p/@927psgor" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:#06C755;color:#fff;padding:15px 30px;border-radius:2px;font-size:0.88rem;letter-spacing:0.06em;font-weight:500;text-decoration:none;transition:all 0.3s;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.952 11.3c0-4.418-4.433-8.02-9.879-8.02C4.63 3.28.2 6.882.2 11.3c0 3.967 3.517 7.29 8.266 7.922.322.069.76.214.872.49.1.25.065.64.032.894l-.14.844c-.043.25-.198.979.857.534 1.056-.446 5.693-3.354 7.766-5.743C19.289 14.55 19.952 13 19.952 11.3z"/></svg> LINE 加我好友</a>
     </div>
-    <div class="hero-body">
-      <h1>台南到府按摩<br>由阿凱師傅親自到府</h1>
-      <p class="lead">不用出門、不用等候。告訴我們日期、區域和想放鬆的地方，客服在 LINE 確認阿凱師傅的檔期後，就約好了。每次單獨預約，不綁約。</p>
-      <div class="btn-row">
-        <a class="btn btn-line" href="https://lin.ee/tXNyqDX" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.952 11.3c0-4.418-4.433-8.02-9.879-8.02C4.63 3.28.2 6.882.2 11.3c0 3.967 3.517 7.29 8.266 7.922.322.069.76.214.872.49.1.25.065.64.032.894l-.14.844c-.043.25-.198.979.857.534 1.056-.446 5.693-3.354 7.766-5.743C19.289 14.55 19.952 13 19.952 11.3z"/></svg>LINE 詢問可預約時段</a>
-        <a class="btn btn-ghost" href="#menu">看服務與價格</a>
-      </div>
-      <ul class="hero-facts">
-        <li><strong>10:00–23:00</strong><span>每日服務時段</span></li>
-        <li><strong>台南六區</strong><span>主要到府範圍</span></li>
-        <li><strong>現場付款</strong><span>服務後現金支付</span></li>
-      </ul>
+    <div class="hero-stats">
+      <div class="hs"><strong>10+</strong><span>年專業經驗</span></div>
+      <div class="hs"><strong>全區</strong><span>台南市到府</span></div>
+      <div class="hs"><strong>10–23:00</strong><span>每日服務</span></div>
+        <div class="hs"><strong>最熱門</strong><span>樂齡孝親方案</span></div>
+    </div>
+  </div>
+  <div class="hero-panels">
+    <div class="hp hp1"><img src="https://images.pexels.com/photos/6628640/pexels-photo-6628640.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南精油按摩到府服務" loading="lazy" decoding="async" width="140" height="200" style="width:140px;height:200px;"></div>
+    <div class="hp hp2"><img src="https://images.pexels.com/photos/9146364/pexels-photo-9146364.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="幕府時代台南到府按摩服務" loading="lazy" decoding="async" width="110" height="160" style="width:110px;height:160px;"></div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+    <span>向下捲動</span>
+  </div>
+</section>
+
+<div class="trust-bar">
+  <div class="ti">零容忍性騷擾政策</div>
+  <div class="ti">嚴格背景審查</div>
+  <div class="ti">可指定師傅性別</div>
+  <div class="ti">現場現金付款</div>
+  <div class="ti">台南主要市區到府</div>
+</div>
+
+<section id="features">
+  <div class="feat-grid">
+    <div class="fc rv" data-d="1"><div class="fi">🎯</div><h3>專業認證</h3><p>所有按摩師皆經過背景審查與服務流程訓練，並定期進修，維持穩定、安心的服務品質。</p></div>
+    <div class="fc rv" data-d="2"><div class="fi">🏡</div><h3>到府服務</h3><p>無需外出，按摩師直接到府，省去交通時間，放鬆後可直接休息。</p></div>
+    <div class="fc rv" data-d="3"><div class="fi">🔒</div><h3>安全保障</h3><p>零容忍性騷擾政策，可指定師傅性別，全程維護您的隱私安全。</p></div>
+    <div class="fc rv" data-d="4"><div class="fi">✨</div><h3>貼心安排</h3><p>依照您的當日感受、可接受力道與放鬆需求，安排合適的服務節奏。</p></div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="svc-intro">
+    <div class="svc-intro-img rl">
+      <img width="1600" height="900" src="https://images.pexels.com/photos/6628530/pexels-photo-6628530.jpeg?auto=compress&cs=tinysrgb&w=1600&q=80" alt="台南到府按摩師專業手法" loading="lazy" decoding="async">
+      <div class="svc-badge-float">職人精神，用心服務</div>
+    </div>
+    <div class="svc-intro-txt rr">
+      <p class="sey">關於我們</p>
+      <h2>每一次到府<br>都是一場放鬆體驗</h2>
+      <p>我們相信，真正的放鬆應該在最舒適的空間發生。幕府時代的每位按摩師都擁有深厚的技術底蘊，融合東方放鬆概念與西式舒緩手法，為您依需求安排專屬放鬆方案。</p>
+      <p>從預約到離開，每個細節都經過精心安排，讓您感受到職人精神帶來的不同。</p>
+      <a href="#contact" class="btn-p" style="margin-top:1rem;display:inline-block;"><span>預約體驗</span></a>
+    </div>
+  </div>
+  <div class="sh">
+    <p class="sey rv">服務項目</p>
+    <h2 class="stitle rv" data-d="1">專業服務，依您需求貼心安排</h2>
+    <p class="ssub rv" data-d="2">所有服務均可到府 · 東區、北區、中西區、南區、安平、安南為主要服務區域</p>
+  </div>
+  <div class="svc-grid mw">
+    <div class="sc-card rs" data-d="1">
+      <div class="sc-img"><img width="800" height="533" src="https://images.pexels.com/photos/9146364/pexels-photo-9146364.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="幕府時代台南到府按摩服務" loading="lazy" decoding="async"><div class="sc-ov"></div><div class="sc-badge">最受歡迎</div></div>
+      <div class="sc-body"><h3>全身按摩</h3><p>從頭到腳的全面放鬆，舒緩日常累積的疲憊感，讓身體感受輕盈舒適。</p><div class="sc-foot"><span class="sc-price">NT$2,800</span><span class="sc-dur">90 分鐘</span></div><a href="#contact" class="sc-cta">立即預約 全身按摩</a></div>
+    </div>
+    <div class="sc-card rs" data-d="2">
+      <div class="sc-img"><img width="800" height="533" src="https://images.pexels.com/photos/6628640/pexels-photo-6628640.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南精油按摩到府服務" loading="lazy" decoding="async"><div class="sc-ov"></div><div class="sc-badge">熱門推薦</div></div>
+      <div class="sc-body"><h3>精油按摩</h3><p>天然植物精油結合香氛放鬆手法，讓身心感受舒適、輕盈與放鬆，為休息前保留愉悅感受。</p><div class="sc-foot"><span class="sc-price">NT$3,200</span><span class="sc-dur">90 分鐘</span></div><a href="#contact" class="sc-cta">立即預約 精油按摩</a></div>
+    </div>
+    <div class="sc-card rs" data-d="3">
+      <div class="sc-img"><img width="800" height="533" src="https://images.pexels.com/photos/6628659/pexels-photo-6628659.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南肩頸舒緩到府按摩" loading="lazy" decoding="async"><div class="sc-ov"></div></div>
+      <div class="sc-body"><h3>肩頸舒緩</h3><p>適合久坐工作後的肩頸放鬆，透過溫和手法舒緩日常累積的緊繃感，讓頸肩在服務後感覺更自在。</p><div class="sc-foot"><span class="sc-price">NT$1,800</span><span class="sc-dur">60 分鐘</span></div><a href="#contact" class="sc-cta">立即預約 肩頸舒緩</a></div>
+    </div>
+    <div class="sc-card rs" data-d="1">
+      <div class="sc-img"><img width="800" height="533" src="https://images.pexels.com/photos/6628700/pexels-photo-6628700.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南腳底按摩到府服務" loading="lazy" decoding="async"><div class="sc-ov"></div></div>
+      <div class="sc-body"><h3>腳底按摩</h3><p>舒緩久站後的沉重感，讓雙腳與全身感受輕鬆舒適。</p><div class="sc-foot"><span class="sc-price">NT$1,800</span><span class="sc-dur">60 分鐘</span></div><a href="#contact" class="sc-cta">立即預約 腳底按摩</a></div>
+    </div>
+    <div class="sc-card rs" data-d="2">
+      <div class="sc-img"><img width="800" height="533" src="https://images.pexels.com/photos/6663371/pexels-photo-6663371.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南臉部護理到府服務" loading="lazy" decoding="async"><div class="sc-ov"></div></div>
+      <div class="sc-body"><h3>臉部香氛保濕護理</h3><p>透過溫和香氛與保濕護理，為肌膚帶來舒適滋潤體驗，服務後感受臉部輕盈與愉悅。</p><div class="sc-foot"><span class="sc-price">NT$1,580</span><span class="sc-dur">60 分鐘</span></div><a href="#contact" class="sc-cta">立即預約 臉部香氛保濕護理</a></div>
+    </div>
+    <div class="sc-card rs" data-d="3">
+      <div class="sc-img"><img width="800" height="533" src="https://images.pexels.com/photos/7781529/pexels-photo-7781529.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南新手爸媽按摩套餐" loading="lazy" decoding="async"><div class="sc-ov"></div><div class="sc-badge">特別方案</div></div>
+      <div class="sc-body"><h3>新手爸媽套餐</h3><p>專為育兒生活中的爸媽設計，在緊湊的育兒日常裡找回身體的舒適感與自我放鬆時光。</p><div class="sc-foot"><span class="sc-price">NT$4,200</span><span class="sc-dur">120 分鐘</span></div><a href="#contact" class="sc-cta">立即預約 新手爸媽套餐</a></div>
+    </div>
+    <div class="sc-card rs" data-d="1">
+      <div class="sc-img"><img width="800" height="533" src="https://images.pexels.com/photos/4473903/pexels-photo-4473903.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南全職爸媽放鬆按摩" loading="lazy" decoding="async"><div class="sc-ov"></div></div>
+      <div class="sc-body"><h3>全職爸媽套餐</h3><p>專屬陪玩服務陪伴小孩，讓爸比媽咪享有難得的獨處放鬆時光。</p><div class="sc-foot"><span class="sc-price">NT$3,200</span><span class="sc-dur">90 分鐘</span></div><a href="#contact" class="sc-cta">立即預約 全職爸媽套餐</a></div>
+    </div>
+    <div class="sc-card rs" data-d="2">
+      <div class="sc-img"><img width="800" height="533" src="https://images.pexels.com/photos/7364122/pexels-photo-7364122.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南樂齡孝親舒緩按摩" loading="lazy" decoding="async"><div class="sc-ov"></div><div class="sc-badge" style="background:var(--brown);">最多人預約</div></div>
+      <div class="sc-body"><h3>樂齡孝親舒緩套餐</h3><p>專為長輩日常放鬆設計，透過溫和、細緻的服務節奏，讓長輩在熟悉的家中安心享受放鬆時光。長輩不需出門，師傅直接到府服務。</p><div class="sc-foot"><span class="sc-price">NT$1,600</span><span class="sc-dur">60 分鐘</span></div><a href="#contact" class="sc-cta">立即預約 樂齡舒緩套餐</a></div>
     </div>
   </div>
 </section>
 
-<section class="sec" style="padding-top:0" aria-labelledby="pledge-h">
-  <div class="wrap">
-    <h2 id="pledge-h" class="sr-only">服務原則</h2>
-    <ul class="pledges">
-      <li><h3>先確認，再出發</h3><p>目前只有阿凱師傅一位，所有預約都先在 LINE 確認檔期與地區，回覆確認後才算成立。</p></li>
-      <li><h3>力道隨時可以調</h3><p>服務前先問可接受的力道與想放鬆的部位，過程中覺得太重、想休息，直接說就好。</p></li>
-      <li><h3>不硬按，不勉強</h3><p>身體不適或現場環境不適合時，不勉強進行。這是一般放鬆服務，不做醫療或治療。</p></li>
-    </ul>
-  </div>
-</section>
 
-<section class="sec sec-ai" id="elderly" aria-labelledby="elderly-h" data-ga-location="elderly_feature">
-  <div class="wrap split">
-    <div>
-      <h2 id="elderly-h">給爸媽的 60 分鐘，<br>在他們最熟悉的家裡</h2>
-      <p class="prose">長輩不方便出門，或不習慣去店裡？樂齡舒緩由阿凱師傅到府，節奏放慢、力道放輕，家人可以在旁陪同。子女可以代為詢問，但仍以長輩本人願意為前提。</p>
-      <ul class="ticks">
-        <li>單次預約，不綁約、不用買套票</li>
-        <li>服務前確認長輩意願、當天狀況與家中空間</li>
-        <li>不攜帶按摩床，需先準備安全、好上下的位置</li>
-      </ul>
-      <div class="btn-row">
-        <a class="btn btn-line" href="https://lin.ee/tXNyqDX" target="_blank" rel="noopener">替爸媽詢問時段</a>
-        <a class="btn btn-ghost" style="color:#fff;border-color:#8fa6b5" href="/elderly-relaxation/">看樂齡舒緩完整說明</a>
-      </div>
-    </div>
-    <div>
-      <div class="price-tag">
-        <span class="amt">NT$1,600</span>
-        <span class="per">樂齡孝親舒緩<br>單次 60 分鐘</span>
-        <span class="pt-note">21:00 後、主要六區以外的地點，費用先在 LINE 確認</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="menu" aria-labelledby="menu-h" data-ga-location="service_menu">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2 id="menu-h">服務與價格</h2>
-      <p>以下為單次價格。每項服務是否能安排，都以 LINE 確認阿凱師傅的檔期為準。</p>
-    </div>
-    <ul class="menu">
-      <li><div class="row"><span class="name">樂齡孝親舒緩<span class="tag">長輩</span></span><span class="dots"></span><span class="price">NT$1,600</span></div><div class="meta"><span>溫和節奏，力道可隨時調整</span><span>60 分鐘</span></div></li>
-      <li><div class="row"><span class="name">全身按摩</span><span class="dots"></span><span class="price">NT$2,800</span></div><div class="meta"><span>從肩頸、背部到腿部完整放鬆</span><span>90 分鐘</span></div></li>
-      <li><div class="row"><span class="name">精油香氛放鬆</span><span class="dots"></span><span class="price">NT$3,200</span></div><div class="meta"><span>植物精油搭配柔和手法</span><span>90 分鐘</span></div></li>
-      <li><div class="row"><span class="name">肩頸舒緩</span><span class="dots"></span><span class="price">NT$1,800</span></div><div class="meta"><span>久坐、長時間用電腦後</span><span>60 分鐘</span></div></li>
-      <li><div class="row"><span class="name">腳底按摩</span><span class="dots"></span><span class="price">NT$1,800</span></div><div class="meta"><span>久站、走很多路之後</span><span>60 分鐘</span></div></li>
-      <li><div class="row"><span class="name">臉部香氛保濕護理</span><span class="dots"></span><span class="price">NT$1,580</span></div><div class="meta"><span>溫和香氛與保濕護理</span><span>60 分鐘</span></div></li>
-      <li><div class="row"><span class="name">新手爸媽套餐</span><span class="dots"></span><span class="price">NT$4,200</span></div><div class="meta"><span>育兒空檔的完整放鬆時段</span><span>120 分鐘</span></div></li>
-      <li><div class="row"><span class="name">全職爸媽套餐</span><span class="dots"></span><span class="price">NT$3,200</span></div><div class="meta"><span>為全職照顧家庭的爸媽安排</span><span>90 分鐘</span></div></li>
-    </ul>
-    <p class="muted small" style="margin-top:20px">21:00–23:00 為加價時段；主要六區以外的地點可能另計車馬費，皆於 LINE 先報價。<a href="/services/">各項服務的詳細說明</a></p>
-  </div>
-</section>
-
-<section class="sec sec-alt" id="akai" aria-labelledby="akai-h" data-ga-location="therapist">
-  <div class="wrap person">
-    <!-- 佔位圖：阿凱本人授權照片後，可將 .monogram 換成 <img>。 -->
-    <div class="monogram" role="img" aria-label="阿凱師傅（照片準備中）">凱<span class="hanko" aria-hidden="true">阿凱</span></div>
-    <div>
-      <h2 id="akai-h">阿凱師傅</h2>
-      <p class="prose">目前幕府時代的到府服務，都由阿凱師傅一個人親自前往。所以每一次預約，你見到的都是同一位師傅；也因為只有一位，請盡量提早 2–3 天詢問，並給我們兩個可以的時段。</p>
-      <dl>
-        <dt>負責服務</dt><dd>樂齡舒緩、一般到府放鬆服務</dd>
-        <dt>預約方式</dt><dd>官方 LINE @927psgor，客服確認檔期</dd>
-        <dt>指定師傅</dt><dd>目前沒有其他師傅或性別可選</dd>
-      </dl>
-      <a class="btn btn-ai" href="#booking">整理預約訊息</a>
-    </div>
-  </div>
-</section>
-
-<section class="sec sec-ai" id="booking" aria-labelledby="booking-h" data-ga-location="booking">
-  <div class="wrap split">
-    <div>
-      <h2 id="booking-h">怎麼預約</h2>
-      <p class="prose" style="color:#c8d3da">網站不會自動送出預約。填好下方欄位，複製成一段訊息，貼到官方 LINE 就可以了。</p>
-      <ol class="steps">
-        <li><h3>整理需求</h3><p>填寫稱呼、服務、希望時段與區域，按「複製預約訊息」。</p></li>
-        <li><h3>貼到 LINE 送出</h3><p>開啟官方 LINE @927psgor，在聊天室貼上並傳送。</p></li>
-        <li><h3>等客服確認</h3><p>客服回覆阿凱師傅可以的時段與費用，你確認後預約才成立。</p></li>
-        <li><h3>師傅到府</h3><p>依約定時間到府，再次確認需求與空間後開始服務。服務後現金付款。</p></li>
-      </ol>
-    </div>
-    <form class="booker" id="booker" novalidate>
-      <h3>預約訊息整理</h3>
-      <p class="intro">帶 * 為必填。內容只在你的瀏覽器裡組合，不會傳到任何伺服器。</p>
-      <div class="field-2">
-        <div class="field"><label for="bk-name">稱呼 *</label><input id="bk-name" type="text" autocomplete="name" maxlength="40" placeholder="王小姐" required></div>
-        <div class="field"><label for="bk-phone">電話 <span class="opt">選填</span></label><input id="bk-phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="25" placeholder="09XX-XXX-XXX"></div>
-      </div>
-      <div class="field"><label for="bk-service">想預約的服務 *</label>
-        <select id="bk-service" required>
-          <option value="">請選擇</option>
-          <option>樂齡孝親舒緩（60 分鐘 NT$1,600）</option>
-          <option>全身按摩（90 分鐘 NT$2,800）</option>
-          <option>精油香氛放鬆（90 分鐘 NT$3,200）</option>
-          <option>肩頸舒緩（60 分鐘 NT$1,800）</option>
-          <option>腳底按摩（60 分鐘 NT$1,800）</option>
-          <option>臉部香氛保濕護理（60 分鐘 NT$1,580）</option>
-          <option>新手爸媽套餐（120 分鐘 NT$4,200）</option>
-          <option>全職爸媽套餐（90 分鐘 NT$3,200）</option>
-          <option>還不確定，想先詢問</option>
-        </select>
-      </div>
-      <div class="field-2">
-        <div class="field"><label for="bk-time">希望時段 *</label><input id="bk-time" type="text" maxlength="80" placeholder="11/5 晚上 或 11/6 下午" required></div>
-        <div class="field"><label for="bk-area">服務區域 *</label>
-          <select id="bk-area" required>
-            <option value="">請選擇</option>
-            <option>東區</option><option>北區</option><option>中西區</option><option>南區</option><option>安平區</option><option>安南區</option><option>其他區域</option>
-          </select>
+<!-- 樂齡孝親專區 SEO + 轉換強化 -->
+<section style="background:linear-gradient(135deg,#2C1F12 0%,#4A3020 50%,#6B4C35 100%);padding:96px 6%;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;opacity:0.05;font-family:Noto Serif TC,serif;font-size:20rem;color:var(--cream);display:flex;align-items:center;justify-content:center;pointer-events:none;letter-spacing:2rem;">孝</div>
+  <div class="rwd-two-col" style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;position:relative;z-index:1;">
+    <div class="rl">
+      <p style="font-size:0.7rem;letter-spacing:0.35em;color:var(--gold-light);text-transform:uppercase;margin-bottom:1rem;">許多客戶選擇</p>
+      <h2 style="font-family:Cormorant Garamond,serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--white);line-height:1.3;margin-bottom:1.5rem;">給爸媽最好的禮物<br><em style="font-style:italic;color:var(--gold-light);">不需要出門</em></h2>
+      <p style="font-size:0.92rem;color:rgba(237,229,216,0.75);line-height:2.1;margin-bottom:1rem;">台南許多長輩在日常生活後，容易累積疲憊感與緊繃感，卻因為不方便外出或不習慣出門而無法享受專業按摩。</p>
+      <p style="font-size:0.92rem;color:rgba(237,229,216,0.75);line-height:2.1;margin-bottom:2rem;">幕府時代的<strong style="color:var(--gold-light);">樂齡孝親舒緩套餐</strong>，讓在外打拼的子女能以最安心的方式，送給爸媽最窩心的禮物。師傅直接到府，長輩不需外出。</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem;">
+        <div style="background:rgba(184,147,90,0.15);border:1px solid rgba(184,147,90,0.3);padding:12px 20px;border-radius:2px;text-align:center;">
+          <div style="font-family:Cormorant Garamond,serif;font-size:1.8rem;color:var(--gold-light);font-weight:300;">60</div>
+          <div style="font-size:0.7rem;color:rgba(237,229,216,0.5);letter-spacing:0.1em;">分鐘服務</div>
+        </div>
+        <div style="background:rgba(184,147,90,0.15);border:1px solid rgba(184,147,90,0.3);padding:12px 20px;border-radius:2px;text-align:center;">
+          <div style="font-family:Cormorant Garamond,serif;font-size:1.8rem;color:var(--gold-light);font-weight:300;">NT$1,600</div>
+          <div style="font-size:0.7rem;color:rgba(237,229,216,0.5);letter-spacing:0.1em;">孝親優惠價</div>
+        </div>
+        <div style="background:rgba(184,147,90,0.15);border:1px solid rgba(184,147,90,0.3);padding:12px 20px;border-radius:2px;text-align:center;">
+          <div style="font-family:Cormorant Garamond,serif;font-size:1.8rem;color:var(--gold-light);font-weight:300;">全區</div>
+          <div style="font-size:0.7rem;color:rgba(237,229,216,0.5);letter-spacing:0.1em;">台南到府</div>
         </div>
       </div>
-      <div class="field"><label for="bk-notes">其他需求 <span class="opt">選填</span></label><textarea id="bk-notes" maxlength="200" placeholder="例：替爸媽預約、家中有沙發床、希望力道輕一點"></textarea></div>
-      <label for="bk-preview" class="field" style="display:block;margin-bottom:6px;font-weight:500;font-size:.95rem">將複製的內容</label>
-      <textarea id="bk-preview" class="preview" readonly></textarea>
-      <div class="booker-actions">
-        <button type="submit" class="btn btn-ai" id="bk-copy">① 複製預約訊息</button>
-        <a class="btn btn-line" id="bk-line" href="https://lin.ee/tXNyqDX" target="_blank" rel="noopener">② 開啟 LINE 貼上</a>
+      <a href="https://line.me/ti/p/@927psgor" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:12px;background:#06C755;color:#fff;padding:15px 32px;border-radius:2px;font-size:0.9rem;font-weight:500;letter-spacing:0.08em;text-decoration:none;transition:all 0.3s;box-shadow:0 6px 24px rgba(6,199,85,0.3);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.952 11.3c0-4.418-4.433-8.02-9.879-8.02C4.63 3.28.2 6.882.2 11.3c0 3.967 3.517 7.29 8.266 7.922.322.069.76.214.872.49.1.25.065.64.032.894l-.14.844c-.043.25-.198.979.857.534 1.056-.446 5.693-3.354 7.766-5.743C19.289 14.55 19.952 13 19.952 11.3z"/></svg>
+        立即為長輩預約
+      </a>
+    </div>
+    <div class="rr">
+      <div style="display:flex;flex-direction:column;gap:1.2rem;">
+        <div style="background:rgba(255,253,249,0.06);border:1px solid rgba(196,168,130,0.2);padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;">
+          <div style="font-size:1.5rem;flex-shrink:0;">🦴</div>
+          <div>
+            <div style="font-family:Cormorant Garamond,serif;font-size:1.05rem;color:var(--cream);margin-bottom:0.4rem;">日常緊繃・容易疲憊</div>
+            <div style="font-size:0.8rem;color:rgba(237,229,216,0.6);line-height:1.8;">溫和按摩陪伴長輩放鬆身心，舒緩日常累積的疲憊感</div>
+          </div>
+        </div>
+        <div style="background:rgba(255,253,249,0.06);border:1px solid rgba(196,168,130,0.2);padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;">
+          <div style="font-size:1.5rem;flex-shrink:0;">😴</div>
+          <div>
+            <div style="font-family:Cormorant Garamond,serif;font-size:1.05rem;color:var(--cream);margin-bottom:0.4rem;">睡前想放鬆・希望在熟悉環境中安靜休息</div>
+            <div style="font-size:0.8rem;color:rgba(237,229,216,0.6);line-height:1.8;">服務後可留在熟悉環境中，延續舒適放鬆的感受</div>
+          </div>
+        </div>
+        <div style="background:rgba(255,253,249,0.06);border:1px solid rgba(196,168,130,0.2);padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;">
+          <div style="font-size:1.5rem;flex-shrink:0;">🩸</div>
+          <div>
+            <div style="font-family:Cormorant Garamond,serif;font-size:1.05rem;color:var(--cream);margin-bottom:0.4rem;">腿部疲勞・久站後沉重感</div>
+            <div style="font-size:0.8rem;color:rgba(237,229,216,0.6);line-height:1.8;">循序漸進的放鬆手法，讓長輩在服務後感受舒適自在</div>
+          </div>
+        </div>
+        <div style="background:rgba(255,253,249,0.06);border:1px solid rgba(196,168,130,0.2);padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;">
+          <div style="font-size:1.5rem;flex-shrink:0;">🏠</div>
+          <div>
+            <div style="font-family:Cormorant Garamond,serif;font-size:1.05rem;color:var(--cream);margin-bottom:0.4rem;">不方便外出・偏好在家放鬆</div>
+            <div style="font-size:0.8rem;color:rgba(237,229,216,0.6);line-height:1.8;">師傅到府，長輩零壓力，子女也放心，是最貼心的孝親方式</div>
+          </div>
+        </div>
       </div>
-      <p class="booker-status" id="bk-status" role="status" aria-live="polite"></p>
-      <p class="privacy">請不要在這裡填寫病史或用藥。需要留意的身體狀況，客服會在 LINE 上另外跟你確認。</p>
-    </form>
-  </div>
-</section>
-
-<section class="sec" id="faq" aria-labelledby="faq-h" data-ga-location="faq">
-  <div class="wrap split">
-    <div class="sec-head">
-      <h2 id="faq-h">常見問題</h2>
-      <p>沒看到你想問的，直接在 LINE 問客服。</p>
-    </div>
-    <div class="faq">
-      <details><summary>需要提前多久預約？</summary><p>建議提早 2–3 天，並提供兩個可以的時段。目前只有阿凱師傅一位，當天臨時的需求也可以問問看，但以實際檔期與交通為準。</p></details>
-      <details><summary>可以指定女師傅嗎？</summary><p>目前只有阿凱師傅提供到府服務，沒有其他師傅或性別可以選擇。</p></details>
-      <details><summary>家裡要準備什麼？</summary><p>一個可以舒服躺下、穩固又方便上下的位置（床、沙發床都可以），加上乾淨毛巾。師傅不攜帶按摩床；行動不便的長輩不建議勉強上下地墊。</p></details>
-      <details><summary>服務範圍包括哪些地區？</summary><p>主要是東區、北區、中西區、南區、安平區與安南區。永康、仁德、歸仁等其他區域可以先在 LINE 詢問能否安排與車馬費。</p></details>
-      <details><summary>怎麼付款？</summary><p>服務結束後現場以現金支付。</p></details>
-      <details><summary>按摩時需要換衣服嗎？</summary><p>依服務項目不同。一般建議穿寬鬆舒適的衣物，師傅會在開始前說明，全程尊重你的隱私與意願。</p></details>
-      <details><summary>這是醫療或治療嗎？</summary><p>不是。這是一般放鬆與舒緩服務，不做診斷、治療、復健，也不保證療效。發燒、急性不適、近期受傷或手術後，請先諮詢醫師。</p></details>
     </div>
   </div>
 </section>
 
-<section class="sec sec-alt" id="areas" aria-labelledby="areas-h" data-ga-location="areas">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2 id="areas-h">台南到府服務區域</h2>
-      <p>以下六區為主要範圍，其他區域請先在 LINE 詢問。</p>
+<div class="pgrid">
+  <div class="pg"><img width="1600" height="900" src="https://images.pexels.com/photos/6628530/pexels-photo-6628530.jpeg?auto=compress&cs=tinysrgb&w=1600&q=80" alt="台南到府按摩師專業手法" loading="lazy" decoding="async"><div class="pg-lbl"><span>專業到府</span></div></div>
+  <div class="pg"><img width="800" height="533" src="https://images.pexels.com/photos/9146364/pexels-photo-9146364.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="幕府時代台南到府按摩服務" loading="lazy" decoding="async"><div class="pg-lbl"><span>放鬆時光</span></div></div>
+  <div class="pg"><img width="800" height="533" src="https://images.pexels.com/photos/6628640/pexels-photo-6628640.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南精油按摩到府服務" loading="lazy" decoding="async"><div class="pg-lbl"><span>精油香氛</span></div></div>
+  <div class="pg"><img width="800" height="533" src="https://images.pexels.com/photos/6628659/pexels-photo-6628659.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南肩頸舒緩到府按摩" loading="lazy" decoding="async"><div class="pg-lbl"><span>肩頸舒緩</span></div></div>
+  <div class="pg"><img width="800" height="533" src="https://images.pexels.com/photos/6663371/pexels-photo-6663371.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南臉部護理到府服務" loading="lazy" decoding="async"><div class="pg-lbl"><span>臉部護理</span></div></div>
+</div>
+
+<section id="team">
+  <div class="sh">
+    <p class="sey rv">專業團隊</p>
+    <h2 class="stitle rv" data-d="1">認識我們的按摩師</h2>
+    <p class="ssub rv" data-d="2">每位師傅均具備深厚專業技術，用心對待每位客戶</p>
+  </div>
+  <div class="team-layout mw">
+    <div class="tc rl">
+      <div class="tc-img-wrap" style="background:linear-gradient(160deg,#3D2B1A 0%,#6B4C35 40%,#8B6347 70%,#4A3020 100%);display:flex;align-items:center;justify-content:center;">
+        <div style="text-align:center;opacity:0.25;">
+          <div style="width:100px;height:100px;border-radius:50%;border:2px solid rgba(196,168,130,0.5);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;">
+            <span style="font-family:Noto Serif TC,serif;font-size:2.5rem;color:var(--gold-light);">凱</span>
+          </div>
+        </div>
+        <div class="tc-overlay"></div>
+      </div>
+      <div class="tc-body">
+        <div class="tc-name">阿凱師</div>
+        <div class="tc-role">首席按摩師 · Senior Massage Specialist · 10年經驗</div>
+        <div class="tc-desc">專精肩頸與腰背放鬆服務。手法穩定細緻，擅長依照客戶當日感受調整服務重點，讓每位客戶享受適合自己的放鬆體驗。</div>
+        <div class="tc-tags"><span class="tc-tag">肩頸放鬆</span><span class="tc-tag">腰背舒緩</span><span class="tc-tag">專注放鬆</span></div>
+      </div>
     </div>
-    <ul class="areas">
-      <li><h3>台南東區到府按摩</h3><p>崇德路、裕農路、長榮路一帶住宅與社區。</p></li>
-      <li><h3>台南北區到府按摩</h3><p>開元路、北園街、勝利路與成大周邊。</p></li>
-      <li><h3>台南中西區到府按摩</h3><p>赤崁樓、孔廟周邊住家、民宿與飯店。</p></li>
-      <li><h3>台南南區到府按摩</h3><p>南區住宅與生活圈，依地址確認時段。</p></li>
-      <li><h3>台南安平區到府按摩</h3><p>安平老街、億載金城周邊透天與社區。</p></li>
-      <li><h3>台南安南區到府按摩</h3><p>幅員較廣，依地址與交通距離確認。</p></li>
-    </ul>
+    <div class="tc rr">
+      <div class="tc-img-wrap" style="background:linear-gradient(160deg,#2A1F18 0%,#5A3D2B 35%,#8B6347 65%,#C4A882 100%);display:flex;align-items:center;justify-content:center;">
+        <div style="text-align:center;opacity:0.25;">
+          <div style="width:100px;height:100px;border-radius:50%;border:2px solid rgba(196,168,130,0.5);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;">
+            <span style="font-family:Noto Serif TC,serif;font-size:2.5rem;color:var(--gold-light);">玲</span>
+          </div>
+        </div>
+        <div class="tc-overlay"></div>
+      </div>
+      <div class="tc-body">
+        <div class="tc-name">綵 玲</div>
+        <div class="tc-role">首席芳療師 · Senior Aroma Specialist</div>
+        <div class="tc-desc">專精精油香氛放鬆與按摩服務，以溫和細膩的手法為主，擅長營造放鬆節奏，讓服務過程更加安定舒適。</div>
+        <div class="tc-tags"><span class="tc-tag">精油香氛放鬆</span><span class="tc-tag">放鬆節奏</span><span class="tc-tag">溫柔手法</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="sec" id="guides" aria-labelledby="guides-h" data-ga-location="guides">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2 id="guides-h">預約前可以先看</h2>
+<section id="testimonials">
+  <div class="tm-bg-img"><img width="800" height="533" src="https://images.pexels.com/photos/9146364/pexels-photo-9146364.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="幕府時代台南到府按摩服務" loading="lazy" decoding="async"></div>
+  <div class="tm-bg-overlay"></div>
+  <div class="sh" style="position:relative;z-index:1;">
+    <p class="sey rv">客戶真實評價</p>
+    <h2 class="stitle rv" data-d="1">他們說的比我們說的更有力</h2>
+  </div>
+  <div class="tm-grid">
+    <div class="tm-card rv" data-d="1">
+      <div class="tm-quote">"</div>
+      <div class="tm-stars">★★★★★</div>
+      <p>非常滿意！張老師服務前會細心詢問我的感受，按摩過程也會依照我能接受的力道調整。在家就能享受高品質按摩，真的太方便了！</p>
+      <div class="tm-author">
+        <div class="tm-av" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#B8935A,#8B6347);font-family:Noto Serif TC,serif;font-size:1.1rem;color:#fff;font-weight:400;">李</div>
+        <div class="tm-info"><strong>李小姐</strong><span>台南市北區</span></div>
+      </div>
     </div>
-    <ul class="links">
-      <li><a href="/guide/first-home-massage/"><strong>第一次預約到府按摩</strong><span>要準備什麼、會怎麼進行</span></a></li>
-      <li><a href="/guide/home-massage-price/"><strong>到府按摩價格怎麼算</strong><span>時段、區域與加價方式</span></a></li>
-      <li><a href="/guide/home-massage-safety/"><strong>到府按摩安全須知</strong><span>服務前後雙方都該確認的事</span></a></li>
-      <li><a href="/tainan-home-massage/"><strong>台南到府按摩指南</strong><span>區域、流程與常見問題</span></a></li>
-      <li><a href="/elderly-relaxation/"><strong>樂齡到府舒緩</strong><span>替爸媽安排前的完整說明</span></a></li>
-      <li><a href="/partner/"><strong>飯店與企業合作</strong><span>客房到府服務洽詢</span></a></li>
-    </ul>
+    <div class="tm-card rv" data-d="2">
+      <div class="tm-quote">"</div>
+      <div class="tm-stars">★★★★★</div>
+      <p>第一次嘗試到府按摩，林老師準時且非常專業，服務讓人感到安心放鬆。服務後整個人感覺輕鬆許多，往後會定期預約！</p>
+      <div class="tm-author">
+        <div class="tm-av" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#8B6347,#6B4C35);font-family:Noto Serif TC,serif;font-size:1.1rem;color:#fff;font-weight:400;">王</div>
+        <div class="tm-info"><strong>王太太</strong><span>台南市中西區</span></div>
+      </div>
+    </div>
+    <div class="tm-card rv" data-d="3">
+      <div class="tm-quote">"</div>
+      <div class="tm-stars">★★★★★</div>
+      <p>最貼心的服務！孕期比較不方便外出，師傅服務前會先了解我當天的感受與需求，過程溫和細心，在家就能安心安排一段放鬆時光。</p>
+      <div class="tm-author">
+        <div class="tm-av" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#C4A882,#B8935A);font-family:Noto Serif TC,serif;font-size:1.1rem;color:#fff;font-weight:400;">孫</div>
+        <div class="tm-info"><strong>孫小姐</strong><span>台南市永康區</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<div class="wrap disclaimer">幕府時代 Move Time 提供到府按摩與放鬆舒緩服務，以疲勞舒解與放鬆體驗為主，不涉及醫療診斷、治療、復健、疾病改善或療效保證。如有身體不適或特殊健康疑慮，請先諮詢合格醫療專業人員。本服務嚴禁任何形式的性騷擾，違者將立即終止服務並保留法律追訴權。</div>
+<section id="process">
+  <div class="sh">
+    <p class="sey rv">預約流程</p>
+    <h2 class="stitle rv" data-d="1">四個步驟，輕鬆享受到府服務</h2>
+  </div>
+  <div class="proc-wrap">
+    <div class="proc-line"></div>
+    <div class="ps rv" data-d="1"><div class="ps-num"><div class="ps-n">01</div></div><h3>預約服務</h3><p>透過網站表單或 LINE 填寫服務項目、時間與地址</p></div>
+    <div class="ps rv" data-d="2"><div class="ps-num"><div class="ps-n">02</div></div><h3>確認訊息</h3><p>最短時間內回覆，確認預約並告知師傅資訊</p></div>
+    <div class="ps rv" data-d="3"><div class="ps-num"><div class="ps-n">03</div></div><h3>專業到府</h3><p>按摩師準時到府，帶齊專業設備，依您需求服務</p></div>
+    <div class="ps rv" data-d="4"><div class="ps-num"><div class="ps-n">04</div></div><h3>享受放鬆</h3><p>熟悉環境安心放鬆，結束後可直接就地休息</p></div>
+  </div>
+</section>
 
-</main>
+<section id="faq">
+  <div class="faq-in">
+    <div class="faq-side rl">
+      <p class="sey" style="justify-content:flex-start;margin-bottom:1.2rem;">常見問題</p>
+      <h2>您可能<br>想知道的事</h2>
+      <p>我們整理了客戶最常詢問的問題。若有其他疑問，歡迎直接聯繫我們。</p>
+      <a href="#contact" class="faq-cl">直接聯繫我們 →</a>
+    </div>
+    <div class="faq-list rr">
+      <div class="faq-item"><div class="faq-q" onclick="tF(this)">如何確保按摩師的專業性及安全性？<div class="faq-arr">▾</div></div><div class="faq-a">所有按摩師都會進行嚴格的背景審查，具備專業培訓資歷，並定期參加進修課程。為了您的安全，預約時可指定服務師傅的性別。</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="tF(this)">需要提前多久預約？<div class="faq-arr">▾</div></div><div class="faq-a">建議至少提前 24 小時預約，讓我們有足夠時間為您安排合適的按摩師。如有緊急需求，也歡迎直接來電詢問當日可用時段。</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="tF(this)">到府按摩需要準備什麼？<div class="faq-arr">▾</div></div><div class="faq-a">只需提供一個舒適的空間（約 2×3 公尺），以及自己使用的毛巾與浴巾即可。按摩師會攜帶所有專業器材到府。</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="tF(this)">服務範圍包括哪些地區？<div class="faq-arr">▾</div></div><div class="faq-a">主要服務中西區、東區、南區、北區、安平區與安南區；永康、仁德、歸仁等其他區域可先透過 LINE 詢問是否能安排。</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="tF(this)">付款方式是什麼？<div class="faq-arr">▾</div></div><div class="faq-a">目前採用現場現金付款，服務結束後直接以現金支付即可，簡單方便。如有特殊需求請於預約時告知，我們會盡力配合。</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="tF(this)">按摩時需要脫衣服嗎？<div class="faq-arr">▾</div></div><div class="faq-a">根據服務項目不同而有差異。一般建議穿著舒適的輕薄衣物，按摩師會根據服務項目說明注意事項，全程尊重您的隱私與舒適度。</div></div>
+    </div>
+  </div>
+</section>
 
-<footer class="site-foot" data-ga-location="footer">
-  <div class="wrap">
-    <div>
-      <h2>幕府時代 Move Time</h2>
-      <p>台南到府按摩與樂齡舒緩<br>官方 LINE：<a href="https://lin.ee/tXNyqDX" target="_blank" rel="noopener">@927psgor</a><br>Email：<a href="mailto:movetimetw@gmail.com">movetimetw@gmail.com</a><br>聯絡地址：台南市北區北安路一段10號（辦公室不對外開放）</p>
+<section id="contact">
+  <div class="sh">
+    <p class="sey rv">預約諮詢</p>
+    <h2 class="stitle rv" data-d="1">留下您的資訊，我們盡快聯繫</h2>
+  </div>
+  <div class="ct-wrap">
+    <div class="ct-info rl">
+      <div class="ct-info-img">
+        <img width="800" height="533" src="https://images.pexels.com/photos/3865676/pexels-photo-3865676.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="台南到府按摩預約諮詢" loading="lazy" decoding="async">
+      </div>
+      <h3>聯絡資訊</h3>
+      <div class="ct-row"><div class="c-ico">✉️</div><div><strong>Email</strong><p>movetimetw@gmail.com</p></div></div>
+      <div class="ct-row">
+        <div class="c-ico" style="background:rgba(6,199,85,0.15);border-color:rgba(6,199,85,0.25);"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.952 11.3c0-4.418-4.433-8.02-9.879-8.02C4.63 3.28.2 6.882.2 11.3c0 3.967 3.517 7.29 8.266 7.922.322.069.76.214.872.49.1.25.065.64.032.894l-.14.844c-.043.25-.198.979.857.534 1.056-.446 5.693-3.354 7.766-5.743C19.289 14.55 19.952 13 19.952 11.3z"/></svg></div>
+        <div>
+          <strong>LINE 官方帳號</strong>
+          <p style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+            <span style="font-size:1rem;letter-spacing:0.05em;color:var(--gold-light);">@927psgor</span>
+            <a href="https://line.me/ti/p/@927psgor" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:#06C755;color:#fff;padding:5px 14px;border-radius:4px;font-size:0.75rem;text-decoration:none;font-weight:500;">加入好友</a>
+          </p>
+        </div>
+      </div>
+      <div class="ct-row"><div class="c-ico">📍</div><div><strong>聯絡地址</strong><p>台南市北區北安路一段10號<br><span style="font-size:.75rem;color:var(--text-soft);">辦公室不對外開放</span></p></div></div>
+      <div class="ct-row"><div class="c-ico">🕐</div><div><strong>服務時間</strong><p>每日 10:00 – 23:00（全年無休）</p></div></div>
+      <div class="pol-box">⚠️ 零容忍政策：本服務嚴禁任何形式的性騷擾行為，請尊重專業服務人員，違者將拒絕服務並保留法律追訴權。</div>
     </div>
-    <div>
-      <h3>服務</h3>
-      <ul><li><a href="/services/">服務與價格</a></li><li><a href="/elderly-relaxation/">樂齡到府舒緩</a></li><li><a href="/tainan-home-massage/">台南到府按摩指南</a></li><li><a href="/guide/">按摩知識庫</a></li></ul>
+    <div class="fb rr">
+      <h3>線上預約表單</h3>
+      <div id="fw">
+        <div class="f2">
+          <div class="fg"><label>您的姓名 *</label><input type="text" id="fn" placeholder="王小明"></div>
+          <div class="fg"><label>聯絡電話 *</label><input type="tel" id="fp" placeholder="09XX-XXX-XXX"></div>
+        </div>
+        <div class="fg"><label>服務項目</label>
+          <select id="fs">
+            <option value="">請選擇服務項目</option>
+            <option>全身按摩（90分鐘 NT$2,800）</option>
+            <option>精油按摩（90分鐘 NT$3,200）</option>
+            <option>肩頸舒緩（60分鐘 NT$1,800）</option>
+            <option>腳底按摩（60分鐘 NT$1,800）</option>
+            <option>臉部香氛保濕護理（60分鐘 NT$1,580）</option>
+            <option>新手爸媽套餐（120分鐘 NT$4,200）</option>
+            <option>全職爸媽套餐（90分鐘 NT$3,200）</option>
+            <option>樂齡舒緩套餐（60分鐘 NT$1,600）</option>
+          </select>
+        </div>
+        <div class="f2">
+          <div class="fg"><label>希望預約時間</label><input type="datetime-local" id="ft"></div>
+          <div class="fg"><label>師傅性別偏好</label><select id="fg2"><option value="">不限</option><option>男師傅</option><option>女師傅</option></select></div>
+        </div>
+        <div class="fg"><label>服務地址</label><input type="text" id="fa" placeholder="台南市XX區XX路XX號"></div>
+        <div class="fg"><label>備註或特殊需求</label><textarea id="fno" placeholder="例如：特別想放鬆的部位、其他需求…"></textarea></div>
+        <p class="fn2">送出後我們會透過電話或 LINE 與您確認預約，請確保聯絡電話正確。</p>
+        <button class="btn-sub" onclick="submitForm()"><span>送出預約申請</span></button>
+      </div>
+      <div class="fsuc" id="fsuc">
+        <div class="ck">✅</div>
+        <h4>感謝您的預約！</h4>
+        <p>我們已收到您的申請，將盡快透過電話或 LINE 與您確認，請保持聯絡。</p>
+      </div>
     </div>
-    <div>
-      <h3>合作</h3>
-      <ul><li><a href="/partner/">飯店與企業合作</a></li><li><a href="/massager/">按摩師招募</a></li><li><a href="https://www.facebook.com/movetimetntw" target="_blank" rel="noopener">Facebook</a></li></ul>
+  </div>
+</section>
+
+
+<!-- 台南在地區域服務 SEO Section -->
+<section id="areas" style="background:var(--white);padding:104px 6%;">
+  <div class="sh">
+    <p class="sey rv">服務地區</p>
+    <h2 class="stitle rv" data-d="1">台南各區到府按摩，在地深耕</h2>
+    <p class="ssub rv" data-d="2">主要服務東區、北區、中西區、南區、安平與安南；其他區域可先詢問</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto;">
+    <div class="area-card rv" data-d="1"><div class="area-icon">🏯</div><h3>台南北區按摩</h3><p>服務開元路、北園街、勝利路周邊住宅區，含成功大學商圈一帶，按摩師熟悉北區道路，準時到府。</p><div class="area-tag">開元路・北園街・勝利路</div></div>
+    <div class="area-card rv" data-d="2"><div class="area-icon">🎑</div><h3>台南東區按摩</h3><p>服務崇德路、裕農路、長榮路等住宅精華地段，東區人口密集，是我們預約最多的區域。</p><div class="area-tag">崇德路・裕農路・長榮路</div></div>
+    <div class="area-card rv" data-d="3"><div class="area-icon">🏮</div><h3>台南中西區按摩</h3><p>府城古都核心，赤崁樓、孔廟周邊老宅民宿、飯店，歷史街區也需要放鬆，我們到你身邊。</p><div class="area-tag">赤崁樓・孔廟・民族路</div></div>
+    <div class="area-card rv" data-d="4"><div class="area-icon">🌊</div><h3>台南安平區按摩</h3><p>安平老街、安平港旁透天厝與社區，台南最老的聚落，也是我們最用心服務的地方。</p><div class="area-tag">安平老街・億載金城</div></div>
+    <div class="area-card rv" data-d="1"><div class="area-icon">🏘️</div><h3>台南南區按摩</h3><p>南區住宅與生活圈分布廣，預約時會依地址與時段安排合適師傅，減少等待與往返時間。</p><div class="area-tag">南區主要住宅與生活圈</div></div>
+    <div class="area-card rv" data-d="2"><div class="area-icon">🌿</div><h3>台南安南區按摩</h3><p>安南區幅員較廣，預約時會依服務地址、交通距離與當日時段確認可安排的師傅。</p><div class="area-tag">安南區主要住宅與生活圈</div></div>
+  </div>
+</section>
+
+<!-- 台南在地精神橫幅 -->
+<div style="background:var(--text);padding:80px 6%;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0.04;font-family:Noto Serif TC,serif;font-size:15rem;color:var(--cream);white-space:nowrap;pointer-events:none;letter-spacing:2rem;">府城</div>
+  <div class="rwd-two-col" style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;position:relative;z-index:1;">
+    <div class="rl">
+      <p style="font-size:0.7rem;letter-spacing:0.35em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem;">台南・府城精神</p>
+      <h2 style="font-family:Cormorant Garamond,serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:300;color:var(--cream);line-height:1.4;margin-bottom:1.5rem;">台南人的步調<br>值得最好的照顧</h2>
+      <p style="font-size:0.9rem;color:rgba(237,229,216,0.7);line-height:2;margin-bottom:1rem;">台南是一座懂得生活的城市。從牛肉湯的清晨、廟口的午後、老街的夜晚，台南人知道如何享受每一刻。</p>
+      <p style="font-size:0.9rem;color:rgba(237,229,216,0.7);line-height:2;">幕府時代深根台南，我們了解這座城市的節奏與溫度，用最在地的心，提供最專業的到府按摩服務。</p>
     </div>
-    <p class="copy">© 2026 大奧國際有限公司　幕府時代 Move Time</p>
+    <div class="rr rwd-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+      <div style="text-align:center;padding:1.5rem;border:1px solid rgba(184,147,90,0.2);"><div style="font-size:1.8rem;margin-bottom:0.5rem;">🏯</div><div style="font-family:Cormorant Garamond,serif;font-size:0.95rem;color:var(--gold-light);margin-bottom:0.3rem;">府城根基</div><div style="font-size:0.72rem;color:rgba(237,229,216,0.45);">深根台南在地服務</div></div>
+      <div style="text-align:center;padding:1.5rem;border:1px solid rgba(184,147,90,0.2);"><div style="font-size:1.8rem;margin-bottom:0.5rem;">🌺</div><div style="font-family:Cormorant Garamond,serif;font-size:0.95rem;color:var(--gold-light);margin-bottom:0.3rem;">廟埕精神</div><div style="font-size:0.72rem;color:rgba(237,229,216,0.45);">踏實誠信的服務態度</div></div>
+      <div style="text-align:center;padding:1.5rem;border:1px solid rgba(184,147,90,0.2);"><div style="font-size:1.8rem;margin-bottom:0.5rem;">🍜</div><div style="font-family:Cormorant Garamond,serif;font-size:0.95rem;color:var(--gold-light);margin-bottom:0.3rem;">慢活哲學</div><div style="font-size:0.72rem;color:rgba(237,229,216,0.45);">不急不躁，用心到位</div></div>
+      <div style="text-align:center;padding:1.5rem;border:1px solid rgba(184,147,90,0.2);"><div style="font-size:1.8rem;margin-bottom:0.5rem;">🤝</div><div style="font-family:Cormorant Garamond,serif;font-size:0.95rem;color:var(--gold-light);margin-bottom:0.3rem;">厝邊情誼</div><div style="font-size:0.72rem;color:rgba(237,229,216,0.45);">像鄰居一樣信任可靠</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 服務與指南入口：以可索引的獨立頁面取代首頁大量關鍵字堆疊 -->
+<section id="articles" style="background:var(--cream);padding:104px 6%;">
+  <div class="sh">
+    <p class="sey rv">服務指南</p>
+    <h2 class="stitle rv" data-d="1">預約前，先把需要的資訊看清楚</h2>
+    <p class="ssub rv" data-d="2">服務價格、到府流程、樂齡安排與合作資訊，都有獨立頁面可直接查閱。</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto;">
+    <article class="art-card rv"><div class="art-tag">服務與價格</div><h3><a href="/services/" style="color:inherit;text-decoration:none;">到府按摩有哪些服務？費用一次看</a></h3><p>整理全身、精油香氛、肩頸、腳底、臉部護理與家庭方案，依時間、預算與偏好快速選擇。</p><a href="/services/" style="display:inline-block;margin-top:.8rem;color:var(--brown);text-decoration:none;border-bottom:1px solid var(--brown-light);">查看服務與價格 →</a></article>
+    <article class="art-card rv"><div class="art-tag">台南到府指南</div><h3><a href="/tainan-home-massage/" style="color:inherit;text-decoration:none;">第一次預約到府按摩，流程怎麼走？</a></h3><p>包含服務區域、到府前準備、預約方式、安全原則與常見問題，適合第一次預約前閱讀。</p><a href="/tainan-home-massage/" style="display:inline-block;margin-top:.8rem;color:var(--brown);text-decoration:none;border-bottom:1px solid var(--brown-light);">閱讀到府指南 →</a></article>
+    <article class="art-card rv"><div class="art-tag">全身・肩頸</div><h3><a href="/services/#full-body" style="color:inherit;text-decoration:none;">60 分鐘肩頸，還是 90 分鐘全身？</a></h3><p>時間有限可選局部舒緩；想安排更完整的休息時間，可查看全身放鬆服務與價格差異。</p><a href="/services/#full-body" style="display:inline-block;margin-top:.8rem;color:var(--brown);text-decoration:none;border-bottom:1px solid var(--brown-light);">比較服務 →</a></article>
+    <article class="art-card rv"><div class="art-tag">精油香氛</div><h3><a href="/services/#aroma" style="color:inherit;text-decoration:none;">偏好柔和節奏與香氛儀式感？</a></h3><p>精油香氛放鬆適合重視氣味、滑順手法與整體氛圍的人，可先查看服務方式再決定。</p><a href="/services/#aroma" style="display:inline-block;margin-top:.8rem;color:var(--brown);text-decoration:none;border-bottom:1px solid var(--brown-light);">查看精油服務 →</a></article>
+    <article class="art-card rv"><div class="art-tag">樂齡服務</div><h3><a href="/elderly-relaxation/" style="color:inherit;text-decoration:none;">想替爸媽安排在家放鬆？</a></h3><p>樂齡頁面專門說明適合情境、家中準備、家人陪同方式與非醫療服務界線。</p><a href="/elderly-relaxation/" style="display:inline-block;margin-top:.8rem;color:var(--brown);text-decoration:none;border-bottom:1px solid var(--brown-light);">查看樂齡舒緩 →</a></article>
+    <article class="art-card rv"><div class="art-tag">合作專區</div><h3><a href="/partner/" style="color:inherit;text-decoration:none;">飯店、企業或社區需要到府合作？</a></h3><p>合作頁整理客房到府服務模式、合作流程與洽詢方式；按摩師合作則可前往招募專區。</p><a href="/partner/" style="display:inline-block;margin-top:.8rem;color:var(--brown);text-decoration:none;border-bottom:1px solid var(--brown-light);">查看合作方案 →</a></article>
+  </div>
+</section>
+
+<style>
+.area-card{background:var(--cream-mid);border:1px solid var(--cream-dark);padding:2rem;transition:all 0.35s ease;position:relative;overflow:hidden;}
+.area-card::before{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform 0.4s ease;}
+.area-card:hover::before{transform:scaleX(1);}
+.area-card:hover{background:var(--white);transform:translateY(-4px);box-shadow:0 16px 32px var(--sw);}
+.area-icon{font-size:2.2rem;margin-bottom:1rem;}
+.area-card h3{font-family:"Cormorant Garamond",serif;font-size:1.25rem;font-weight:400;color:var(--brown);margin-bottom:0.8rem;}
+.area-card p{font-size:0.82rem;color:var(--text-soft);line-height:1.85;margin-bottom:1rem;}
+.area-tag{font-size:0.7rem;color:var(--gold);letter-spacing:0.08em;border-top:1px solid var(--cream-dark);padding-top:0.8rem;}
+.art-card{background:var(--white);border:1px solid var(--cream-dark);padding:2rem;transition:all 0.35s ease;position:relative;}
+.art-card::after{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--gold),var(--brown-light));transform:scaleX(0);transform-origin:left;transition:transform 0.4s ease;}
+.art-card:hover::after{transform:scaleX(1);}
+.art-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px var(--sw);}
+.art-tag{display:inline-block;background:var(--gold-pale);color:var(--brown);font-size:0.68rem;padding:4px 12px;letter-spacing:0.1em;margin-bottom:1rem;border-radius:2px;}
+.art-card h3{font-family:"Cormorant Garamond",serif;font-size:1.3rem;font-weight:400;color:var(--text);margin-bottom:1rem;line-height:1.4;}
+.art-card p{font-size:0.83rem;color:var(--text-soft);line-height:1.9;margin-bottom:0.8rem;}
+.art-card strong{color:var(--brown);font-weight:500;}
+.art-meta{font-size:0.7rem;color:var(--gold);letter-spacing:0.08em;border-top:1px solid var(--cream-dark);padding-top:0.8rem;margin-top:1rem;}
+@media(max-width:900px){
+  .area-card,.art-card{padding:1.5rem;}
+  #areas + div > div{grid-template-columns:1fr!important;gap:2rem!important;}
+}
+</style>
+
+<div class="line-cta">
+  <div class="lc-in rv">
+    <h2>偏好 LINE 預約？</h2>
+    <p>點擊下方按鈕直接加入我們的 LINE，與客服即時溝通，快速確認預約時段。</p>
+    <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(6,199,85,0.1);border:1px solid rgba(6,199,85,0.3);border-radius:6px;padding:8px 16px;margin-bottom:1.5rem;font-size:0.85rem;color:var(--text-mid);">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.952 11.3c0-4.418-4.433-8.02-9.879-8.02C4.63 3.28.2 6.882.2 11.3c0 3.967 3.517 7.29 8.266 7.922.322.069.76.214.872.49.1.25.065.64.032.894l-.14.844c-.043.25-.198.979.857.534 1.056-.446 5.693-3.354 7.766-5.743C19.289 14.55 19.952 13 19.952 11.3z"/></svg> LINE ID：<strong style="color:#05933f;letter-spacing:0.05em;">@927psgor</strong>
+    </div>
+    <a href="https://line.me/ti/p/@927psgor" class="btn-line" target="_blank" rel="noopener">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19.952 11.3c0-4.418-4.433-8.02-9.879-8.02C4.63 3.28.2 6.882.2 11.3c0 3.967 3.517 7.29 8.266 7.922.322.069.76.214.872.49.1.25.065.64.032.894l-.14.844c-.043.25-.198.979.857.534 1.056-.446 5.693-3.354 7.766-5.743C19.289 14.55 19.952 13 19.952 11.3z"/></svg>
+      LINE 直接預約
+    </a>
+  </div>
+</div>
+
+
+<!-- 服務聲明 -->
+<div style="background:#1A0D06;border-top:1px solid rgba(196,168,130,0.15);padding:2rem 6%;text-align:center;">
+  <p style="font-size:0.72rem;color:rgba(237,229,216,0.35);line-height:1.9;max-width:780px;margin:0 auto;">
+    幕府時代 Move Time 提供之服務為到府按摩與放鬆舒緩服務，內容以疲勞舒解、放鬆體驗、服務溝通與到府便利為主，不涉及醫療診斷、治療、復健、疾病改善或療效保證。如有身體不適或特殊健康疑慮，建議先諮詢合格醫療專業人員。
+  </p>
+</div>
+
+<footer>
+  <div class="ft-in">
+    <div><div class="ft-brand">幕府時代 Move Time <span>PROFESSIONAL HOME MASSAGE · TAINAN</span></div></div>
+    <div class="ft-links">
+      <a href="/services/">服務與價格</a>
+      <a href="/tainan-home-massage/">到府指南</a>
+      <a href="/guide/">按摩知識庫</a>
+      <a href="/elderly-relaxation/">樂齡舒緩</a>
+      <a href="#faq">常見問題</a>
+      <a href="#contact">預約諮詢</a>
+      <a href="/tainan-home-massage/">台南到府按摩指南</a>
+      <a href="/partner/">飯店合作</a>
+      <a href="/massager/">按摩師招募</a>
+    </div>
+    <div style="text-align:right;">
+    <a href="https://line.me/ti/p/@927psgor" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;color:rgba(6,199,85,0.8);text-decoration:none;font-size:0.8rem;margin-bottom:6px;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.952 11.3c0-4.418-4.433-8.02-9.879-8.02C4.63 3.28.2 6.882.2 11.3c0 3.967 3.517 7.29 8.266 7.922.322.069.76.214.872.49.1.25.065.64.032.894l-.14.844c-.043.25-.198.979.857.534 1.056-.446 5.693-3.354 7.766-5.743C19.289 14.55 19.952 13 19.952 11.3z"/></svg> LINE @927psgor
+    </a>
+    <div style="font-size:0.72rem;color:rgba(237,229,216,0.3);">© 2026 Move Time. All rights reserved.</div>
+  </div>
   </div>
 </footer>
 
-<div class="mbar"><a class="btn btn-line" href="https://lin.ee/tXNyqDX" target="_blank" rel="noopener">LINE 詢問阿凱師傅檔期</a></div>
+<script>
+window.addEventListener("load",function(){setTimeout(function(){document.getElementById("loader").classList.add("gone");},350);});
 
-<script src="/assets/js/v3-booking.js" defer></script>
+if(window.matchMedia("(hover:hover)").matches){
+  var cur=document.getElementById("cur");
+  var curR=document.getElementById("curR");
+  var mx=0,my=0,rx=0,ry=0;
+  document.addEventListener("mousemove",function(e){mx=e.clientX;my=e.clientY;cur.style.left=(mx-4)+"px";cur.style.top=(my-4)+"px";});
+  function animRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;curR.style.left=(rx-18)+"px";curR.style.top=(ry-18)+"px";requestAnimationFrame(animRing);}
+  animRing();
+  document.querySelectorAll("a,button,.sc-card,.faq-q,.tc").forEach(function(el){el.addEventListener("mouseenter",function(){cur.style.transform="scale(2)";curR.style.transform="scale(1.5)";});el.addEventListener("mouseleave",function(){cur.style.transform="scale(1)";curR.style.transform="scale(1)";});});
+}else{document.getElementById("cur").style.display="none";document.getElementById("curR").style.display="none";}
+
+window.addEventListener("scroll",function(){
+  var s=window.scrollY;
+  document.getElementById("mn").classList.toggle("sc",s>80);
+  var fc=document.getElementById("float-cta");
+  var bt=document.getElementById("back-top");
+  if(fc){fc.style.display=s>400?"flex":"none";}
+  if(bt){bt.style.display=s>600?"flex":"none";}
+});
+function toggleMenu(){document.getElementById("mm").classList.toggle("open");}
+function closeMenu(){document.getElementById("mm").classList.remove("open");}
+
+var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("on");});},{threshold:0.1,rootMargin:"0px 0px -50px 0px"});
+document.querySelectorAll(".rv,.rl,.rr,.rs").forEach(function(el){obs.observe(el);});
+
+function tF(el){var a=el.nextElementSibling,o=el.classList.contains("open");document.querySelectorAll(".faq-q").forEach(function(q){q.classList.remove("open");q.nextElementSibling.classList.remove("open");});if(!o){el.classList.add("open");a.classList.add("open");}}
+
+async function submitForm(){
+  var name=document.getElementById("fn").value.trim();
+  var phone=document.getElementById("fp").value.trim();
+  if(!name||!phone){alert("請填寫姓名與聯絡電話");return;}
+  var btn=document.querySelector(".btn-sub");
+  btn.querySelector("span").textContent="送出中…";btn.disabled=true;
+
+  var GAS_URL="https://script.google.com/macros/s/AKfycbwTlN636dzYCE1MvkF7Kj7Uq4HTJJHympG7z3-Y7fxUdApgLzPhdOCbLLVPTp_sFox7Rw/exec";
+
+  var params=new URLSearchParams({
+    userName: name,
+    userPhone: phone,
+    serviceType: document.getElementById("fs").value,
+    reserveDate: document.getElementById("ft").value,
+    reserveTime: "",
+    userAddress: document.getElementById("fa").value,
+    userNotes: document.getElementById("fno").value,
+    source: "movetimespa.com"
+  });
+
+  try{
+    await fetch(GAS_URL+"?"+params.toString(),{method:"GET",mode:"no-cors"});
+  }catch(e){console.log(e);}
+
+  document.getElementById("fw").style.display="none";
+  document.getElementById("fsuc").style.display="block";
+}
+
+document.querySelectorAll("a[href^='#']").forEach(function(a){a.addEventListener("click",function(e){var t=document.querySelector(a.getAttribute("href"));if(t){e.preventDefault();t.scrollIntoView({behavior:"smooth",block:"start"});}});});
+
+window.addEventListener("scroll",function(){var s=window.scrollY;var img=document.querySelector(".hero-bg img");if(img&&s<window.innerHeight){img.style.transform="translateY("+(s*0.3)+"px)";}},{passive:true});
+</script>
+
+<a href="https://line.me/ti/p/@927psgor" target="_blank" rel="noopener" id="float-line" style="display:flex;position:fixed;bottom:5rem;right:1.5rem;z-index:200;width:52px;height:52px;border-radius:50%;background:#06C755;color:#fff;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(6,199,85,0.45);transition:all 0.3s;" title="LINE 加入好友">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19.952 11.3c0-4.418-4.433-8.02-9.879-8.02C4.63 3.28.2 6.882.2 11.3c0 3.967 3.517 7.29 8.266 7.922.322.069.76.214.872.49.1.25.065.64.032.894l-.14.844c-.043.25-.198.979.857.534 1.056-.446 5.693-3.354 7.766-5.743C19.289 14.55 19.952 13 19.952 11.3z"/></svg>
+</a>
+<a href="#contact" id="float-cta" style="display:none;position:fixed;bottom:1.5rem;right:1.5rem;z-index:200;background:var(--gold);color:var(--text);padding:14px 24px;border-radius:50px;font-size:0.85rem;font-weight:500;letter-spacing:0.06em;text-decoration:none;box-shadow:0 4px 20px rgba(184,147,90,0.4);transition:all 0.3s;align-items:center;gap:8px;">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.952 11.3c0-4.418-4.433-8.02-9.879-8.02C4.63 3.28.2 6.882.2 11.3c0 3.967 3.517 7.29 8.266 7.922.322.069.76.214.872.49.1.25.065.64.032.894l-.14.844c-.043.25-.198.979.857.534 1.056-.446 5.693-3.354 7.766-5.743C19.289 14.55 19.952 13 19.952 11.3z"/></svg>
+  立即預約
+</a>
+
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="display:none;position:fixed;bottom:1.5rem;left:1.5rem;z-index:200;width:44px;height:44px;border-radius:50%;background:var(--cream-dark);border:1px solid var(--brown-light);color:var(--brown);font-size:1.2rem;cursor:pointer;transition:all 0.3s;align-items:center;justify-content:center;" aria-label="返回頂部">↑</button>
 </body>
 </html>

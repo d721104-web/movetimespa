@@ -9,13 +9,15 @@ permalink: /sitemap.xml
     <loc>{{ site.url }}{{ item.path }}</loc>
     <changefreq>weekly</changefreq>
     <priority>{{ item.priority }}</priority>
+    {% if item.updated %}<lastmod>{{ item.updated | date: '%Y-%m-%d' }}</lastmod>{% endif %}
   </url>
 {% endfor %}
 {% assign guide_list = site.guides | sort: 'date' | reverse %}
 {% for guide in guide_list %}
   <url>
     <loc>{{ site.url }}{{ guide.url }}</loc>
-    <lastmod>{{ guide.modified | default: guide.date | date: '%Y-%m-%d' }}</lastmod>
+    {% assign updated = guide.updated | default: guide.modified %}
+    {% if updated %}<lastmod>{{ updated | date: '%Y-%m-%d' }}</lastmod>{% endif %}
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

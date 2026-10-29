@@ -21,6 +21,8 @@ defaults:
       robots: "index, follow"
 
 exclude:
+  - V3-LAUNCH-GUIDE.md
+  - MIGRATION-CHECKLIST.md
   - README.md
   - ARTICLE-TEMPLATE.md
   - SEARCH-CONSOLE-NEXT-STEPS.md

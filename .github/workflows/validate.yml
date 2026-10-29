@@ -1,0 +1,25 @@
+name: Validate Visual Freeze changes
+
+on:
+  push:
+    branches: ["optimize/visual-freeze-p0-p1"]
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Check guide content
+        run: python3 tools/check_guides.py
+      - name: Build Jekyll without deployment
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+      - name: Check rendered HTML, internal links and sitemap
+        run: python3 tools/check_public_site.py _site

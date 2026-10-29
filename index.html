@@ -843,8 +843,8 @@ img {
       </div>
       <div class="fsuc" id="fsuc">
         <div class="ck">✅</div>
-        <h4>感謝您的預約！</h4>
-        <p>我們已收到您的申請，將盡快透過電話或 LINE 與您確認，請保持聯絡。</p>
+        <h4>請確認預約是否成立</h4>
+        <p>表單已完成送出步驟，請透過 LINE 確認是否收到申請。客服回覆確認後，預約才成立。</p>
       </div>
     </div>
   </div>
@@ -1022,9 +1022,15 @@ async function submitForm(){
     source: "movetimespa.com"
   });
 
+  var controller=new AbortController();
+  var timeout=setTimeout(function(){controller.abort();},15000);
   try{
-    await fetch(GAS_URL+"?"+params.toString(),{method:"GET",mode:"no-cors"});
-  }catch(e){console.log(e);}
+    await fetch(GAS_URL+"?"+params.toString(),{method:"GET",mode:"no-cors",signal:controller.signal});
+  }catch(e){
+    btn.querySelector("span").textContent="送出預約申請";btn.disabled=false;
+    alert("目前無法確認表單是否送達，請透過 LINE 詢問；若要重試，請先確認是否已收件，避免重複預約。");
+    return;
+  }finally{clearTimeout(timeout);}
 
   document.getElementById("fw").style.display="none";
   document.getElementById("fsuc").style.display="block";

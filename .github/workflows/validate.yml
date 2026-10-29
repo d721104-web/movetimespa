@@ -16,6 +16,8 @@ jobs:
       - uses: actions/checkout@v6
       - name: Check guide content
         run: python3 tools/check_guides.py
+      - name: Check booking failure and confirmation states
+        run: node tools/check_booking.cjs
       - name: Build Jekyll without deployment
         uses: actions/jekyll-build-pages@v1
         with:
